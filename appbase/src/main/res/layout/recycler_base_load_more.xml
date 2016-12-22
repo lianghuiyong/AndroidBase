@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/space_40">
+
+    <LinearLayout
+        android:id="@+id/load_more_loading_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/loading_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_4"
+            android:text="@string/loading"
+            android:textColor="#0dddb8"
+            android:textSize="@dimen/sp_14"/>
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/load_more_load_fail_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+
+        <TextView
+            android:id="@+id/tv_prompt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="#0dddb8"
+            android:text="加载失败"/>
+
+    </FrameLayout>
+
+    <RelativeLayout
+        android:id="@+id/load_more_end"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <View
+                android:layout_gravity="center"
+                android:layout_width="@dimen/space_80"
+                android:layout_height="@dimen/space_0.3"
+                android:background="@color/rcv_foot_line"/>
+
+            <TextView
+                android:id="@+id/text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/space_20"
+                android:paddingRight="@dimen/space_20"
+                android:textColor="@color/rcv_foot_text"
+                android:textSize="@dimen/sp_14"
+                android:text="已经到底啦"/>
+
+            <View
+                android:layout_gravity="center"
+                android:layout_width="@dimen/space_80"
+                android:layout_height="@dimen/space_0.3"
+                android:background="@color/rcv_foot_line"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</FrameLayout>

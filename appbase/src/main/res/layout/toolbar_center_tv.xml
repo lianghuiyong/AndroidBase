@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <!--
+    阴影控制
+    app:elevation="@dimen/space_0"
+    -->
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:elevation="@dimen/space_0"
+        app:colorControlNormal="@android:color/black">
+
+        <!--
+            app:layout_scrollFlags="scroll|snap|enterAlways"
+            scroll单独使用，会出现toolbar停留在动画中间的效果，不是很好
+            配合snap使用可以解决这个问题-->
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space_56"
+            android:layout_gravity="center"
+            app:contentInsetStart="@dimen/space_0"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+            <ImageView
+                android:id="@+id/toolbar_back"
+                android:layout_width="@dimen/space_60"
+                android:layout_height="match_parent"
+                android:paddingRight="@dimen/space_16"
+                android:paddingLeft="@dimen/space_16"
+                android:clickable="true"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                app:srcCompat="@drawable/ic_toolbar_back"
+                android:visibility="gone"/>
+
+            <TextView
+                android:ellipsize="marquee"
+                android:clickable="true"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/text_size_20"/>
+
+            <TextView
+                android:id="@+id/right_tv"
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:gravity="center"
+                android:textColor="@color/colorPrimary"
+                android:clickable="true"
+                android:background="@drawable/shape_toolbar_tv"
+                android:padding="@dimen/space_5"
+                android:layout_margin="@dimen/space_10" />
+
+        </android.support.v7.widget.Toolbar>
+
+
+    </android.support.design.widget.AppBarLayout>
+</merge>

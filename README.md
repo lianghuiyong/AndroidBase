@@ -1,0 +1,1 @@
+### compile 'net.liang.better:appbase:VERSION'
