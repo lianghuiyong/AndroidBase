@@ -242,7 +242,7 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
 
     public void showSnackbar(View view, String s) {
         Snackbar sb = Snackbar.make(view, s, Snackbar.LENGTH_SHORT);
-        sb.getView().setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+        sb.getView().setBackgroundColor(getResources().getColor(R.color.mainColorPrimary));
         ((TextView) sb.getView().findViewById(R.id.snackbar_text)).setTextColor(Color.WHITE);//获取Snackbar的message控件，修改字体颜色
         sb.show();
     }

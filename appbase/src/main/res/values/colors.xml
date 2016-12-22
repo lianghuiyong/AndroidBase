@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--Main Toolbar-->
-    <color name="colorPrimary">#2a86d4</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="mainColorPrimary">#3F51B5</color>
+    <color name="mainColorPrimaryDark">#3F51B5</color>
     <!--Sub Toolbar-->
-    <color name="subColorPrimary">#2a86d4</color>
-    <color name="subColorPrimaryDark">#303F9F</color>
+    <color name="subColorPrimary">#3F51B5</color>
+    <color name="subColorPrimaryDark">#3F51B5</color>
 
     <color name="colorAccent">#FF4081</color>
     <color name="layoutBack">#F2F2F2</color>
@@ -19,4 +19,6 @@
     <color name="rcv_foot_text">#a4a9b0</color>
     <color name="rcv_foot_line">#d0d0d0</color>
     <color name="rcv_foot_bg">#ebeeef</color>
+
+    <color name="textColor">#333333</color>
 </resources>

@@ -29,7 +29,7 @@ public abstract class BaseFragment extends Fragment implements BaseViewInterface
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container,
                              Bundle savedInstanceState) {
-        binding = DataBindingUtil.setContentView(getActivity(), getLayoutId());
+        binding = DataBindingUtil.inflate(inflater, getLayoutId(),container,false);
         return getView();
     }
 
@@ -57,6 +57,10 @@ public abstract class BaseFragment extends Fragment implements BaseViewInterface
     @Override
     public void initTabs() {
 
+    }
+
+    protected ViewDataBinding  getBinding(){
+        return binding;
     }
 
     @Override

@@ -6,5 +6,5 @@
     <!-- 设置矩形的四个角为弧形 -->
     <!-- android:radius 弧形的半径 -->
     <corners android:radius="4dp" />
-    <stroke android:color="@color/colorPrimary" android:width="@dimen/space_1"/>
+    <stroke android:color="@color/subColorPrimary" android:width="@dimen/space_1"/>
 </shape>

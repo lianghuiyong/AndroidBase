@@ -57,7 +57,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
                 android:gravity="center"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/subColorPrimary"
                 android:clickable="true"
                 android:background="@drawable/shape_toolbar_tv"
                 android:padding="@dimen/space_5"

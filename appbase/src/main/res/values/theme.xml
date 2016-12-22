@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Base.AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!--text style-->
+        <item name="android:textColor">@color/textColor</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowAnimationStyle">@style/BaseAnimationActivity</item>
+    </style>
+
+    <!--侧栏顶部完全透明主题-->
+    <style name="BaseTransParentTheme" parent="Base.TransParent">
+        <item name="colorPrimary">@color/mainColorPrimary</item>
+        <item name="colorPrimaryDark">@color/mainColorPrimaryDark</item>
+    </style>
+
+    <style name="BaseAppTheme" parent="Base.AppTheme">
+        <item name="colorPrimary">@color/subColorPrimary</item>
+        <item name="colorPrimaryDark">@color/subColorPrimaryDark</item>
+    </style>
+
+    <style name="BaseAppThemeFull" parent="Base.AppTheme">
+        <!-- AppCompat主题 全屏方法 -->
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <style name="BaseAppThemeFullWithAlpha" parent="Base.AppTheme">
+        <!-- AppCompat主题 全屏方法 -->
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowAnimationStyle">@style/BaseAnimationAlphaActivity</item>
+    </style>
+
+    <!--动画-->
+    <!--<item name="android:windowAnimationStyle">@style/AnimationActivity</item>-->
+    <style name="BaseAnimationActivity" mce_bogus="1" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/activity_in_from_left</item>
+        <item name="android:activityOpenExitAnimation">@anim/activity_out_from_right</item>
+        <item name="android:activityCloseEnterAnimation">@anim/activity_in_from_right</item>
+        <item name="android:activityCloseExitAnimation">@anim/activity_out_from_left</item>
+    </style>
+
+    <!--渐进渐出动画-->
+    <style name="BaseAnimationAlphaActivity" mce_bogus="1" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/activity_in_alpha</item>
+        <item name="android:activityOpenExitAnimation">@anim/activity_out_alpha</item>
+        <item name="android:activityCloseEnterAnimation">@anim/activity_in_alpha</item>
+        <item name="android:activityCloseExitAnimation">@anim/activity_out_alpha</item>
+    </style>
+
+</resources>

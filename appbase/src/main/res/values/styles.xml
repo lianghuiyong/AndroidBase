@@ -1,0 +1,5 @@
+<resources>
+    <!--标题栏透明-->
+    <style name="Base.TransParent" parent="Base.AppTheme">
+    </style>
+</resources>
