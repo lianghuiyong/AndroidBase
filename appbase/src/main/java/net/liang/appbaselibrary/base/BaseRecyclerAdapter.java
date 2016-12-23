@@ -26,8 +26,15 @@ public abstract class BaseRecyclerAdapter<T> extends BaseQuickAdapter<T, Binding
     private View netErrorView;
     private View notDataView;
 
-    public BaseRecyclerAdapter(Context context, RecyclerView recyclerView, int layoutResId, List<T> data) {
-        super(layoutResId, data);
+    public BaseRecyclerAdapter(Context context, RecyclerView recyclerView, List<T> data) {
+        super(data);
+        this.recyclerView = recyclerView;
+        this.context = context;
+        setBaseView();
+    }
+
+    public BaseRecyclerAdapter(Context context, RecyclerView recyclerView,int layoutIdRes, List<T> data) {
+        super(layoutIdRes,data);
         this.recyclerView = recyclerView;
         this.context = context;
         setBaseView();

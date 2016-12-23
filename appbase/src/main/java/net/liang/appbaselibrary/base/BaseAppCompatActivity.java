@@ -26,9 +26,11 @@ import io.reactivex.disposables.CompositeDisposable;
 public abstract class BaseAppCompatActivity extends AppCompatActivity implements BaseViewInterface {
 
     protected abstract int getLayoutId();
+    protected abstract BasePresenter addPresenter();
 
     private ViewDataBinding binding;
     protected Toolbar toolbar;
+    protected BasePresenter presenter;
     protected CompositeDisposable disposables;
 
     @Override
@@ -39,7 +41,7 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
         binding = DataBindingUtil.setContentView(this, getLayoutId());
 
         disposables = new CompositeDisposable();
-
+        presenter = addPresenter();
         /*dialogHelper = new DialogHelper(this);*/
 
         initView();
@@ -230,6 +232,24 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
             intent.putExtras(bundle);
         }
         startActivity(intent);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        if (presenter != null){
+            presenter.subscribe();
+        }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+
+        if (presenter != null) {
+            presenter.unsubscribe();
+        }
     }
 
     @Override

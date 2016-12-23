@@ -9,7 +9,7 @@ import net.liang.appbaselibrary.R;
  * Created by Dino on 11/29 0016.
  */
 
-public final class BaseCustomLoadMoreView extends LoadMoreView {
+final class BaseCustomLoadMoreView extends LoadMoreView {
 
     @Override
     public int getLayoutId() {
