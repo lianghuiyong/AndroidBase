@@ -6,9 +6,7 @@ package net.liang.appbaselibrary.base;
  * Activity interface
  */
 public interface BaseViewInterface {
-    void initView();
-
-    void initData();
+    void init();
 
     void initTabs();
 }

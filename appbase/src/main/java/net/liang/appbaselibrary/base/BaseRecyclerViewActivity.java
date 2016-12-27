@@ -13,21 +13,27 @@ import net.liang.appbaselibrary.data.RecyclerDataSource;
 import net.liang.appbaselibrary.data.local.LocalRecyclerDataSource;
 import net.liang.appbaselibrary.data.remote.RemoteRecyclerDataSource;
 
+import java.util.List;
+
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.observers.DisposableObserver;
 import io.reactivex.schedulers.Schedulers;
+
+import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
  * Created on 2016/10/23.
  * By lianghuiyong@outlook.com
  */
 
-public abstract class BaseRecyclerViewActivity<T, S> extends BaseAppCompatActivity implements SwipeRefreshLayout.OnRefreshListener,BaseRecyclerViewContract.View {
+public abstract class BaseRecyclerViewActivity<T, S> extends BaseAppCompatActivity implements SwipeRefreshLayout.OnRefreshListener, BaseRecyclerViewContract.View<T, S> {
+    protected abstract BaseRecyclerAdapter<T> addRecyclerAdapter();
 
     protected BaseRecyclerAdapter adapter;
     protected RecyclerView recyclerView;
     private SwipeRefreshLayout swipeRefresh;
+    private BaseRecyclerViewContract.Presenter mPresenter;
     private RecyclerDataSource<T, S> repository;
 
     @Override
@@ -36,14 +42,12 @@ public abstract class BaseRecyclerViewActivity<T, S> extends BaseAppCompatActivi
     }
 
     @Override
-    protected BasePresenter addPresenter() {
-        return new BaseRecyclerViewPresenter(this,
-                RecyclerDataRepository.getInstance(RemoteRecyclerDataSource.getInstance(),
+    public void init() {
+        mPresenter = new BaseRecyclerViewPresenter(this,
+                RecyclerDataRepository.getInstance(
+                        RemoteRecyclerDataSource.getInstance(),
                         LocalRecyclerDataSource.getInstance()));
-    }
 
-    @Override
-    public void initView() {
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         swipeRefresh = (SwipeRefreshLayout) findViewById(R.id.swiperefresh);
 
@@ -57,48 +61,28 @@ public abstract class BaseRecyclerViewActivity<T, S> extends BaseAppCompatActivi
         adapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
             @Override
             public void onLoadMoreRequested() {
-
+                mPresenter.loadMore();
             }
         });
     }
 
     @Override
-    public void initData() {
-        upData();
+    public void setPresenter(BaseRecyclerViewContract.Presenter presenter) {
+        mPresenter = checkNotNull(presenter);
     }
 
     @Override
     public void onRefresh() {
-        upData();
+        mPresenter.onRefresh();
     }
 
-    public void upData() {
+    @Override
+    public void showList(List<T> listData) {
+
     }
 
+    @Override
+    public void showNetworkFail(String err) {
 
-    protected abstract BaseRecyclerAdapter<T> addRecyclerAdapter();
-    //获取列表数据
-    public void getListData(S sendBean) {
-        Disposable disposable = repository
-                .getData(sendBean)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(new DisposableObserver<T>() {
-                    @Override
-                    public void onNext(T value) {
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-
-                    }
-
-                    @Override
-                    public void onComplete() {
-
-                    }
-                });
-        disposables.add(disposable);
     }
 }

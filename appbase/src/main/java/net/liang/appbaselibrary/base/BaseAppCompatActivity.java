@@ -26,12 +26,9 @@ import io.reactivex.disposables.CompositeDisposable;
 public abstract class BaseAppCompatActivity extends AppCompatActivity implements BaseViewInterface {
 
     protected abstract int getLayoutId();
-    protected abstract BasePresenter addPresenter();
 
     private ViewDataBinding binding;
     protected Toolbar toolbar;
-    protected BasePresenter presenter;
-    protected CompositeDisposable disposables;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,12 +37,11 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
 
         binding = DataBindingUtil.setContentView(this, getLayoutId());
 
-        disposables = new CompositeDisposable();
-        presenter = addPresenter();
+        //disposables = new CompositeDisposable();
+        //presenter = addPresenter();
         /*dialogHelper = new DialogHelper(this);*/
 
-        initView();
-        initData();
+        init();
         initTabs();
     }
 
@@ -58,12 +54,7 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
     }
 
     @Override
-    public void initData() {
-
-    }
-
-    @Override
-    public void initView() {
+    public void init() {
 
     }
 
@@ -234,29 +225,29 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
         startActivity(intent);
     }
 
-    @Override
+/*    @Override
     public void onResume() {
         super.onResume();
 
         if (presenter != null){
             presenter.subscribe();
         }
-    }
+    }*/
 
     @Override
     public void onPause() {
         super.onPause();
 
-        if (presenter != null) {
+  /*      if (presenter != null) {
             presenter.unsubscribe();
-        }
+        }*/
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
 
-        unsubscribe();
+        //unsubscribe();
         AppManager.getAppManager().finishActivity(this);
     }
 
@@ -267,10 +258,10 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
         sb.show();
     }
 
-    protected void unsubscribe() {
+/*    protected void unsubscribe() {
         if (disposables != null && disposables.size()>0) {
             disposables.clear();
         }
-    }
+    }*/
 
 }

@@ -7,20 +7,22 @@ import java.util.List;
  * Date on 2016/11/25
  */
 
-public class BaseRecyclerViewContract<T> {
+public class BaseRecyclerViewContract {
     /**
      * view接口层  处理界面
      */
-    interface View<T> extends BaseView<BaseRecyclerViewContract.Presenter> {
+    interface View<T,S> extends BaseView<BaseRecyclerViewContract.Presenter> {
         /**
          * 显示请假列表
          */
-        void showList(List<T> signStateBeanList);
+        void showList(List<T> listData);
 
         /**
          * 请求数据错误
          */
         void showNetworkFail(String err);
+
+        S getSendBody();
     }
 
     /**

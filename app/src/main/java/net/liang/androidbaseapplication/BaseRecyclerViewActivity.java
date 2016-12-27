@@ -6,16 +6,15 @@ import android.support.v7.widget.RecyclerView;
 
 import net.liang.appbaselibrary.base.BasePresenter;
 import net.liang.appbaselibrary.base.BaseRecyclerAdapter;
+import net.liang.appbaselibrary.base.BaseRecyclerViewContract;
 import net.liang.appbaselibrary.base.BindingViewHolder;
 
 import java.util.List;
 
-public class BaseRecyclerViewActivity extends net.liang.appbaselibrary.base.BaseRecyclerViewActivity {
+import static com.google.common.base.Preconditions.checkNotNull;
 
-    @Override
-    protected BasePresenter addPresenter() {
-        return null;
-    }
+public class BaseRecyclerViewActivity extends net.liang.appbaselibrary.base.BaseRecyclerViewActivity<String,String> {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +25,11 @@ public class BaseRecyclerViewActivity extends net.liang.appbaselibrary.base.Base
     @Override
     protected BaseRecyclerAdapter<String> addRecyclerAdapter() {
         return new RecyclerAdapter(this, recyclerView, null);
+    }
+
+    @Override
+    public String getSendBody() {
+        return "123";
     }
 
     class RecyclerAdapter extends BaseRecyclerAdapter<String> {
