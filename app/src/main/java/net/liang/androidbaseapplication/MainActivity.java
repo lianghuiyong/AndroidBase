@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
     @OnClick(R.id.baseRecyclerViewActivity)
     public void onClick() {
-        Intent intent = new Intent(this,BaseRecyclerViewActivity.class);
+        Intent intent = new Intent(this,Test_BaseRecyclerViewActivity.class);
         startActivity(intent);
     }
 }

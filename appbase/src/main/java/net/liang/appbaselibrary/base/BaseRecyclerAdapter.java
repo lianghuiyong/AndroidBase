@@ -66,8 +66,6 @@ public abstract class BaseRecyclerAdapter<T> extends BaseQuickAdapter<T, Binding
         notDataView = LayoutInflater.from(context)
                 .inflate(R.layout.recycler_item_nodata, (ViewGroup) recyclerView.getParent(), false);
 
-        //setEmptyView(notDataView);
-
         BaseCustomLoadMoreView customLoadMoreView = new BaseCustomLoadMoreView();
         customLoadMoreView.setLoadMoreEndGone(false);
         setLoadMoreView(customLoadMoreView);
@@ -77,14 +75,12 @@ public abstract class BaseRecyclerAdapter<T> extends BaseQuickAdapter<T, Binding
     public void showNoDataView() {
         if (isEmptyView(notDataView)) {
             setEmptyView(notDataView);
-            notifyItemChanged(0);
         }
     }
 
     public void showNetWorkErrorView() {
         if (isEmptyView(netErrorView)) {
             setEmptyView(netErrorView);
-            notifyItemChanged(0);
         }
     }
 

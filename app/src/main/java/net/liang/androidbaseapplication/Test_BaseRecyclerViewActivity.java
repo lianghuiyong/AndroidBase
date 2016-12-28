@@ -21,7 +21,7 @@ import io.reactivex.Observable;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
-public class BaseRecyclerViewActivity extends net.liang.appbaselibrary.base.BaseRecyclerViewActivity<List<String>, String> {
+public class Test_BaseRecyclerViewActivity extends net.liang.appbaselibrary.base.BaseRecyclerViewActivity<List<String>, String> {
 
     @Override
     protected int getLayoutId() {

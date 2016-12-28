@@ -16,6 +16,8 @@ import java.lang.reflect.Type;
 /**
  * Created on 2016/10/23.
  * By lianghuiyong@outlook.com
+ * @param <T> 是获取过来的数据类型
+ * @param <S> 是请求的数据类型
  */
 
 public abstract class BaseRecyclerViewFragment<T, S> extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener {
@@ -27,11 +29,6 @@ public abstract class BaseRecyclerViewFragment<T, S> extends BaseFragment implem
 
     private volatile int PAGENO = 1;
     private int PAGESIZE = 10;
-
-    @Override
-    protected int getLayoutId() {
-        return R.layout.layout_recyclerview;
-    }
 
     @Override
     public void init() {
