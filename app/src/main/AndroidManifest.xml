@@ -15,7 +15,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Test_BaseRecyclerViewActivity"></activity>
+        <activity android:name=".Test_BaseRecyclerViewActivity" />
+        <activity android:name=".Test_BaseRecyclerViewFragment"></activity>
     </application>
 
 </manifest>
