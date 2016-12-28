@@ -9,8 +9,13 @@ import android.widget.ProgressBar;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 
 import net.liang.appbaselibrary.R;
+import net.liang.appbaselibrary.data.RecyclerDataRepository;
+import net.liang.appbaselibrary.data.RecyclerDataSource;
+import net.liang.appbaselibrary.data.local.LocalRecyclerDataSource;
 
 import java.lang.reflect.Type;
+
+import static com.google.common.base.Preconditions.checkNotNull;
 
 
 /**
@@ -20,42 +25,68 @@ import java.lang.reflect.Type;
  * @param <S> 是请求的数据类型
  */
 
-public abstract class BaseRecyclerViewFragment<T, S> extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener {
+public abstract class BaseRecyclerViewFragment<T, S> extends BaseFragment implements BaseRecyclerViewContract.View<T, S>, RecyclerDataSource<T, S> {
+    protected abstract BaseRecyclerAdapter addRecyclerAdapter();
 
     protected BaseRecyclerAdapter adapter;
+    protected SwipeRefreshLayout swipeRefresh;
+    protected RecyclerView recyclerView;
+    private BaseRecyclerViewContract.Presenter mPresenter;
+    private int pageNo = 1;
 
-    RecyclerView recyclerView;
-    SwipeRefreshLayout swiperefresh;
-
-    private volatile int PAGENO = 1;
-    private int PAGESIZE = 10;
+    public int getPageNo() {
+        return pageNo;
+    }
 
     @Override
     public void init() {
-        recyclerView = (RecyclerView) getActivity().findViewById(R.id.recyclerView);
-        swiperefresh = (SwipeRefreshLayout) getActivity().findViewById(R.id.swiperefresh);
+        mPresenter = new BaseRecyclerViewPresenter(this,
+                RecyclerDataRepository.getInstance(this, LocalRecyclerDataSource.getInstance()));
 
-        adapter = adapter == null ? getRecyclerAdapter() : adapter;
+        recyclerView = (RecyclerView) getView().findViewById(R.id.recyclerView);
+        swipeRefresh = (SwipeRefreshLayout) getView().findViewById(R.id.swiperefresh);
 
-        swiperefresh.setColorSchemeColors(Color.BLUE, Color.GREEN, Color.RED, Color.YELLOW);
-        swiperefresh.setOnRefreshListener(this);
+        adapter = adapter == null ? addRecyclerAdapter() : adapter;
+
+        swipeRefresh.setColorSchemeColors(Color.RED, Color.BLUE, Color.GREEN, Color.YELLOW);
+        swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                pageNo = 1;
+                mPresenter.upData();
+            }
+        });
+
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(adapter);
         adapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
             @Override
             public void onLoadMoreRequested() {
-                PAGENO++;
+                pageNo++;
+                mPresenter.upData();
             }
         });
+
+        swipeRefresh.setRefreshing(true);
+        mPresenter.upData();
     }
 
+    @Override
+    public void onSuccess(T t) {
+        swipeRefresh.setRefreshing(false);
+    }
 
-    protected abstract BaseRecyclerAdapter getRecyclerAdapter();
+    @Override
+    public void setPresenter(BaseRecyclerViewContract.Presenter presenter) {
+        mPresenter = checkNotNull(presenter);
+    }
 
-    protected abstract S getSendBody();
-
-    protected abstract String getAddress();
-
-    protected abstract Type getType();
+    @Override
+    public void showNetworkFail(String err) {
+        swipeRefresh.setRefreshing(false);
+        if (pageNo == adapter.getFirstPageNo()){
+            adapter.showNetWorkErrorView();
+        }
+    }
 }
