@@ -23,31 +23,13 @@ public class BaseRecyclerViewPresenter<T,S> implements BaseRecyclerViewContract.
     private BaseRecyclerViewContract.View<T,S> view;
 
     @NonNull
-    private RecyclerDataRepository<T,S> repository;
+    private RecyclerDataRepository<T, S> repository;
 
     @NonNull
     private CompositeDisposable disposables;
-    private int pageNo = 1;
-    private int pageSize = 10;
-
-    public int getPageSize() {
-        return pageSize;
-    }
-
-    public void setPageSize(int pageSize) {
-        this.pageSize = pageSize;
-    }
-
-    public int getPageNo() {
-        return pageNo;
-    }
-
-    public void setPageNo(int pageNo) {
-        this.pageNo = pageNo;
-    }
 
     public BaseRecyclerViewPresenter(@NonNull BaseRecyclerViewContract.View view,
-                                     @NonNull RecyclerDataRepository<T,S> repository) {
+                                     @NonNull RecyclerDataRepository repository) {
         this.view = checkNotNull(view, "view cannot be null!");
         this.repository = checkNotNull(repository, "repository cannot be null!");
         disposables = new CompositeDisposable();
@@ -56,33 +38,21 @@ public class BaseRecyclerViewPresenter<T,S> implements BaseRecyclerViewContract.
     }
 
     @Override
-    public void onRefresh() {
-        pageNo = 1;
-        view.getSendBody();
-        upData(view.getSendBody());
-    }
-
-    @Override
-    public void loadMore() {
-        pageNo++;
-        upData(view.getSendBody());
-    }
-
-    public void upData(S sendBody ){
+    public void upData(){
         //获取列表数据
             Disposable disposable = repository
-                    .getData(sendBody)
+                    .getData(view.getSendBody())
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribeWith(new DisposableObserver<T>() {
                         @Override
                         public void onNext(T value) {
-
+                            view.onSuccess(value);
                         }
 
                         @Override
                         public void onError(Throwable e) {
-
+                            view.showNetworkFail("网络错误");
                         }
 
                         @Override

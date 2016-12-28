@@ -34,7 +34,7 @@ public abstract class BaseRecyclerViewFragment<T, S> extends BaseFragment implem
     }
 
     @Override
-    public void initView() {
+    public void init() {
         recyclerView = (RecyclerView) getActivity().findViewById(R.id.recyclerView);
         swiperefresh = (SwipeRefreshLayout) getActivity().findViewById(R.id.swiperefresh);
 

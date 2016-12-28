@@ -11,59 +11,66 @@ import net.liang.appbaselibrary.R;
 import net.liang.appbaselibrary.data.RecyclerDataRepository;
 import net.liang.appbaselibrary.data.RecyclerDataSource;
 import net.liang.appbaselibrary.data.local.LocalRecyclerDataSource;
-import net.liang.appbaselibrary.data.remote.RemoteRecyclerDataSource;
-
-import java.util.List;
-
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.observers.DisposableObserver;
-import io.reactivex.schedulers.Schedulers;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
  * Created on 2016/10/23.
  * By lianghuiyong@outlook.com
+ * @param <T> 是获取过来的数据类型
+ * @param <S> 是请求的数据类型
  */
 
-public abstract class BaseRecyclerViewActivity<T, S> extends BaseAppCompatActivity implements SwipeRefreshLayout.OnRefreshListener, BaseRecyclerViewContract.View<T, S> {
-    protected abstract BaseRecyclerAdapter<T> addRecyclerAdapter();
+public abstract class BaseRecyclerViewActivity<T, S> extends BaseAppCompatActivity implements BaseRecyclerViewContract.View<T, S>, RecyclerDataSource<T, S> {
+    protected abstract BaseRecyclerAdapter addRecyclerAdapter();
 
     protected BaseRecyclerAdapter adapter;
+    protected SwipeRefreshLayout swipeRefresh;
     protected RecyclerView recyclerView;
-    private SwipeRefreshLayout swipeRefresh;
     private BaseRecyclerViewContract.Presenter mPresenter;
-    private RecyclerDataSource<T, S> repository;
+    private int pageNo = 1;
 
-    @Override
-    protected int getLayoutId() {
-        return R.layout.layout_recyclerview;
+    public int getPageNo() {
+        return pageNo;
     }
 
     @Override
     public void init() {
         mPresenter = new BaseRecyclerViewPresenter(this,
-                RecyclerDataRepository.getInstance(
-                        RemoteRecyclerDataSource.getInstance(),
-                        LocalRecyclerDataSource.getInstance()));
+                RecyclerDataRepository.getInstance(this, LocalRecyclerDataSource.getInstance()));
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         swipeRefresh = (SwipeRefreshLayout) findViewById(R.id.swiperefresh);
 
         adapter = adapter == null ? addRecyclerAdapter() : adapter;
 
-        swipeRefresh.setColorSchemeColors(Color.BLUE, Color.GREEN, Color.RED, Color.YELLOW);
-        swipeRefresh.setOnRefreshListener(this);
+        swipeRefresh.setColorSchemeColors(Color.RED, Color.BLUE, Color.GREEN, Color.YELLOW);
+        swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                pageNo = 1;
+                mPresenter.upData();
+            }
+        });
+
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(adapter);
         adapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
             @Override
             public void onLoadMoreRequested() {
-                mPresenter.loadMore();
+                pageNo++;
+                mPresenter.upData();
             }
         });
+
+        swipeRefresh.setRefreshing(true);
+        mPresenter.upData();
+    }
+
+    @Override
+    public void onSuccess(T t) {
+        swipeRefresh.setRefreshing(false);
     }
 
     @Override
@@ -72,17 +79,10 @@ public abstract class BaseRecyclerViewActivity<T, S> extends BaseAppCompatActivi
     }
 
     @Override
-    public void onRefresh() {
-        mPresenter.onRefresh();
-    }
-
-    @Override
-    public void showList(List<T> listData) {
-
-    }
-
-    @Override
     public void showNetworkFail(String err) {
-
+        swipeRefresh.setRefreshing(false);
+        if (pageNo == adapter.getFirstPageNo()){
+            adapter.showNetWorkErrorView();
+        }
     }
 }

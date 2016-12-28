@@ -36,6 +36,9 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.0.1'
     testCompile 'junit:junit:4.12'
     compile 'com.jakewharton:butterknife:8.4.0'
+    //Log
+    compile 'com.github.zhaokaiqiang.klog:library:1.5.0'
+
     apt 'com.jakewharton:butterknife-compiler:8.4.0'
     compile project(':appbase')
 }

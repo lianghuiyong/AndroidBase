@@ -17,13 +17,13 @@ public class RecyclerDataRepository<T, S> implements RecyclerDataSource<T, S>{
     private static RecyclerDataRepository INSTANCE = null;
 
     @NonNull
-    private final RecyclerDataSource mRemoteAttendanceDataSource;
+    private final RecyclerDataSource<T, S> mRemoteAttendanceDataSource;
 
     @NonNull
-    private final RecyclerDataSource mLocalAttendanceDataSource;
+    private final RecyclerDataSource<T, S> mLocalAttendanceDataSource;
 
-    private RecyclerDataRepository(@NonNull RecyclerDataSource remoteFoodsDataSource,
-                                   @NonNull RecyclerDataSource localFoodsDataSource) {
+    private RecyclerDataRepository(@NonNull RecyclerDataSource<T, S> remoteFoodsDataSource,
+                                   @NonNull RecyclerDataSource<T, S> localFoodsDataSource) {
         mRemoteAttendanceDataSource = checkNotNull(remoteFoodsDataSource);
         mLocalAttendanceDataSource = checkNotNull(localFoodsDataSource);
     }

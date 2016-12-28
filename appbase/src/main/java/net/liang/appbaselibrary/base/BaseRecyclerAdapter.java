@@ -25,6 +25,24 @@ public abstract class BaseRecyclerAdapter<T> extends BaseQuickAdapter<T, Binding
     private Context context;
     private View netErrorView;
     private View notDataView;
+    private int firstPageNo = 1;
+    private int pageSize = 10;
+
+    public int getFirstPageNo() {
+        return firstPageNo;
+    }
+
+    public void setFirstPageNo(int firstPageNo) {
+        this.firstPageNo = firstPageNo;
+    }
+
+    public int getPageSize() {
+        return pageSize;
+    }
+
+    public void setPageSize(int pageSize) {
+        this.pageSize = pageSize;
+    }
 
     public BaseRecyclerAdapter(Context context, RecyclerView recyclerView, List<T> data) {
         super(data);
@@ -48,7 +66,7 @@ public abstract class BaseRecyclerAdapter<T> extends BaseQuickAdapter<T, Binding
         notDataView = LayoutInflater.from(context)
                 .inflate(R.layout.recycler_item_nodata, (ViewGroup) recyclerView.getParent(), false);
 
-        setEmptyView(notDataView);
+        //setEmptyView(notDataView);
 
         BaseCustomLoadMoreView customLoadMoreView = new BaseCustomLoadMoreView();
         customLoadMoreView.setLoadMoreEndGone(false);
@@ -74,6 +92,26 @@ public abstract class BaseRecyclerAdapter<T> extends BaseQuickAdapter<T, Binding
     public void addData(List<T> newData) {
         if (newData != null) {
             super.addData(newData);
+        }
+    }
+
+    public void showList(List<T> listData, int pageNo) {
+        if (listData == null) {
+            if (pageNo == getFirstPageNo()){
+                showNoDataView();
+            }
+            return;
+        }
+
+        if (pageNo == getFirstPageNo()){
+            setNewData(listData);
+        }else {
+            addData(listData);
+            loadMoreComplete();
+        }
+
+        if (listData.size() < getPageSize()) {
+            loadMoreEnd();
         }
     }
 

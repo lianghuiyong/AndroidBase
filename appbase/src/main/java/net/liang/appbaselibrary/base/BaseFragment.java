@@ -39,18 +39,12 @@ public abstract class BaseFragment extends Fragment implements BaseViewInterface
 
 //        dialogHelper = new DialogHelper(getActivity());
 
-        initView();
-        initData();
+        init();
         initTabs();
     }
 
     @Override
-    public void initData() {
-
-    }
-
-    @Override
-    public void initView() {
+    public void init() {
 
     }
 
