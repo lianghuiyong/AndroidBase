@@ -13,8 +13,6 @@ import static com.google.common.base.Preconditions.checkNotNull;
  */
 
 public class RecyclerDataRepository<T, S> implements RecyclerDataSource<T, S>{
-    @Nullable
-    private static RecyclerDataRepository INSTANCE = null;
 
     @NonNull
     private final RecyclerDataSource<T, S> mRemoteAttendanceDataSource;
@@ -22,18 +20,10 @@ public class RecyclerDataRepository<T, S> implements RecyclerDataSource<T, S>{
     @NonNull
     private final RecyclerDataSource<T, S> mLocalAttendanceDataSource;
 
-    private RecyclerDataRepository(@NonNull RecyclerDataSource<T, S> remoteFoodsDataSource,
-                                   @NonNull RecyclerDataSource<T, S> localFoodsDataSource) {
+    public RecyclerDataRepository(@NonNull RecyclerDataSource<T, S> remoteFoodsDataSource,
+                                  @NonNull RecyclerDataSource<T, S> localFoodsDataSource) {
         mRemoteAttendanceDataSource = checkNotNull(remoteFoodsDataSource);
         mLocalAttendanceDataSource = checkNotNull(localFoodsDataSource);
-    }
-
-    public static RecyclerDataRepository getInstance(@NonNull RecyclerDataSource remoteFoodsDataSource,
-                                            @NonNull RecyclerDataSource localFoodsDataSource) {
-        if (INSTANCE == null) {
-            INSTANCE = new RecyclerDataRepository(remoteFoodsDataSource, localFoodsDataSource);
-        }
-        return INSTANCE;
     }
 
     @Override

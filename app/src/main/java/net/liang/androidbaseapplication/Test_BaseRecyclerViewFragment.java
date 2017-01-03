@@ -3,12 +3,18 @@ package net.liang.androidbaseapplication;
 import android.support.v4.app.FragmentTransaction;
 
 import net.liang.appbaselibrary.base.BaseAppCompatActivity;
+import net.liang.appbaselibrary.base.BasePresenter;
 
 public class Test_BaseRecyclerViewFragment extends BaseAppCompatActivity {
 
     @Override
     protected int getLayoutId() {
         return R.layout.activity_test__base_recycler_view_fragment;
+    }
+
+    @Override
+    protected BasePresenter getPresenter() {
+        return null;
     }
 
     @Override

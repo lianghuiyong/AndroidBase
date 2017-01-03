@@ -34,7 +34,6 @@ public class BaseRecyclerViewPresenter<T,S> implements BaseRecyclerViewContract.
         this.repository = checkNotNull(repository, "repository cannot be null!");
         disposables = new CompositeDisposable();
 
-        view.setPresenter(this);
     }
 
     @Override

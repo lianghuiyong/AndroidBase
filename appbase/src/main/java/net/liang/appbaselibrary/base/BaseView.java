@@ -18,6 +18,12 @@ package net.liang.appbaselibrary.base;
 
 public interface BaseView<T> {
 
-    void setPresenter(T presenter);
+    /*void setPresenter(T presenter);*/
 
+//    T getPresenter();
+
+    /**
+     * 请求数据错误
+     */
+    void showNetworkFail(String err);
 }

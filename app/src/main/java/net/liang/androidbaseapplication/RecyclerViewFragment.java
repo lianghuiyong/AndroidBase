@@ -2,14 +2,8 @@ package net.liang.androidbaseapplication;
 
 
 import android.content.Context;
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
-import net.liang.appbaselibrary.base.BaseFragment;
 import net.liang.appbaselibrary.base.BaseRecyclerAdapter;
 import net.liang.appbaselibrary.base.BaseRecyclerViewFragment;
 import net.liang.appbaselibrary.base.BindingViewHolder;
@@ -61,7 +55,7 @@ public class RecyclerViewFragment extends BaseRecyclerViewFragment<List<String>,
 
     /**
      * 带bind的适配器
-     * */
+     */
     class RecyclerAdapter extends BaseRecyclerAdapter<String> {
 
         public RecyclerAdapter(Context context, RecyclerView recyclerView, List data) {

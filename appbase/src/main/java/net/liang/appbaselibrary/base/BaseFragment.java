@@ -15,6 +15,8 @@ import android.widget.Toast;
 
 import net.liang.appbaselibrary.R;
 
+import butterknife.ButterKnife;
+
 /**
  * Created by lianghuiyong@outlook.com on 2016/6/22.
  */
@@ -38,7 +40,7 @@ public abstract class BaseFragment extends Fragment implements BaseViewInterface
         super.onViewCreated(view, savedInstanceState);
 
 //        dialogHelper = new DialogHelper(getActivity());
-
+        ButterKnife.bind(this, getView());
         init();
         initTabs();
     }

@@ -9,13 +9,9 @@ public class BaseRecyclerViewContract {
     /**
      * view接口层  处理界面
      */
-    interface View<T, S> extends BaseView<BaseRecyclerViewContract.Presenter> {
+    public interface View<T, S> extends BaseView<BaseRecyclerViewContract.Presenter> {
         void onSuccess(T t);
 
-        /**
-         * 请求数据错误
-         */
-        void showNetworkFail(String err);
 
         S getSendBody();
     }
@@ -23,7 +19,7 @@ public class BaseRecyclerViewContract {
     /**
      * Presenter接口层 处理业务
      */
-    interface Presenter extends BasePresenter {
+    public interface Presenter extends BasePresenter {
 
         void upData();
     }
