@@ -1,5 +1,6 @@
 package net.liang.appbaselibrary.base;
 
+import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
@@ -31,7 +32,7 @@ public abstract class BaseFragment extends Fragment implements BaseViewInterface
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container,
                              Bundle savedInstanceState) {
-        binding = DataBindingUtil.inflate(inflater, getLayoutId(),container,false);
+        binding = DataBindingUtil.inflate(inflater, getLayoutId(), container, false);
         return getView();
     }
 
@@ -55,7 +56,7 @@ public abstract class BaseFragment extends Fragment implements BaseViewInterface
 
     }
 
-    protected ViewDataBinding  getBinding(){
+    protected ViewDataBinding getBinding() {
         return binding;
     }
 
@@ -75,17 +76,6 @@ public abstract class BaseFragment extends Fragment implements BaseViewInterface
         }
     }*/
 
-
-    public void showSnackbar(View view, String s) {
-        Snackbar sb = Snackbar.make(view, s, Snackbar.LENGTH_SHORT);
-        sb.getView().setBackgroundColor(getResources().getColor(R.color.colorAccent));
-        ((TextView) sb.getView().findViewById(R.id.snackbar_text)).setTextColor(Color.WHITE);
-        sb.show();
-    }
-
-    public void showToast(String s) {
-        Toast.makeText(getContext(), s, Toast.LENGTH_SHORT).show();
-    }
 
     public void nextActivity(Class<?> cls) {
         Intent intent = new Intent(getContext(), cls);

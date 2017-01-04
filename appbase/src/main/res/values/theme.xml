@@ -10,13 +10,13 @@
 
     <!--侧栏顶部完全透明主题-->
     <style name="BaseTransParentTheme" parent="Base.TransParent">
-        <item name="colorPrimary">@color/mainColorPrimary</item>
-        <item name="colorPrimaryDark">@color/mainColorPrimaryDark</item>
+        <item name="colorPrimary">#3F51B5</item>
+        <item name="colorPrimaryDark">#3F51B5</item>
     </style>
 
     <style name="BaseAppTheme" parent="Base.AppTheme">
-        <item name="colorPrimary">@color/subColorPrimary</item>
-        <item name="colorPrimaryDark">@color/subColorPrimaryDark</item>
+        <item name="colorPrimary">#3F51B5</item>
+        <item name="colorPrimaryDark">#3F51B5</item>
     </style>
 
     <style name="BaseAppThemeFull" parent="Base.AppTheme">

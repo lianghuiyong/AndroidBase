@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="@dimen/space_80"
-    android:orientation="vertical"
+    android:clickable="true"
+    android:foreground="?attr/selectableItemBackground"
     android:paddingBottom="@dimen/space_10"
     android:paddingLeft="@dimen/space_20"
     android:paddingRight="@dimen/space_20"
@@ -10,6 +11,7 @@
 
     <TextView
         android:id="@+id/data"
+        android:layout_gravity="center"
         android:text="2016-11-21 星期一"
         android:layout_height="wrap_content"
         android:layout_width="match_parent" />
