@@ -18,17 +18,20 @@ import com.socks.library.KLog;
 
 import net.liang.appbaselibrary.R;
 import net.liang.appbaselibrary.base.mvp.MvpPresenter;
+import net.liang.appbaselibrary.base.mvp.MvpView;
+import net.liang.appbaselibrary.utils.ToastUtils;
 
 import butterknife.ButterKnife;
 
 /**
  * Created by lianghuiyong@outlook.com on 2016/6/22.
  */
-public abstract class BaseFragment extends Fragment implements BaseViewInterface {
+public abstract class BaseFragment extends Fragment implements BaseViewInterface, MvpView {
 
     private ViewDataBinding binding;
 
     protected abstract MvpPresenter getPresenter();
+
     protected abstract int getLayoutId();
 
     @Override
@@ -56,6 +59,16 @@ public abstract class BaseFragment extends Fragment implements BaseViewInterface
     @Override
     public void initTabs() {
 
+    }
+
+    @Override
+    public void showNetworkFail(String err) {
+        showToast(err);
+    }
+
+    @Override
+    public void showToast(String toast) {
+        ToastUtils.showSnackbar(getView(), toast);
     }
 
     protected ViewDataBinding getBinding() {

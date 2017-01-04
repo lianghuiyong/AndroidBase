@@ -16,9 +16,11 @@
 
 package net.liang.appbaselibrary.base.mvp;
 
-public interface MvpView<T> {
+public interface MvpView {
     /**
      * 请求数据错误
      */
     void showNetworkFail(String err);
+
+    void showToast(String toast);
 }

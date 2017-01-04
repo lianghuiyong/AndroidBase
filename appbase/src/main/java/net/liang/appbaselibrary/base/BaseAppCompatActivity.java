@@ -16,14 +16,16 @@ import com.socks.library.KLog;
 import net.liang.appbaselibrary.AppManager;
 import net.liang.appbaselibrary.R;
 import net.liang.appbaselibrary.base.mvp.MvpPresenter;
+import net.liang.appbaselibrary.base.mvp.MvpView;
 import net.liang.appbaselibrary.utils.StringUtils;
+import net.liang.appbaselibrary.utils.ToastUtils;
 
 import butterknife.ButterKnife;
 
 /**
  * Created by lianghuiyong@outlook.com on 2016/5/25.
  */
-public abstract class BaseAppCompatActivity extends AppCompatActivity implements BaseViewInterface {
+public abstract class BaseAppCompatActivity extends AppCompatActivity implements BaseViewInterface , MvpView{
 
     protected abstract int getLayoutId();
 
@@ -63,6 +65,16 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
     @Override
     public void initTabs() {
 
+    }
+
+    @Override
+    public void showNetworkFail(String err) {
+        showToast(err);
+    }
+
+    @Override
+    public void showToast(String toast) {
+        ToastUtils.showSnackbar(getView(), toast);
     }
 
     public void setToolbar(Boolean hasBackHome) {
