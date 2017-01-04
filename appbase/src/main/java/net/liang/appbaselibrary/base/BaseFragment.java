@@ -1,22 +1,16 @@
 package net.liang.appbaselibrary.base;
 
-import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.socks.library.KLog;
 
-import net.liang.appbaselibrary.R;
 import net.liang.appbaselibrary.base.mvp.MvpPresenter;
 import net.liang.appbaselibrary.base.mvp.MvpView;
 import net.liang.appbaselibrary.utils.ToastUtils;
@@ -59,6 +53,11 @@ public abstract class BaseFragment extends Fragment implements BaseViewInterface
     @Override
     public void initTabs() {
 
+    }
+
+    @Override
+    public void showNetworkFail() {
+        showNetworkFail("网络错误!");
     }
 
     @Override

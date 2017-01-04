@@ -68,6 +68,11 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
     }
 
     @Override
+    public void showNetworkFail() {
+        showNetworkFail("网络错误!");
+    }
+
+    @Override
     public void showNetworkFail(String err) {
         showToast(err);
     }
