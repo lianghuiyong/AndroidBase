@@ -1,7 +1,5 @@
 package net.liang.appbaselibrary.data;
 
-import java.util.List;
-
 import io.reactivex.Observable;
 
 /**

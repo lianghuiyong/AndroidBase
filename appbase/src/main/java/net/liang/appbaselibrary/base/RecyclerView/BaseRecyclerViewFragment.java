@@ -1,19 +1,18 @@
-package net.liang.appbaselibrary.base;
+package net.liang.appbaselibrary.base.RecyclerView;
 
 import android.graphics.Color;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.ProgressBar;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 
 import net.liang.appbaselibrary.R;
+import net.liang.appbaselibrary.base.BaseFragment;
+import net.liang.appbaselibrary.base.mvp.MvpPresenter;
 import net.liang.appbaselibrary.data.RecyclerDataRepository;
 import net.liang.appbaselibrary.data.RecyclerDataSource;
 import net.liang.appbaselibrary.data.local.LocalRecyclerDataSource;
-
-import java.lang.reflect.Type;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -88,5 +87,10 @@ public abstract class BaseRecyclerViewFragment<T, S> extends BaseFragment implem
         if (pageNo == adapter.getFirstPageNo()){
             adapter.showNetWorkErrorView();
         }
+    }
+
+    @Override
+    protected MvpPresenter getPresenter() {
+        return mPresenter;
     }
 }

@@ -14,14 +14,9 @@
  * limitations under the License.
  */
 
-package net.liang.appbaselibrary.base;
+package net.liang.appbaselibrary.base.mvp;
 
-public interface BaseView<T> {
-
-    /*void setPresenter(T presenter);*/
-
-//    T getPresenter();
-
+public interface MvpView<T> {
     /**
      * 请求数据错误
      */

@@ -7,10 +7,9 @@ import android.view.View;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.listener.OnItemChildClickListener;
-import com.socks.library.KLog;
 
-import net.liang.appbaselibrary.base.BaseRecyclerAdapter;
-import net.liang.appbaselibrary.base.BaseRecyclerViewActivity;
+import net.liang.appbaselibrary.base.RecyclerView.BaseRecyclerAdapter;
+import net.liang.appbaselibrary.base.RecyclerView.BaseRecyclerViewActivity;
 import net.liang.appbaselibrary.base.BindingViewHolder;
 import net.liang.appbaselibrary.utils.ToastUtils;
 
@@ -70,6 +69,11 @@ public class Test_BaseRecyclerViewActivity extends BaseRecyclerViewActivity<List
     @Override
     public void onSuccess(List<String> strings) {
         super.onSuccess(strings);
+
+        //单页使用
+        //adapter.showList(strings);
+
+        //多页使用
         adapter.showList(strings, getPageNo());
     }
 

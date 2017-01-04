@@ -1,4 +1,4 @@
-package net.liang.appbaselibrary.base;
+package net.liang.appbaselibrary.base.RecyclerView;
 
 
 import com.chad.library.adapter.base.loadmore.LoadMoreView;

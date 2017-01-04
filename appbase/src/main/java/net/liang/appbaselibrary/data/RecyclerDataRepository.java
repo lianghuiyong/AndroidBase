@@ -1,7 +1,6 @@
 package net.liang.appbaselibrary.data;
 
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 
 import io.reactivex.Observable;
 

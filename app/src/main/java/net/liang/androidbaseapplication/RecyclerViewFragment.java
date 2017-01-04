@@ -4,9 +4,10 @@ package net.liang.androidbaseapplication;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 
-import net.liang.appbaselibrary.base.BaseRecyclerAdapter;
-import net.liang.appbaselibrary.base.BaseRecyclerViewFragment;
+import net.liang.appbaselibrary.base.RecyclerView.BaseRecyclerAdapter;
+import net.liang.appbaselibrary.base.RecyclerView.BaseRecyclerViewFragment;
 import net.liang.appbaselibrary.base.BindingViewHolder;
+import net.liang.appbaselibrary.base.mvp.MvpPresenter;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

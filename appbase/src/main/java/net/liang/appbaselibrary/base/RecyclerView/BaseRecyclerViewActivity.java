@@ -1,4 +1,4 @@
-package net.liang.appbaselibrary.base;
+package net.liang.appbaselibrary.base.RecyclerView;
 
 import android.graphics.Color;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -8,6 +8,8 @@ import android.support.v7.widget.RecyclerView;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 
 import net.liang.appbaselibrary.R;
+import net.liang.appbaselibrary.base.BaseAppCompatActivity;
+import net.liang.appbaselibrary.base.mvp.MvpPresenter;
 import net.liang.appbaselibrary.data.RecyclerDataRepository;
 import net.liang.appbaselibrary.data.RecyclerDataSource;
 import net.liang.appbaselibrary.data.local.LocalRecyclerDataSource;
@@ -74,7 +76,7 @@ public abstract class BaseRecyclerViewActivity<T, S> extends BaseAppCompatActivi
     }
 
     @Override
-    protected BasePresenter getPresenter() {
+    protected MvpPresenter getPresenter() {
         return mPresenter;
     }
 

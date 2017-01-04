@@ -3,7 +3,7 @@ package net.liang.androidbaseapplication;
 import android.support.v4.app.FragmentTransaction;
 
 import net.liang.appbaselibrary.base.BaseAppCompatActivity;
-import net.liang.appbaselibrary.base.BasePresenter;
+import net.liang.appbaselibrary.base.mvp.MvpPresenter;
 
 public class Test_BaseRecyclerViewFragment extends BaseAppCompatActivity {
 
@@ -13,7 +13,7 @@ public class Test_BaseRecyclerViewFragment extends BaseAppCompatActivity {
     }
 
     @Override
-    protected BasePresenter getPresenter() {
+    protected MvpPresenter getPresenter() {
         return null;
     }
 

@@ -1,4 +1,4 @@
-package net.liang.appbaselibrary.base;
+package net.liang.appbaselibrary.base.RecyclerView;
 
 import android.content.Context;
 import android.databinding.DataBindingUtil;
@@ -9,9 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.chad.library.adapter.base.BaseViewHolder;
 
 import net.liang.appbaselibrary.R;
+import net.liang.appbaselibrary.base.BindingViewHolder;
 
 import java.util.List;
 
@@ -51,8 +51,8 @@ public abstract class BaseRecyclerAdapter<T> extends BaseQuickAdapter<T, Binding
         setBaseView();
     }
 
-    public BaseRecyclerAdapter(Context context, RecyclerView recyclerView,int layoutIdRes, List<T> data) {
-        super(layoutIdRes,data);
+    public BaseRecyclerAdapter(Context context, RecyclerView recyclerView, int layoutIdRes, List<T> data) {
+        super(layoutIdRes, data);
         this.recyclerView = recyclerView;
         this.context = context;
         setBaseView();
@@ -91,17 +91,33 @@ public abstract class BaseRecyclerAdapter<T> extends BaseQuickAdapter<T, Binding
         }
     }
 
+    /**
+     * 单页面数据
+     * */
+    public void showList(List<T> listData) {
+        if (listData == null) {
+                showNoDataView();
+            return;
+        }
+
+        setNewData(listData);
+        loadMoreEnd();
+    }
+
+    /**
+     * 多页面数据
+     * */
     public void showList(List<T> listData, int pageNo) {
         if (listData == null) {
-            if (pageNo == getFirstPageNo()){
+            if (pageNo == getFirstPageNo()) {
                 showNoDataView();
             }
             return;
         }
 
-        if (pageNo == getFirstPageNo()){
+        if (pageNo == getFirstPageNo()) {
             setNewData(listData);
-        }else {
+        } else {
             addData(listData);
             loadMoreComplete();
         }

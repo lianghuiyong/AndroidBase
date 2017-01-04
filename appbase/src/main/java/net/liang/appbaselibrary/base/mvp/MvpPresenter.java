@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package net.liang.appbaselibrary.base;
+package net.liang.appbaselibrary.base.mvp;
 
-public interface BasePresenter {
+public interface MvpPresenter {
 
     void subscribe();
 
-    void unsubscribe();
+    void unSubscribe();
 }

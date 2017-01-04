@@ -2,15 +2,11 @@ package net.liang.appbaselibrary.base;
 
 import android.content.ComponentName;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.TypedValue;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -19,10 +15,10 @@ import com.socks.library.KLog;
 
 import net.liang.appbaselibrary.AppManager;
 import net.liang.appbaselibrary.R;
+import net.liang.appbaselibrary.base.mvp.MvpPresenter;
 import net.liang.appbaselibrary.utils.StringUtils;
 
 import butterknife.ButterKnife;
-import io.reactivex.disposables.CompositeDisposable;
 
 /**
  * Created by lianghuiyong@outlook.com on 2016/5/25.
@@ -31,7 +27,7 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
 
     protected abstract int getLayoutId();
 
-    protected abstract BasePresenter getPresenter();
+    protected abstract MvpPresenter getPresenter();
 
     private ViewDataBinding binding;
     protected Toolbar toolbar;
@@ -247,7 +243,7 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
 
         if (getPresenter() != null) {
             KLog.e("onResume unsubscribe");
-            getPresenter().unsubscribe();
+            getPresenter().unSubscribe();
         }
     }
 
@@ -255,27 +251,6 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
     protected void onDestroy() {
         super.onDestroy();
 
-        //unsubscribe();
         AppManager.getAppManager().finishActivity(this);
     }
-
-/*    public void showSnackbar(View view, String s) {
-
-        TypedValue typedValue = new TypedValue();
-        Resources.Theme theme = getTheme();
-        theme.resolveAttribute(R.attr.colorPrimary, typedValue, true);
-        //int color = typedValue.data;
-
-        Snackbar sb = Snackbar.make(view, s, Snackbar.LENGTH_SHORT);
-        sb.getView().setBackgroundColor(typedValue.data);
-        ((TextView) sb.getView().findViewById(R.id.snackbar_text)).setTextColor(Color.WHITE);//获取Snackbar的message控件，修改字体颜色
-        sb.show();
-    }*/
-
-/*    protected void unsubscribe() {
-        if (disposables != null && disposables.size()>0) {
-            disposables.clear();
-        }
-    }*/
-
 }

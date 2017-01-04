@@ -14,7 +14,10 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.socks.library.KLog;
+
 import net.liang.appbaselibrary.R;
+import net.liang.appbaselibrary.base.mvp.MvpPresenter;
 
 import butterknife.ButterKnife;
 
@@ -24,8 +27,8 @@ import butterknife.ButterKnife;
 public abstract class BaseFragment extends Fragment implements BaseViewInterface {
 
     private ViewDataBinding binding;
-//    protected DialogHelper dialogHelper;
 
+    protected abstract MvpPresenter getPresenter();
     protected abstract int getLayoutId();
 
     @Override
@@ -40,7 +43,6 @@ public abstract class BaseFragment extends Fragment implements BaseViewInterface
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-//        dialogHelper = new DialogHelper(getActivity());
         ButterKnife.bind(this, getView());
         init();
         initTabs();
@@ -66,16 +68,24 @@ public abstract class BaseFragment extends Fragment implements BaseViewInterface
     }
 
     @Override
-    public void onDestroyView() {
-        super.onDestroyView();
+    public void onResume() {
+        super.onResume();
+
+        if (getPresenter() != null) {
+            KLog.e("onResume subscribe");
+            getPresenter().subscribe();
+        }
     }
 
-/*    public void dismissProgressDialog() {
-        if(dialogHelper!=null){
-            dialogHelper.dismissProgressDialog();
-        }
-    }*/
+    @Override
+    public void onPause() {
+        super.onPause();
 
+        if (getPresenter() != null) {
+            KLog.e("onResume subscribe");
+            getPresenter().subscribe();
+        }
+    }
 
     public void nextActivity(Class<?> cls) {
         Intent intent = new Intent(getContext(), cls);
