@@ -16,9 +16,9 @@ public class LocalRecyclerDataSource<T, S> implements RecyclerDataSource<T, S> {
     private static LocalRecyclerDataSource INSTANCE;
 
 
-    public static LocalRecyclerDataSource getInstance() {
+    public static  LocalRecyclerDataSource getInstance() {
         if (INSTANCE == null) {
-            INSTANCE = new LocalRecyclerDataSource();
+            INSTANCE = new LocalRecyclerDataSource<>();
         }
         return INSTANCE;
     }

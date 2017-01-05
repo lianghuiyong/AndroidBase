@@ -24,6 +24,12 @@ public class BaseTabLayoutAdapter extends FragmentPagerAdapter {
         this.tab_fragments = tab_fragments;
     }
 
+    public BaseTabLayoutAdapter(FragmentManager fm,
+                                List<Fragment> tab_fragments) {
+        super(fm);
+        this.tab_fragments = tab_fragments;
+    }
+
     @Override
     public Fragment getItem(int position) {
         return tab_fragments.get(position);
@@ -37,9 +43,11 @@ public class BaseTabLayoutAdapter extends FragmentPagerAdapter {
     @Override
     public CharSequence getPageTitle(int position) {
         //return super.getPageTitle(position);
-        return tv_Titles[position];
+        if (tv_Titles == null){
+            return null;
+        }else {
+            return tv_Titles[position];
+        }
     }
-
-
 
 }

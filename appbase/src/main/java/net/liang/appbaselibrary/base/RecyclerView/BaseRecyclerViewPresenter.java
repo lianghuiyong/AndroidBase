@@ -28,8 +28,8 @@ public class BaseRecyclerViewPresenter<T, S> extends BasePresenter implements Ba
     @NonNull
     private RecyclerDataRepository<T, S> repository;
 
-    public BaseRecyclerViewPresenter(@NonNull BaseRecyclerViewContract.View view,
-                                     @NonNull RecyclerDataRepository repository) {
+    public BaseRecyclerViewPresenter(@NonNull BaseRecyclerViewContract.View<T, S> view,
+                                     @NonNull RecyclerDataRepository<T, S> repository) {
 
         KLog.e("BaseRecyclerViewPresenter");
 

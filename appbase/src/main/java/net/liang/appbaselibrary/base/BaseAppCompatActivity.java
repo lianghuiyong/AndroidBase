@@ -41,9 +41,6 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
 
         binding = DataBindingUtil.setContentView(this, getLayoutId());
         ButterKnife.bind(this, getView());
-        //disposables = new CompositeDisposable();
-        //presenter = addPresenter();
-        /*dialogHelper = new DialogHelper(this);*/
 
         init();
         initTabs();

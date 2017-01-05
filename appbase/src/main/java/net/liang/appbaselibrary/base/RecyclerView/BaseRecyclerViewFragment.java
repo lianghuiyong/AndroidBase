@@ -39,8 +39,8 @@ public abstract class BaseRecyclerViewFragment<T, S> extends BaseFragment implem
 
     @Override
     public void init() {
-        mPresenter = new BaseRecyclerViewPresenter(this,
-                new RecyclerDataRepository(this, LocalRecyclerDataSource.getInstance()));
+        mPresenter = new BaseRecyclerViewPresenter<>(this,
+                new RecyclerDataRepository<>(this, LocalRecyclerDataSource.getInstance()));
 
         recyclerView = (RecyclerView) getView().findViewById(R.id.recyclerView);
         swipeRefresh = (SwipeRefreshLayout) getView().findViewById(R.id.swiperefresh);
@@ -75,11 +75,6 @@ public abstract class BaseRecyclerViewFragment<T, S> extends BaseFragment implem
     public void onSuccess(T t) {
         swipeRefresh.setRefreshing(false);
     }
-
-/*    @Override
-    public void setPresenter(BaseRecyclerViewContract.Presenter presenter) {
-        mPresenter = checkNotNull(presenter);
-    }*/
 
     @Override
     public void showNetworkFail(String err) {
