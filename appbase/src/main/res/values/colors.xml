@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
+    <color name="toolbar_back">#FFFFFF</color>
+    <color name="toolbar_tv">#FFFFFF</color>
     <color name="colorAccent">#FF4081</color>
     <color name="layoutBack">#F2F2F2</color>
 
