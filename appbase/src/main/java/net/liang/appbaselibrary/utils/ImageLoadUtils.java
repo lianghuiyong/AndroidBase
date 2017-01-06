@@ -135,11 +135,14 @@ public class ImageLoadUtils {
     }
 
     /**
-     * 加载本地图片，取消缓存
+     * 四周圆角，取消本地缓存
      * @param image
      * @param imageView
-     * @param defultImage
      */
+    public static void loadRoundedCornersImageLocal(Object image, ImageView imageView) {
+        loadRoundedCornersImage(image,imageView,defultImageID);
+    }
+
     public static void loadRoundedCornersImageLocal(Object image, ImageView imageView,int defultImage) {
         Glide.with(imageView.getContext())
                 .load(image)
