@@ -30,9 +30,6 @@ public class BaseRecyclerViewPresenter<T, S> extends BasePresenter implements Ba
 
     public BaseRecyclerViewPresenter(@NonNull BaseRecyclerViewContract.View<T, S> view,
                                      @NonNull RecyclerDataRepository<T, S> repository) {
-
-        KLog.e("BaseRecyclerViewPresenter");
-
         this.view = checkNotNull(view, "view cannot be null!");
         this.repository = checkNotNull(repository, "repository cannot be null!");
     }
