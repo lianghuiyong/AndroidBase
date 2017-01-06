@@ -23,7 +23,7 @@ android {
         minSdkVersion 15
         targetSdkVersion 25
         versionCode 1
-        versionName "0.0.38"
+        versionName "0.0.39"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
@@ -57,6 +57,9 @@ dependencies {
 
     compile 'com.github.bumptech.glide:glide:3.7.0'
     compile 'jp.wasabeef:glide-transformations:2.0.1'
+
+    //加载动画
+    compile 'com.github.ybq:Android-SpinKit:1.1.0'
 }
 
 apply from: "bintrayUpload.gradle"

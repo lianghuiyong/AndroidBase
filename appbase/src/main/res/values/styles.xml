@@ -2,4 +2,27 @@
     <!--标题栏透明-->
     <style name="Base.TransParent" parent="Base.AppTheme">
     </style>
+
+    <style name="dialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item><!--边框-->
+        <item name="android:windowIsFloating">true</item><!--是否浮现在activity之上-->
+        <item name="android:windowIsTranslucent">false</item><!--半透明-->
+        <item name="android:windowNoTitle">true</item><!--无标题-->
+        <item name="android:windowBackground">@android:color/transparent</item><!--背景透明-->
+        <item name="android:backgroundDimEnabled">true</item><!--模糊-->
+    </style>
+
+    <style name="dialogWindowAnimTop" parent="@android:style/Animation">
+        <!--窗体进入动画-->
+        <item name="android:windowEnterAnimation">@anim/activity_in_from_top</item>
+        <!--窗体退出动画-->
+        <item name="android:windowExitAnimation">@anim/activity_out_from_top</item>
+    </style>
+
+    <style name="translateWindowAnim" parent="@android:style/Animation">
+        <!--窗体进入动画-->
+        <item name="android:windowEnterAnimation">@anim/translate_up_show</item>
+        <!--窗体退出动画-->
+        <item name="android:windowExitAnimation">@anim/translate_down_hide</item>
+    </style>
 </resources>

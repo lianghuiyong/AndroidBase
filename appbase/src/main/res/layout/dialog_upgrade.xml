@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_vertical"
+    android:layout_margin="15.0dip"
+    android:background="@drawable/shape_white_rect"
+    android:orientation="vertical"
+    android:padding="5.0dip" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:orientation="horizontal"
+        android:paddingBottom="11.0dip"
+        android:paddingLeft="18.0dip"
+        android:paddingRight="18.0dip"
+        android:paddingTop="11.0dip" >
+
+        <ImageView
+            android:id="@+id/iknow_alert_dialog_title_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/iknow_alert_dialog_title_text"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10.0dip"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="新版本发布！"
+            android:textColor="#ff999999"
+            android:textSize="21.0sp" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/common_alert_dialog_title_line"
+        android:layout_width="fill_parent"
+        android:layout_height="1.0dip"
+        android:layout_marginLeft="6.0dip"
+        android:layout_marginRight="6.0dip"
+        android:background="#F1F1F1" />
+
+    <RelativeLayout
+        android:id="@+id/iknow_alert_dialog_content_scroll_view_panel"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20.0dip"
+        android:paddingRight="20.0dip" >
+
+        <ScrollView
+            android:id="@+id/iknow_alert_dialog_content_scroll_view"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="23.0dip"
+            android:paddingTop="23.0dip" >
+
+            <TextView
+                android:id="@+id/iknow_alert_dialog_content_message"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:autoLink="all"
+                android:text="woshishishfdosafhosa"
+                android:textColor="@android:color/black"
+                android:maxLines="6"
+                android:scrollbars="vertical"
+                android:fadeScrollbars="false"
+                android:textSize="19.0sp" />
+        </ScrollView>
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/iknow_alert_dialog_custom_panel"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="1.0"
+        android:background="#00000000" >
+
+        <FrameLayout
+            android:id="@+id/iknow_alert_dialog_custom_content"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="#00000000"
+            android:paddingBottom="10.0dip"
+            android:paddingLeft="20.0dip"
+            android:paddingRight="20.0dip"
+            android:paddingTop="10.0dip" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/iknow_alert_dialog_button_panel"
+        android:layout_width="fill_parent"
+        android:layout_height="68.0dip"
+        android:orientation="horizontal"
+        android:paddingBottom="19.0dip"
+        android:paddingLeft="18.0dip"
+        android:paddingRight="18.0dip"
+        android:paddingTop="2.0dip" >
+
+        <TextView
+            android:id="@+id/cacel"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@drawable/select_gray_btn"
+            android:layout_marginRight="4.0dip"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:textColor="@android:color/white"
+            android:text="取消"/>
+
+        <TextView
+            android:id="@+id/upgrade"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="4.0dip"
+            android:background="@drawable/select_greent_btn"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:textColor="@android:color/white"
+            android:text="升级"/>
+    </LinearLayout>
+
+</LinearLayout>
