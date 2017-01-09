@@ -22,7 +22,7 @@ public class SPUtils {
 
     private SharedPreferences sp;
     private SharedPreferences.Editor editor;
-    private String name = "APP_SP_File";
+    private String name = "APP_SP_File.db";
 
     @Nullable
     private static SPUtils INSTANCE;
