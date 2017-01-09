@@ -20,11 +20,12 @@ import static com.google.common.base.Preconditions.checkNotNull;
 /**
  * Created on 2016/10/23.
  * By lianghuiyong@outlook.com
+ *
  * @param <T> 是获取过来的数据类型
  * @param <S> 是请求的数据类型
  */
 
-public abstract class BaseRecyclerViewFragment<T, S> extends BaseFragment implements BaseRecyclerViewContract.View<T, S>, RecyclerDataSource<T, S> {
+public abstract class BaseRecyclerViewFragment<T, S> extends BaseFragment implements BaseRecyclerViewContract.View<T, S>, RecyclerDataSource<T, S>, BaseQuickAdapter.RequestLoadMoreListener, SwipeRefreshLayout.OnRefreshListener {
     protected abstract BaseRecyclerAdapter addRecyclerAdapter();
 
     protected BaseRecyclerAdapter adapter;
@@ -48,26 +49,26 @@ public abstract class BaseRecyclerViewFragment<T, S> extends BaseFragment implem
         adapter = adapter == null ? addRecyclerAdapter() : adapter;
 
         swipeRefresh.setColorSchemeColors(Color.RED, Color.BLUE, Color.GREEN, Color.YELLOW);
-        swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                pageNo = 1;
-                mPresenter.upData();
-            }
-        });
+        swipeRefresh.setOnRefreshListener(this);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(adapter);
-        adapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
-            @Override
-            public void onLoadMoreRequested() {
-                pageNo++;
-                mPresenter.upData();
-            }
-        });
+        adapter.setOnLoadMoreListener(this);
 
         swipeRefresh.setRefreshing(true);
+        mPresenter.upData();
+    }
+
+    @Override
+    public void onRefresh() {
+        pageNo = 1;
+        mPresenter.upData();
+    }
+
+    @Override
+    public void onLoadMoreRequested() {
+        pageNo++;
         mPresenter.upData();
     }
 
@@ -79,7 +80,7 @@ public abstract class BaseRecyclerViewFragment<T, S> extends BaseFragment implem
     @Override
     public void showNetworkFail(String err) {
         swipeRefresh.setRefreshing(false);
-        if (pageNo == adapter.getFirstPageNo()){
+        if (pageNo == adapter.getFirstPageNo()) {
             adapter.showNetWorkErrorView();
         }
     }

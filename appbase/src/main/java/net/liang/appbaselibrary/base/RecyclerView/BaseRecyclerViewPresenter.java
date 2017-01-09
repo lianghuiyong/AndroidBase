@@ -36,25 +36,27 @@ public class BaseRecyclerViewPresenter<T, S> extends BasePresenter implements Ba
 
     @Override
     public void upData() {
-        Disposable disposable = repository
-                .getData(view.getSendBody())
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(new DisposableObserver<T>() {
-                    @Override
-                    public void onNext(T value) {
-                        view.onSuccess(value);
-                    }
+        if (view.getSendBody() != null){
+            Disposable disposable = repository
+                    .getData(view.getSendBody())
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribeWith(new DisposableObserver<T>() {
+                        @Override
+                        public void onNext(T value) {
+                            view.onSuccess(value);
+                        }
 
-                    @Override
-                    public void onError(Throwable e) {
-                        view.showNetworkFail("网络错误");
-                    }
+                        @Override
+                        public void onError(Throwable e) {
+                            view.showNetworkFail("网络错误");
+                        }
 
-                    @Override
-                    public void onComplete() {
-                    }
-                });
-        disposables.add(disposable);
+                        @Override
+                        public void onComplete() {
+                        }
+                    });
+            disposables.add(disposable);
+        }
     }
 }
