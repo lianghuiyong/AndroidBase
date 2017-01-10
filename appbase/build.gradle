@@ -23,7 +23,7 @@ android {
         minSdkVersion 15
         targetSdkVersion 25
         versionCode 1
-        versionName "0.0.42"
+        versionName "0.0.52"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
@@ -60,6 +60,8 @@ dependencies {
 
     //加载动画
     compile 'com.github.ybq:Android-SpinKit:1.1.0'
+
+    compile 'org.greenrobot:eventbus:3.0.0'
 }
 
 apply from: "bintrayUpload.gradle"

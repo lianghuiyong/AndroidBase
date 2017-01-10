@@ -15,6 +15,9 @@ import net.liang.appbaselibrary.base.mvp.MvpPresenter;
 import net.liang.appbaselibrary.base.mvp.MvpView;
 import net.liang.appbaselibrary.utils.ToastUtils;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+
 import butterknife.ButterKnife;
 
 /**
@@ -41,8 +44,15 @@ public abstract class BaseFragment extends Fragment implements BaseViewInterface
         super.onViewCreated(view, savedInstanceState);
 
         ButterKnife.bind(this, getView());
+        EventBus.getDefault().register(this);
+
         init();
         initTabs();
+    }
+
+    @Subscribe
+    public void onEvent(String string){
+
     }
 
     @Override
@@ -84,7 +94,6 @@ public abstract class BaseFragment extends Fragment implements BaseViewInterface
         super.onResume();
 
         if (getPresenter() != null) {
-            KLog.e("onResume subscribe");
             getPresenter().subscribe();
         }
     }
@@ -94,9 +103,14 @@ public abstract class BaseFragment extends Fragment implements BaseViewInterface
         super.onPause();
 
         if (getPresenter() != null) {
-            KLog.e("onResume subscribe");
-            getPresenter().subscribe();
+            getPresenter().unSubscribe();
         }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
     }
 
     public void nextActivity(Class<?> cls) {

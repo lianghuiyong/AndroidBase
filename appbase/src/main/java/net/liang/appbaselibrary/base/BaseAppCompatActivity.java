@@ -11,14 +11,15 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.socks.library.KLog;
-
 import net.liang.appbaselibrary.AppManager;
 import net.liang.appbaselibrary.R;
 import net.liang.appbaselibrary.base.mvp.MvpPresenter;
 import net.liang.appbaselibrary.base.mvp.MvpView;
 import net.liang.appbaselibrary.utils.StringUtils;
 import net.liang.appbaselibrary.utils.ToastUtils;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 import butterknife.ButterKnife;
 
@@ -40,7 +41,9 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
         AppManager.getAppManager().addActivity(this);
 
         binding = DataBindingUtil.setContentView(this, getLayoutId());
+
         ButterKnife.bind(this, getView());
+        EventBus.getDefault().register(this);
 
         init();
         initTabs();
@@ -52,6 +55,11 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
 
     public View getView() {
         return binding.getRoot();
+    }
+
+    @Subscribe
+    public void onEvent(String string){
+
     }
 
     @Override
@@ -246,7 +254,6 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
         super.onResume();
 
         if (getPresenter() != null) {
-            KLog.e("onResume subscribe");
             getPresenter().subscribe();
         }
     }
@@ -256,7 +263,6 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
         super.onPause();
 
         if (getPresenter() != null) {
-            KLog.e("onResume unsubscribe");
             getPresenter().unSubscribe();
         }
     }
@@ -264,7 +270,7 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
     @Override
     protected void onDestroy() {
         super.onDestroy();
-
+        EventBus.getDefault().unregister(this);
         AppManager.getAppManager().finishActivity(this);
     }
 }
