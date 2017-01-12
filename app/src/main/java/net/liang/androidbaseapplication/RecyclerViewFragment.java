@@ -28,23 +28,23 @@ public class RecyclerViewFragment extends BaseRecyclerViewFragment<List<String>,
     }
 
     @Override
-    protected BaseRecyclerAdapter addRecyclerAdapter() {
+    protected BaseRecyclerAdapter addListAdapter() {
         return new RecyclerAdapter(getContext(), recyclerView, null);
     }
 
     @Override
-    public void onSuccess(List<String> strings) {
-        super.onSuccess(strings);
+    public void onListSuccess(List<String> strings) {
+        super.onListSuccess(strings);
         adapter.showList(strings, getPageNo());
     }
 
     @Override
-    public String getSendBody() {
+    public String addListSendBody() {
         return "123";
     }
 
     @Override
-    public Observable<List<String>> getData(String sendData) {
+    public Observable<List<String>> onListGetData(String sendData) {
         List<String> list = new ArrayList<>();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         for (int i = 0; i < 10; i++) {

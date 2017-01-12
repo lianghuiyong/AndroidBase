@@ -8,5 +8,5 @@ import io.reactivex.Observable;
  */
 
 public interface RecyclerDataSource<T, S> {
-    Observable<T> getData(S sendData);
+    Observable<T> onListGetData(S sendData);
 }

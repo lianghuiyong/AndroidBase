@@ -2,13 +2,10 @@ package net.liang.appbaselibrary.base.RecyclerView;
 
 import android.support.annotation.NonNull;
 
-import com.socks.library.KLog;
-
 import net.liang.appbaselibrary.base.mvp.BasePresenter;
 import net.liang.appbaselibrary.data.RecyclerDataRepository;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.observers.DisposableObserver;
 import io.reactivex.schedulers.Schedulers;
@@ -35,16 +32,16 @@ public class BaseRecyclerViewPresenter<T, S> extends BasePresenter implements Ba
     }
 
     @Override
-    public void upData() {
-        if (view.getSendBody() != null){
+    public void onListUpData() {
+        if (view.addListSendBody() != null){
             Disposable disposable = repository
-                    .getData(view.getSendBody())
+                    .onListGetData(view.addListSendBody())
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribeWith(new DisposableObserver<T>() {
                         @Override
                         public void onNext(T value) {
-                            view.onSuccess(value);
+                            view.onListSuccess(value);
                         }
 
                         @Override

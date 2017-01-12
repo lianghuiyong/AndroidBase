@@ -58,7 +58,7 @@ public class Test_BaseRecyclerViewActivity extends BaseRecyclerViewActivity<List
      * 默认一页页数为10，可使用setPageSize(int pageSize)修改
      */
     @Override
-    protected BaseRecyclerAdapter addRecyclerAdapter() {
+    protected BaseRecyclerAdapter addListAdapter() {
         return new RecyclerAdapter(this, recyclerView, null);
     }
 
@@ -67,8 +67,8 @@ public class Test_BaseRecyclerViewActivity extends BaseRecyclerViewActivity<List
      * onSuccess返回的数据为完整的请求数据，需要自己拆解列表数据，添加到适配器里
      */
     @Override
-    public void onSuccess(List<String> strings) {
-        super.onSuccess(strings);
+    public void onListSuccess(List<String> strings) {
+        super.onListSuccess(strings);
 
         //单页使用
         //adapter.showList(strings);
@@ -81,7 +81,7 @@ public class Test_BaseRecyclerViewActivity extends BaseRecyclerViewActivity<List
      * 请求列表数据的Body，需要知道下一页页数时调用 getPageNo();
      */
     @Override
-    public String getSendBody() {
+    public String addListSendBody() {
         return "123";
     }
 
@@ -89,7 +89,7 @@ public class Test_BaseRecyclerViewActivity extends BaseRecyclerViewActivity<List
      * 获取网络数据接口，注意返回的是被观察者对象
      */
     @Override
-    public Observable<List<String>> getData(String sendData) {
+    public Observable<List<String>> onListGetData(String sendData) {
 
         List<String> list = new ArrayList<>();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");

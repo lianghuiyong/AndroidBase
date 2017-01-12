@@ -26,7 +26,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
  */
 
 public abstract class BaseRecyclerViewActivity<T, S> extends BaseAppCompatActivity implements BaseRecyclerViewContract.View<T, S>, RecyclerDataSource<T, S> {
-    protected abstract BaseRecyclerAdapter addRecyclerAdapter();
+    protected abstract BaseRecyclerAdapter addListAdapter();
 
     protected BaseRecyclerAdapter adapter;
     protected SwipeRefreshLayout swipeRefresh;
@@ -46,14 +46,14 @@ public abstract class BaseRecyclerViewActivity<T, S> extends BaseAppCompatActivi
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         swipeRefresh = (SwipeRefreshLayout) findViewById(R.id.swiperefresh);
 
-        adapter = adapter == null ? addRecyclerAdapter() : adapter;
+        adapter = adapter == null ? addListAdapter() : adapter;
 
         swipeRefresh.setColorSchemeColors(Color.RED, Color.BLUE, Color.GREEN, Color.YELLOW);
         swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 pageNo = 1;
-                mPresenter.upData();
+                mPresenter.onListUpData();
             }
         });
 
@@ -64,19 +64,16 @@ public abstract class BaseRecyclerViewActivity<T, S> extends BaseAppCompatActivi
             @Override
             public void onLoadMoreRequested() {
                 pageNo++;
-                mPresenter.upData();
+                mPresenter.onListUpData();
             }
         });
 
         swipeRefresh.setRefreshing(true);
-        mPresenter.upData();
-
-        SPUtils.getInstance(this).putString("hhh","123456");
-        KLog.e(SPUtils.getInstance(this).getString("hhh","111"));
+        mPresenter.onListUpData();
     }
 
     @Override
-    public void onSuccess(T t) {
+    public void onListSuccess(T t) {
         swipeRefresh.setRefreshing(false);
     }
 

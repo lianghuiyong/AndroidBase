@@ -24,7 +24,7 @@ public class RemoteRecyclerDataSource<T, S> implements RecyclerDataSource <T, S>
     }
 
     @Override
-    public Observable<T> getData(S sendData) {
+    public Observable<T> onListGetData(S sendData) {
         return null;
     }
 }

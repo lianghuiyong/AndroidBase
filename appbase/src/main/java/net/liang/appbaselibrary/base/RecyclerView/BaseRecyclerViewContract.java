@@ -14,9 +14,9 @@ public class BaseRecyclerViewContract {
      */
     public interface View<T, S> extends MvpView {
 
-        void onSuccess(T t);
+        void onListSuccess(T t);
 
-        S getSendBody();
+        S addListSendBody();
     }
 
     /**
@@ -24,6 +24,6 @@ public class BaseRecyclerViewContract {
      */
     public interface Presenter extends MvpPresenter {
 
-        void upData();
+        void onListUpData();
     }
 }

@@ -26,7 +26,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
  */
 
 public abstract class BaseRecyclerViewFragment<T, S> extends BaseFragment implements BaseRecyclerViewContract.View<T, S>, RecyclerDataSource<T, S>, BaseQuickAdapter.RequestLoadMoreListener, SwipeRefreshLayout.OnRefreshListener {
-    protected abstract BaseRecyclerAdapter addRecyclerAdapter();
+    protected abstract BaseRecyclerAdapter addListAdapter();
 
     protected BaseRecyclerAdapter adapter;
     protected SwipeRefreshLayout swipeRefresh;
@@ -46,7 +46,7 @@ public abstract class BaseRecyclerViewFragment<T, S> extends BaseFragment implem
         recyclerView = (RecyclerView) getView().findViewById(R.id.recyclerView);
         swipeRefresh = (SwipeRefreshLayout) getView().findViewById(R.id.swiperefresh);
 
-        adapter = adapter == null ? addRecyclerAdapter() : adapter;
+        adapter = adapter == null ? addListAdapter() : adapter;
 
         swipeRefresh.setColorSchemeColors(Color.RED, Color.BLUE, Color.GREEN, Color.YELLOW);
         swipeRefresh.setOnRefreshListener(this);
@@ -57,23 +57,23 @@ public abstract class BaseRecyclerViewFragment<T, S> extends BaseFragment implem
         adapter.setOnLoadMoreListener(this);
 
         swipeRefresh.setRefreshing(true);
-        mPresenter.upData();
+        mPresenter.onListUpData();
     }
 
     @Override
     public void onRefresh() {
         pageNo = 1;
-        mPresenter.upData();
+        mPresenter.onListUpData();
     }
 
     @Override
     public void onLoadMoreRequested() {
         pageNo++;
-        mPresenter.upData();
+        mPresenter.onListUpData();
     }
 
     @Override
-    public void onSuccess(T t) {
+    public void onListSuccess(T t) {
         swipeRefresh.setRefreshing(false);
     }
 
