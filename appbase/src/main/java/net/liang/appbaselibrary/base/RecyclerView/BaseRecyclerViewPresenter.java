@@ -17,43 +17,41 @@ import static com.google.common.base.Preconditions.checkNotNull;
  * Date on 2016/11/25
  */
 
-public class BaseRecyclerViewPresenter<T, S> extends BasePresenter implements BaseRecyclerViewContract.Presenter {
+public class BaseRecyclerViewPresenter<T> extends BasePresenter implements BaseRecyclerViewContract.Presenter {
 
     @NonNull
-    private BaseRecyclerViewContract.View<T, S> view;
+    private BaseRecyclerViewContract.View<T> view;
 
     @NonNull
-    private RecyclerDataRepository<T, S> repository;
+    private RecyclerDataRepository<T> repository;
 
-    public BaseRecyclerViewPresenter(@NonNull BaseRecyclerViewContract.View<T, S> view,
-                                     @NonNull RecyclerDataRepository<T, S> repository) {
+    public BaseRecyclerViewPresenter(@NonNull BaseRecyclerViewContract.View<T> view,
+                                     @NonNull RecyclerDataRepository<T> repository) {
         this.view = checkNotNull(view, "view cannot be null!");
         this.repository = checkNotNull(repository, "repository cannot be null!");
     }
 
     @Override
     public void onListUpData() {
-        if (view.addListSendBody() != null){
-            Disposable disposable = repository
-                    .onListGetData(view.addListSendBody())
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribeWith(new DisposableObserver<T>() {
-                        @Override
-                        public void onNext(T value) {
-                            view.onListSuccess(value);
-                        }
+        Disposable disposable = repository
+                .onListGetData()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(new DisposableObserver<T>() {
+                    @Override
+                    public void onNext(T value) {
+                        view.onListSuccess(value);
+                    }
 
-                        @Override
-                        public void onError(Throwable e) {
-                            view.showNetworkFail("网络错误");
-                        }
+                    @Override
+                    public void onError(Throwable e) {
+                        view.showNetworkFail("网络错误");
+                    }
 
-                        @Override
-                        public void onComplete() {
-                        }
-                    });
-            disposables.add(disposable);
-        }
+                    @Override
+                    public void onComplete() {
+                    }
+                });
+        disposables.add(disposable);
     }
 }

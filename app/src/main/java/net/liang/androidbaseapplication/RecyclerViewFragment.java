@@ -20,7 +20,7 @@ import io.reactivex.Observable;
 /**
  * A simple {@link BaseRecyclerViewFragment} subclass.
  */
-public class RecyclerViewFragment extends BaseRecyclerViewFragment<List<String>, String> {
+public class RecyclerViewFragment extends BaseRecyclerViewFragment<List<String>> {
 
     @Override
     protected int getLayoutId() {
@@ -39,12 +39,7 @@ public class RecyclerViewFragment extends BaseRecyclerViewFragment<List<String>,
     }
 
     @Override
-    public String addListSendBody() {
-        return "123";
-    }
-
-    @Override
-    public Observable<List<String>> onListGetData(String sendData) {
+    public Observable<List<String>> onListGetData() {
         List<String> list = new ArrayList<>();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         for (int i = 0; i < 10; i++) {

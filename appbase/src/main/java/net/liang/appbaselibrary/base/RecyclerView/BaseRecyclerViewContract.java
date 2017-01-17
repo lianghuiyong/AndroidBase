@@ -12,11 +12,11 @@ public class BaseRecyclerViewContract {
     /**
      * view接口层  处理界面
      */
-    public interface View<T, S> extends MvpView {
+    public interface View<T> extends MvpView {
 
         void onListSuccess(T t);
 
-        S addListSendBody();
+        /*S addListSendBody();*/
     }
 
     /**

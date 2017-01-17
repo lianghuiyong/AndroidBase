@@ -7,6 +7,6 @@ import io.reactivex.Observable;
  * Date on 2016/12/23
  */
 
-public interface RecyclerDataSource<T, S> {
-    Observable<T> onListGetData(S sendData);
+public interface RecyclerDataSource<T> {
+    Observable<T> onListGetData();
 }

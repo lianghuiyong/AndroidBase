@@ -25,7 +25,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
  * @param <S> 是请求的数据类型
  */
 
-public abstract class BaseRecyclerViewActivity<T, S> extends BaseAppCompatActivity implements BaseRecyclerViewContract.View<T, S>, RecyclerDataSource<T, S> {
+public abstract class BaseRecyclerViewActivity<T> extends BaseAppCompatActivity implements BaseRecyclerViewContract.View<T>, RecyclerDataSource<T> {
     protected abstract BaseRecyclerAdapter addListAdapter();
 
     protected BaseRecyclerAdapter adapter;

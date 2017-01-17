@@ -22,7 +22,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.reactivex.Observable;
 
-public class Test_BaseRecyclerViewActivity extends BaseRecyclerViewActivity<List<String>, String> {
+public class Test_BaseRecyclerViewActivity extends BaseRecyclerViewActivity<List<String>> {
 
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
@@ -77,19 +77,12 @@ public class Test_BaseRecyclerViewActivity extends BaseRecyclerViewActivity<List
         adapter.showList(strings, getPageNo());
     }
 
-    /**
-     * 请求列表数据的Body，需要知道下一页页数时调用 getPageNo();
-     */
-    @Override
-    public String addListSendBody() {
-        return "123";
-    }
 
     /**
      * 获取网络数据接口，注意返回的是被观察者对象
      */
     @Override
-    public Observable<List<String>> onListGetData(String sendData) {
+    public Observable<List<String>> onListGetData() {
 
         List<String> list = new ArrayList<>();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");

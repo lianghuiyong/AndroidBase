@@ -11,22 +11,22 @@ import static com.google.common.base.Preconditions.checkNotNull;
  * Date on 2016/11/23
  */
 
-public class RecyclerDataRepository<T, S> implements RecyclerDataSource<T, S>{
+public class RecyclerDataRepository<T> implements RecyclerDataSource<T>{
 
     @NonNull
-    private final RecyclerDataSource<T, S> mRemoteAttendanceDataSource;
+    private final RecyclerDataSource<T> mRemoteAttendanceDataSource;
 
     @NonNull
-    private final RecyclerDataSource<T, S> mLocalAttendanceDataSource;
+    private final RecyclerDataSource<T> mLocalAttendanceDataSource;
 
-    public RecyclerDataRepository(@NonNull RecyclerDataSource<T, S> remoteFoodsDataSource,
-                                  @NonNull RecyclerDataSource<T, S> localFoodsDataSource) {
+    public RecyclerDataRepository(@NonNull RecyclerDataSource<T> remoteFoodsDataSource,
+                                  @NonNull RecyclerDataSource<T> localFoodsDataSource) {
         mRemoteAttendanceDataSource = checkNotNull(remoteFoodsDataSource);
         mLocalAttendanceDataSource = checkNotNull(localFoodsDataSource);
     }
 
     @Override
-    public Observable<T> onListGetData(S sendData) {
-        return mRemoteAttendanceDataSource.onListGetData(sendData);
+    public Observable<T> onListGetData() {
+        return mRemoteAttendanceDataSource.onListGetData();
     }
 }

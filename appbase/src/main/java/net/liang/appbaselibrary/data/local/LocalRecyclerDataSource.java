@@ -11,7 +11,7 @@ import io.reactivex.Observable;
  * Date on 2016/11/23
  */
 
-public class LocalRecyclerDataSource<T, S> implements RecyclerDataSource<T, S> {
+public class LocalRecyclerDataSource<T> implements RecyclerDataSource<T> {
     @Nullable
     private static LocalRecyclerDataSource INSTANCE;
 
@@ -24,7 +24,7 @@ public class LocalRecyclerDataSource<T, S> implements RecyclerDataSource<T, S> {
     }
 
     @Override
-    public Observable<T> onListGetData(S sendData) {
+    public Observable<T> onListGetData() {
         return null;
     }
 }

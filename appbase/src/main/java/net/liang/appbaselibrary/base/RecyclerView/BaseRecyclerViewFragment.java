@@ -22,10 +22,9 @@ import static com.google.common.base.Preconditions.checkNotNull;
  * By lianghuiyong@outlook.com
  *
  * @param <T> 是获取过来的数据类型
- * @param <S> 是请求的数据类型
  */
 
-public abstract class BaseRecyclerViewFragment<T, S> extends BaseFragment implements BaseRecyclerViewContract.View<T, S>, RecyclerDataSource<T, S>, BaseQuickAdapter.RequestLoadMoreListener, SwipeRefreshLayout.OnRefreshListener {
+public abstract class BaseRecyclerViewFragment<T> extends BaseFragment implements BaseRecyclerViewContract.View<T>, RecyclerDataSource<T>, BaseQuickAdapter.RequestLoadMoreListener, SwipeRefreshLayout.OnRefreshListener {
     protected abstract BaseRecyclerAdapter addListAdapter();
 
     protected BaseRecyclerAdapter adapter;
@@ -40,8 +39,8 @@ public abstract class BaseRecyclerViewFragment<T, S> extends BaseFragment implem
 
     @Override
     public void init() {
-        mPresenter = new BaseRecyclerViewPresenter<>(this,
-                new RecyclerDataRepository<>(this, LocalRecyclerDataSource.getInstance()));
+        mPresenter = new BaseRecyclerViewPresenter(this,
+                new RecyclerDataRepository(this, LocalRecyclerDataSource.getInstance()));
 
         recyclerView = (RecyclerView) getView().findViewById(R.id.recyclerView);
         swipeRefresh = (SwipeRefreshLayout) getView().findViewById(R.id.swiperefresh);
