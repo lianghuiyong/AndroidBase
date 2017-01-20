@@ -24,7 +24,7 @@ public class LocalRecyclerDataSource<T> implements RecyclerDataSource<T> {
     }
 
     @Override
-    public Observable<T> onListGetData() {
+    public Observable<T> onListGetData(int pageNo) {
         return null;
     }
 }

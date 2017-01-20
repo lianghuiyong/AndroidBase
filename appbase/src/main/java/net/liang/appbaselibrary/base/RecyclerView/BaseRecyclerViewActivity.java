@@ -26,21 +26,16 @@ import static com.google.common.base.Preconditions.checkNotNull;
  */
 
 public abstract class BaseRecyclerViewActivity<T> extends BaseAppCompatActivity implements BaseRecyclerViewContract.View<T>, RecyclerDataSource<T> {
-    protected abstract BaseRecyclerAdapter addListAdapter();
 
     protected BaseRecyclerAdapter adapter;
     protected SwipeRefreshLayout swipeRefresh;
     protected RecyclerView recyclerView;
-    private BaseRecyclerViewContract.Presenter mPresenter;
+    private BaseRecyclerViewContract.Presenter recyclerPresenter;
     private int pageNo = 1;
-
-    public int getPageNo() {
-        return pageNo;
-    }
 
     @Override
     public void init() {
-        mPresenter = new BaseRecyclerViewPresenter(this,
+        recyclerPresenter = new BaseRecyclerViewPresenter(this,
                 new RecyclerDataRepository(this, LocalRecyclerDataSource.getInstance()));
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
@@ -53,7 +48,7 @@ public abstract class BaseRecyclerViewActivity<T> extends BaseAppCompatActivity 
             @Override
             public void onRefresh() {
                 pageNo = 1;
-                mPresenter.onListUpData();
+                recyclerPresenter.onListUpData(pageNo);
             }
         });
 
@@ -64,12 +59,12 @@ public abstract class BaseRecyclerViewActivity<T> extends BaseAppCompatActivity 
             @Override
             public void onLoadMoreRequested() {
                 pageNo++;
-                mPresenter.onListUpData();
+                recyclerPresenter.onListUpData(pageNo);
             }
         });
 
         swipeRefresh.setRefreshing(true);
-        mPresenter.onListUpData();
+        recyclerPresenter.onListUpData(pageNo);
     }
 
     @Override
@@ -78,15 +73,22 @@ public abstract class BaseRecyclerViewActivity<T> extends BaseAppCompatActivity 
     }
 
     @Override
-    protected MvpPresenter getPresenter() {
-        return mPresenter;
-    }
-
-    @Override
     public void showNetworkFail(String err) {
         swipeRefresh.setRefreshing(false);
         if (pageNo == adapter.getFirstPageNo()){
             adapter.showNetWorkErrorView();
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        recyclerPresenter.subscribe();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        recyclerPresenter.unSubscribe();
     }
 }

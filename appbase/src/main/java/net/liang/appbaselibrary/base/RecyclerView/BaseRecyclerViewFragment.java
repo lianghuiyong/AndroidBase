@@ -25,12 +25,11 @@ import static com.google.common.base.Preconditions.checkNotNull;
  */
 
 public abstract class BaseRecyclerViewFragment<T> extends BaseFragment implements BaseRecyclerViewContract.View<T>, RecyclerDataSource<T>, BaseQuickAdapter.RequestLoadMoreListener, SwipeRefreshLayout.OnRefreshListener {
-    protected abstract BaseRecyclerAdapter addListAdapter();
 
     protected BaseRecyclerAdapter adapter;
     protected SwipeRefreshLayout swipeRefresh;
     protected RecyclerView recyclerView;
-    private BaseRecyclerViewContract.Presenter mPresenter;
+    private BaseRecyclerViewContract.Presenter recyclerPresenter;
     private int pageNo = 1;
 
     public int getPageNo() {
@@ -39,7 +38,7 @@ public abstract class BaseRecyclerViewFragment<T> extends BaseFragment implement
 
     @Override
     public void init() {
-        mPresenter = new BaseRecyclerViewPresenter(this,
+        recyclerPresenter = new BaseRecyclerViewPresenter(this,
                 new RecyclerDataRepository(this, LocalRecyclerDataSource.getInstance()));
 
         recyclerView = (RecyclerView) getView().findViewById(R.id.recyclerView);
@@ -56,23 +55,35 @@ public abstract class BaseRecyclerViewFragment<T> extends BaseFragment implement
         adapter.setOnLoadMoreListener(this);
 
         swipeRefresh.setRefreshing(true);
-        mPresenter.onListUpData();
+        recyclerPresenter.onListUpData(pageNo);
     }
 
     @Override
     public void onRefresh() {
         pageNo = 1;
-        mPresenter.onListUpData();
+        recyclerPresenter.onListUpData(pageNo);
     }
 
     @Override
     public void onLoadMoreRequested() {
         pageNo++;
-        mPresenter.onListUpData();
+        recyclerPresenter.onListUpData(pageNo);
     }
 
     @Override
-    public void onListSuccess(T t) {
+    public void onResume() {
+        super.onResume();
+        recyclerPresenter.subscribe();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        recyclerPresenter.unSubscribe();
+    }
+
+    @Override
+    public void onListSuccess(T t,int pageNo) {
         swipeRefresh.setRefreshing(false);
     }
 
@@ -84,8 +95,4 @@ public abstract class BaseRecyclerViewFragment<T> extends BaseFragment implement
         }
     }
 
-    @Override
-    protected MvpPresenter getPresenter() {
-        return mPresenter;
-    }
 }

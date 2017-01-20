@@ -14,6 +14,7 @@ import com.socks.library.KLog;
 import net.liang.appbaselibrary.base.mvp.MvpPresenter;
 import net.liang.appbaselibrary.base.mvp.MvpView;
 import net.liang.appbaselibrary.utils.ToastUtils;
+import net.liang.appbaselibrary.widget.dialog.DialogHelper;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -30,6 +31,7 @@ public abstract class BaseFragment extends Fragment implements BaseViewInterface
     protected abstract MvpPresenter getPresenter();
 
     protected abstract int getLayoutId();
+    private DialogHelper dialogHelper;
 
     @Override
     public View onCreateView(LayoutInflater inflater,
@@ -104,6 +106,10 @@ public abstract class BaseFragment extends Fragment implements BaseViewInterface
 
         if (getPresenter() != null) {
             getPresenter().unSubscribe();
+        }
+
+        if (dialogHelper != null){
+            dialogHelper.dismissProgressDialog();
         }
     }
 

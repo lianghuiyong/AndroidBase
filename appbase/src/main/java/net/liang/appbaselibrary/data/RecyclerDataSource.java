@@ -8,5 +8,5 @@ import io.reactivex.Observable;
  */
 
 public interface RecyclerDataSource<T> {
-    Observable<T> onListGetData();
+    Observable<T> onListGetData(int pageNo);
 }

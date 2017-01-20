@@ -26,7 +26,7 @@ public class RecyclerDataRepository<T> implements RecyclerDataSource<T>{
     }
 
     @Override
-    public Observable<T> onListGetData() {
-        return mRemoteAttendanceDataSource.onListGetData();
+    public Observable<T> onListGetData(int pageNo) {
+        return mRemoteAttendanceDataSource.onListGetData(pageNo);
     }
 }

@@ -23,13 +23,13 @@ import io.reactivex.Observable;
 public class RecyclerViewFragment extends BaseRecyclerViewFragment<List<String>> {
 
     @Override
-    protected int getLayoutId() {
-        return R.layout.fragment_recycler_view;
+    protected MvpPresenter getPresenter() {
+        return null;
     }
 
     @Override
-    protected BaseRecyclerAdapter addListAdapter() {
-        return new RecyclerAdapter(getContext(), recyclerView, null);
+    protected int getLayoutId() {
+        return R.layout.fragment_recycler_view;
     }
 
     @Override
@@ -39,7 +39,12 @@ public class RecyclerViewFragment extends BaseRecyclerViewFragment<List<String>>
     }
 
     @Override
-    public Observable<List<String>> onListGetData() {
+    public BaseRecyclerAdapter addListAdapter() {
+        return new RecyclerAdapter(getContext(), recyclerView, null);
+    }
+
+    @Override
+    public Observable<List<String>> onListGetData(int pageNo) {
         List<String> list = new ArrayList<>();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         for (int i = 0; i < 10; i++) {
@@ -48,6 +53,8 @@ public class RecyclerViewFragment extends BaseRecyclerViewFragment<List<String>>
         }
         return Observable.just(list);
     }
+
+
 
     /**
      * 带bind的适配器

@@ -14,16 +14,15 @@ public class BaseRecyclerViewContract {
      */
     public interface View<T> extends MvpView {
 
-        void onListSuccess(T t);
+        void onListSuccess(T t, int pageNo);
 
-        /*S addListSendBody();*/
+        BaseRecyclerAdapter addListAdapter();
     }
 
     /**
      * Presenter接口层 处理业务
      */
     public interface Presenter extends MvpPresenter {
-
-        void onListUpData();
+        void onListUpData(int pageNo);
     }
 }

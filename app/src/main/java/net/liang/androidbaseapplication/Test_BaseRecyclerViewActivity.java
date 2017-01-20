@@ -11,6 +11,7 @@ import com.chad.library.adapter.base.listener.OnItemChildClickListener;
 import net.liang.appbaselibrary.base.RecyclerView.BaseRecyclerAdapter;
 import net.liang.appbaselibrary.base.RecyclerView.BaseRecyclerViewActivity;
 import net.liang.appbaselibrary.base.BindingViewHolder;
+import net.liang.appbaselibrary.base.mvp.MvpPresenter;
 import net.liang.appbaselibrary.utils.ToastUtils;
 
 import java.text.SimpleDateFormat;
@@ -52,13 +53,18 @@ public class Test_BaseRecyclerViewActivity extends BaseRecyclerViewActivity<List
         return R.layout.activity_base_recycler_view;
     }
 
+    @Override
+    protected MvpPresenter getPresenter() {
+        return null;
+    }
+
     /**
      * 列表适配器
      * 默认起始页为1，可使用setFirstPageNo(int firstPageNo)修改
      * 默认一页页数为10，可使用setPageSize(int pageSize)修改
      */
     @Override
-    protected BaseRecyclerAdapter addListAdapter() {
+    public BaseRecyclerAdapter addListAdapter() {
         return new RecyclerAdapter(this, recyclerView, null);
     }
 
@@ -82,7 +88,7 @@ public class Test_BaseRecyclerViewActivity extends BaseRecyclerViewActivity<List
      * 获取网络数据接口，注意返回的是被观察者对象
      */
     @Override
-    public Observable<List<String>> onListGetData() {
+    public Observable<List<String>> onListGetData(int pageNo) {
 
         List<String> list = new ArrayList<>();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -99,6 +105,7 @@ public class Test_BaseRecyclerViewActivity extends BaseRecyclerViewActivity<List
         // TODO: add setContentView(...) invocation
         ButterKnife.bind(this);
     }
+
 
     /**
      * 带bind的适配器

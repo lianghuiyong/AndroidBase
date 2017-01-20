@@ -32,9 +32,9 @@ public class BaseRecyclerViewPresenter<T> extends BasePresenter implements BaseR
     }
 
     @Override
-    public void onListUpData() {
+    public void onListUpData(int pageNo) {
         Disposable disposable = repository
-                .onListGetData()
+                .onListGetData(pageNo)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(new DisposableObserver<T>() {
@@ -54,4 +54,5 @@ public class BaseRecyclerViewPresenter<T> extends BasePresenter implements BaseR
                 });
         disposables.add(disposable);
     }
+
 }
