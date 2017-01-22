@@ -1,13 +1,16 @@
 # 一个好用的列表页面基类
 
-1. 继承BaseRecyclerViewFragment< T>或者 BaseRecyclerViewActivity< T>，T是列表对象类型
-2. XML文件，请引用
+###1. 继承BaseRecyclerViewFragment< T>或者 BaseRecyclerViewActivity< T>, T是列表对象类型
+###2. XML文件，请引用
+
 		<include layout="@layout/layout_recyclerview"/>
+
 或者使用相同的ID：
+
 		SwipeRefreshLayout使用@+id/swiperefresh，
 		RecyclerView使用@+id/recyclerView
 
-3. 实现三个接口
+###3. 实现三个接口
 
 ```
         /**
