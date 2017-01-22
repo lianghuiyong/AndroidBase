@@ -26,16 +26,7 @@ public abstract class BaseRecyclerAdapter<T> extends BaseQuickAdapter<T, Binding
     private Context context;
     private View netErrorView;
     private View notDataView;
-    private int firstPageNo = 1;
     private int pageSize = 10;
-
-    public int getFirstPageNo() {
-        return firstPageNo;
-    }
-
-    public void setFirstPageNo(int firstPageNo) {
-        this.firstPageNo = firstPageNo;
-    }
 
     public int getPageSize() {
         return pageSize;
@@ -110,17 +101,15 @@ public abstract class BaseRecyclerAdapter<T> extends BaseQuickAdapter<T, Binding
      * */
     public void showList(List<T> listData, int pageNo) {
         if (listData == null) {
-            if (pageNo == getFirstPageNo()) {
+            if (pageNo == 1) {
                 showNoDataView();
             }
             return;
         }
 
-        if (pageNo == getFirstPageNo()) {
+        if (pageNo == 1) {
             setNewData(listData);
-            KLog.e("setNewData = "+listData);
         } else {
-            KLog.e("addData = "+listData);
             addData(listData);
             loadMoreComplete();
         }
