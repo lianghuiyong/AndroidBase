@@ -10,7 +10,7 @@
 		SwipeRefreshLayout使用@+id/swiperefresh，
 		RecyclerView使用@+id/recyclerView
 
-###3. 实现三个接口(示例：[Test_BaseRecyclerViewActivity.java](./app/src/main/java/net/liang/androidbaseapplication/Test_BaseRecyclerViewActivity.java "Test_BaseRecyclerViewActivity.java"))
+###3. 实现三个接口(示例：[Test_BaseRecyclerViewActivity.java](../app/src/main/java/net/liang/androidbaseapplication/Test_BaseRecyclerViewActivity.java "Test_BaseRecyclerViewActivity.java"))
 >
 ```
      // 列表适配器
