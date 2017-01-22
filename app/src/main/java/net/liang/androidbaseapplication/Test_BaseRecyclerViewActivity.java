@@ -69,7 +69,7 @@ public class Test_BaseRecyclerViewActivity extends BaseRecyclerViewActivity<List
     }
 
     /**
-     * 请求成功时的回调方法，不能删除super.onSuccess(strings);
+     * 请求成功时的回调方法;
      * onSuccess返回的数据为完整的请求数据，需要自己拆解列表数据，添加到适配器里
      */
     @Override
