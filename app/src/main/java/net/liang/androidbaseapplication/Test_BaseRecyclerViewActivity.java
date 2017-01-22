@@ -60,7 +60,6 @@ public class Test_BaseRecyclerViewActivity extends BaseRecyclerViewActivity<List
 
     /**
      * 列表适配器
-     * 默认起始页为1，可使用setFirstPageNo(int firstPageNo)修改
      * 默认一页页数为10，可使用setPageSize(int pageSize)修改
      */
     @Override
