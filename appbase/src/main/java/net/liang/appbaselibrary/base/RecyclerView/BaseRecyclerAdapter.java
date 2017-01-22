@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.socks.library.KLog;
 
 import net.liang.appbaselibrary.R;
 import net.liang.appbaselibrary.base.BindingViewHolder;
@@ -117,7 +118,9 @@ public abstract class BaseRecyclerAdapter<T> extends BaseQuickAdapter<T, Binding
 
         if (pageNo == getFirstPageNo()) {
             setNewData(listData);
+            KLog.e("setNewData = "+listData);
         } else {
+            KLog.e("addData = "+listData);
             addData(listData);
             loadMoreComplete();
         }

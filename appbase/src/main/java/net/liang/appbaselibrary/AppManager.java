@@ -103,16 +103,16 @@ public class AppManager {
         }
     }
 
-    /**
-     * 结束所有相同Activity
-     */
+/*    *//**
+     * 结束所有相同Activity（此结束方法不对禁止使用）
+     *//*
     public void finishAllActivity(Class<?> cls) {
         for (Activity activity : activityStack) {
             if (activity.getClass().equals(cls)) {
                 finishActivity(activity);
             }
         }
-    }
+    }*/
 
     /**
      * 结束所有Activity

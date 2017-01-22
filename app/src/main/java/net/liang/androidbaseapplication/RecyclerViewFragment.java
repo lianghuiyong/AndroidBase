@@ -33,9 +33,8 @@ public class RecyclerViewFragment extends BaseRecyclerViewFragment<List<String>>
     }
 
     @Override
-    public void onListSuccess(List<String> strings) {
-        super.onListSuccess(strings);
-        adapter.showList(strings, getPageNo());
+    public void onListSuccess(List<String> strings, int pageNo) {
+        adapter.showList(strings, pageNo);
     }
 
     @Override
@@ -53,8 +52,6 @@ public class RecyclerViewFragment extends BaseRecyclerViewFragment<List<String>>
         }
         return Observable.just(list);
     }
-
-
 
     /**
      * 带bind的适配器

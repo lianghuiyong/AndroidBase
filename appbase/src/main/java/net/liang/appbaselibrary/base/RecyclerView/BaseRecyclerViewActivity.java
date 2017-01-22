@@ -21,17 +21,16 @@ import static com.google.common.base.Preconditions.checkNotNull;
 /**
  * Created on 2016/10/23.
  * By lianghuiyong@outlook.com
- * @param <T> 是获取过来的数据类型
- * @param <S> 是请求的数据类型
+ *
+ * @param <T> 是获取的数据类型
  */
 
-public abstract class BaseRecyclerViewActivity<T> extends BaseAppCompatActivity implements BaseRecyclerViewContract.View<T>, RecyclerDataSource<T> {
+public abstract class BaseRecyclerViewActivity<T> extends BaseAppCompatActivity implements BaseRecyclerViewContract.View<T>, RecyclerDataSource<T>, SwipeRefreshLayout.OnRefreshListener, BaseQuickAdapter.RequestLoadMoreListener {
 
     protected BaseRecyclerAdapter adapter;
     protected SwipeRefreshLayout swipeRefresh;
     protected RecyclerView recyclerView;
     private BaseRecyclerViewContract.Presenter recyclerPresenter;
-    private int pageNo = 1;
 
     @Override
     public void init() {
@@ -44,40 +43,28 @@ public abstract class BaseRecyclerViewActivity<T> extends BaseAppCompatActivity 
         adapter = adapter == null ? addListAdapter() : adapter;
 
         swipeRefresh.setColorSchemeColors(Color.RED, Color.BLUE, Color.GREEN, Color.YELLOW);
-        swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                pageNo = 1;
-                recyclerPresenter.onListUpData(pageNo);
-            }
-        });
+        swipeRefresh.setOnRefreshListener(this);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(adapter);
-        adapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
-            @Override
-            public void onLoadMoreRequested() {
-                pageNo++;
-                recyclerPresenter.onListUpData(pageNo);
-            }
-        });
-
-        swipeRefresh.setRefreshing(true);
-        recyclerPresenter.onListUpData(pageNo);
+        adapter.setOnLoadMoreListener(this);
     }
 
     @Override
-    public void onListSuccess(T t) {
-        swipeRefresh.setRefreshing(false);
+    protected void onStart() {
+        super.onStart();
+        recyclerPresenter.onListRefresh();
+    }
+
+    @Override
+    public void setListRefresh(boolean isShow) {
+        swipeRefresh.setRefreshing(isShow);
     }
 
     @Override
     public void showNetworkFail(String err) {
-        swipeRefresh.setRefreshing(false);
-        if (pageNo == adapter.getFirstPageNo()){
-            adapter.showNetWorkErrorView();
-        }
+        adapter.showNetWorkErrorView();
     }
 
     @Override
@@ -90,5 +77,15 @@ public abstract class BaseRecyclerViewActivity<T> extends BaseAppCompatActivity 
     public void onPause() {
         super.onPause();
         recyclerPresenter.unSubscribe();
+    }
+
+    @Override
+    public void onRefresh() {
+        recyclerPresenter.onListRefresh();
+    }
+
+    @Override
+    public void onLoadMoreRequested() {
+        recyclerPresenter.onListLoadMore();
     }
 }

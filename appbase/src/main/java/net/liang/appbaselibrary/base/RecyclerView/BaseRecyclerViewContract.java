@@ -14,6 +14,8 @@ public class BaseRecyclerViewContract {
      */
     public interface View<T> extends MvpView {
 
+        void setListRefresh(boolean isShow);
+
         void onListSuccess(T t, int pageNo);
 
         BaseRecyclerAdapter addListAdapter();
@@ -23,6 +25,14 @@ public class BaseRecyclerViewContract {
      * Presenter接口层 处理业务
      */
     public interface Presenter extends MvpPresenter {
+        int getListPageNo();
+
+        void setListPageNo(int pageNo);
+
+        void onListRefresh();
+
+        void onListLoadMore();
+
         void onListUpData(int pageNo);
     }
 }

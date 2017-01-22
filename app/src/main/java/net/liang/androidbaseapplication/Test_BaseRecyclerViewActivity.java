@@ -73,14 +73,13 @@ public class Test_BaseRecyclerViewActivity extends BaseRecyclerViewActivity<List
      * onSuccess返回的数据为完整的请求数据，需要自己拆解列表数据，添加到适配器里
      */
     @Override
-    public void onListSuccess(List<String> strings) {
-        super.onListSuccess(strings);
+    public void onListSuccess(List<String> strings, int pageNo) {
 
         //单页使用
         //adapter.showList(strings);
 
         //多页使用
-        adapter.showList(strings, getPageNo());
+        adapter.showList(strings, pageNo);
     }
 
 
@@ -98,14 +97,6 @@ public class Test_BaseRecyclerViewActivity extends BaseRecyclerViewActivity<List
         }
         return Observable.just(list);
     }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
-    }
-
 
     /**
      * 带bind的适配器

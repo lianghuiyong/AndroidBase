@@ -53,21 +53,27 @@ public abstract class BaseRecyclerViewFragment<T> extends BaseFragment implement
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(adapter);
         adapter.setOnLoadMoreListener(this);
+    }
 
-        swipeRefresh.setRefreshing(true);
-        recyclerPresenter.onListUpData(pageNo);
+    @Override
+    public void setListRefresh(boolean isShow) {
+        swipeRefresh.setRefreshing(isShow);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        recyclerPresenter.onListRefresh();
     }
 
     @Override
     public void onRefresh() {
-        pageNo = 1;
-        recyclerPresenter.onListUpData(pageNo);
+        recyclerPresenter.onListRefresh();
     }
 
     @Override
     public void onLoadMoreRequested() {
-        pageNo++;
-        recyclerPresenter.onListUpData(pageNo);
+        recyclerPresenter.onListLoadMore();
     }
 
     @Override
@@ -83,16 +89,8 @@ public abstract class BaseRecyclerViewFragment<T> extends BaseFragment implement
     }
 
     @Override
-    public void onListSuccess(T t,int pageNo) {
-        swipeRefresh.setRefreshing(false);
-    }
-
-    @Override
     public void showNetworkFail(String err) {
-        swipeRefresh.setRefreshing(false);
-        if (pageNo == adapter.getFirstPageNo()) {
-            adapter.showNetWorkErrorView();
-        }
+        adapter.showNetWorkErrorView();
     }
 
 }
