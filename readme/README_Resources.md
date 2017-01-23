@@ -23,8 +23,8 @@
     <color name="snackBar_back">#1984d4</color>
 
 ### （2） ToolBar的返回建和标题栏的颜色值
-        <color name="toolbar_back">#FFFFFF</color>
-        <color name="toolbar_tv">#FFFFFF</color>
+    <color name="toolbar_back">#FFFFFF</color>
+    <color name="toolbar_tv">#FFFFFF</color>
 
 ## 3. 尺寸管理
 **字体**
