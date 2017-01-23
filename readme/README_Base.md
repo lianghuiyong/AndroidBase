@@ -1,4 +1,4 @@
-# 页面基类
+# 一些好用的基类
 **BaseAppCompatActivity**
 **BaseFragment**
 
@@ -33,7 +33,9 @@
 ###5.获取databinding
     getBinding();
 
-###4.Toast
+###6.Toast
     showToast(s)
-###4.Toast
-    showToast(s)
+
+###7.设置标题栏
+    xml里引用：<include layout="@layout/toolbar_center"/>
+    设置标题：setToolbarCentel(true,"测试");
