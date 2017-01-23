@@ -36,10 +36,10 @@
     space_**
 
 ## 4. 细线
-横方向
+**横方向**
 
     view_line_vertical
 
-竖方向
+**竖方向**
 
     view_line_horizontal
