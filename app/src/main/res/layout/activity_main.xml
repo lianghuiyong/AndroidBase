@@ -1,21 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+<layout>
+    <data/>
 
-    <include layout="@layout/toolbar_center"/>
-
-    <Button
-        android:id="@+id/baseRecyclerViewActivity"
-        android:text="Activity列表示例"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/baseRecyclerViewFragment"
-        android:text="Fragment列表示例"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-</LinearLayout>
+        <include layout="@layout/toolbar_center"/>
+
+        <Button
+            android:id="@+id/baseRecyclerViewActivity"
+            android:text="Activity列表示例"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/baseRecyclerViewFragment"
+            android:text="Fragment列表示例"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+</layout>

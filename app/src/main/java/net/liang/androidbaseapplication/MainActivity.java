@@ -5,16 +5,27 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import net.liang.appbaselibrary.base.BaseAppCompatActivity;
+import net.liang.appbaselibrary.base.mvp.MvpPresenter;
+
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseAppCompatActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
+    protected int getLayoutId() {
+        return R.layout.activity_main;
+    }
+
+    @Override
+    protected MvpPresenter getPresenter() {
+        return null;
+    }
+
+    @Override
+    public void init() {
+        setToolbarCentel(true,"测试");
     }
 
     @OnClick({R.id.baseRecyclerViewActivity, R.id.baseRecyclerViewFragment})

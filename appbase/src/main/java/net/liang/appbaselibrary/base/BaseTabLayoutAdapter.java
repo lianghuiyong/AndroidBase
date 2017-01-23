@@ -42,7 +42,6 @@ public class BaseTabLayoutAdapter extends FragmentPagerAdapter {
 
     @Override
     public CharSequence getPageTitle(int position) {
-        //return super.getPageTitle(position);
         if (tv_Titles == null){
             return null;
         }else {
