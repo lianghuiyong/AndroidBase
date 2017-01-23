@@ -6,17 +6,12 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.socks.library.KLog;
 
 import net.liang.appbaselibrary.R;
 import net.liang.appbaselibrary.base.BaseAppCompatActivity;
-import net.liang.appbaselibrary.base.mvp.MvpPresenter;
 import net.liang.appbaselibrary.data.RecyclerDataRepository;
 import net.liang.appbaselibrary.data.RecyclerDataSource;
 import net.liang.appbaselibrary.data.local.LocalRecyclerDataSource;
-import net.liang.appbaselibrary.utils.SPUtils;
-
-import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
  * Created on 2016/10/23.

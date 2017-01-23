@@ -9,12 +9,9 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 
 import net.liang.appbaselibrary.R;
 import net.liang.appbaselibrary.base.BaseFragment;
-import net.liang.appbaselibrary.base.mvp.MvpPresenter;
 import net.liang.appbaselibrary.data.RecyclerDataRepository;
 import net.liang.appbaselibrary.data.RecyclerDataSource;
 import net.liang.appbaselibrary.data.local.LocalRecyclerDataSource;
-
-import static com.google.common.base.Preconditions.checkNotNull;
 
 
 /**
