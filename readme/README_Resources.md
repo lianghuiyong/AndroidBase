@@ -14,6 +14,6 @@
     BaseAppThemeFull
 >
 >④ 全屏渐现渐消
-
-    BaseAppThemeFullWithAlpha
 >
+    BaseAppThemeFullWithAlpha
+***
