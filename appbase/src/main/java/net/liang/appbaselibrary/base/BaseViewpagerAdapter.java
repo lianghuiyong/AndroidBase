@@ -11,12 +11,12 @@ import java.util.List;
  *
  * TabLayout （String）适配器
  */
-public class BaseTabLayoutAdapter extends FragmentPagerAdapter {
+public class BaseViewpagerAdapter extends FragmentPagerAdapter {
 
     private List<Fragment> tab_fragments;
     private String[] tv_Titles;
 
-    public BaseTabLayoutAdapter(FragmentManager fm,
+    public BaseViewpagerAdapter(FragmentManager fm,
                                 String[] tv_Titles,
                                 List<Fragment> tab_fragments) {
         super(fm);
@@ -24,7 +24,7 @@ public class BaseTabLayoutAdapter extends FragmentPagerAdapter {
         this.tab_fragments = tab_fragments;
     }
 
-    public BaseTabLayoutAdapter(FragmentManager fm,
+    public BaseViewpagerAdapter(FragmentManager fm,
                                 List<Fragment> tab_fragments) {
         super(fm);
         this.tab_fragments = tab_fragments;
