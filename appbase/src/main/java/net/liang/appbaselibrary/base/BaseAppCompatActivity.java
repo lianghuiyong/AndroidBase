@@ -7,6 +7,7 @@ import android.databinding.ViewDataBinding;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -26,7 +27,7 @@ import butterknife.ButterKnife;
 /**
  * Created by lianghuiyong@outlook.com on 2016/5/25.
  */
-public abstract class BaseAppCompatActivity extends AppCompatActivity implements BaseViewInterface , MvpView{
+public abstract class BaseAppCompatActivity extends AppCompatActivity implements BaseViewInterface, MvpView {
 
     protected abstract int getLayoutId();
 
@@ -58,7 +59,7 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
     }
 
     @Subscribe
-    public void onEvent(String string){
+    public void onEvent(String string) {
 
     }
 
@@ -211,8 +212,8 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
         }
 
         TextView right_tv = (TextView) findViewById(R.id.right_tv);
-        right_tv.setVisibility(View.VISIBLE);
         right_tv.setText(right_title);
+        right_tv.setVisibility(TextUtils.isEmpty(right_title) ? View.GONE : View.VISIBLE);
     }
 
     public void nextActivity(Class<?> firstCls, Class<?> SecondCls) {
