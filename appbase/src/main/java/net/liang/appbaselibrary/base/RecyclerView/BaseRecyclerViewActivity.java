@@ -1,6 +1,7 @@
 package net.liang.appbaselibrary.base.RecyclerView;
 
 import android.graphics.Color;
+import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -28,7 +29,9 @@ public abstract class BaseRecyclerViewActivity<T> extends BaseAppCompatActivity 
     private BaseRecyclerViewContract.Presenter recyclerPresenter;
 
     @Override
-    public void init() {
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
         recyclerPresenter = new BaseRecyclerViewPresenter(this,
                 new RecyclerDataRepository(this, LocalRecyclerDataSource.getInstance()));
 

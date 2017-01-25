@@ -1,6 +1,8 @@
 package net.liang.appbaselibrary.base.RecyclerView;
 
 import android.graphics.Color;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -27,14 +29,11 @@ public abstract class BaseRecyclerViewFragment<T> extends BaseFragment implement
     protected SwipeRefreshLayout swipeRefresh;
     protected RecyclerView recyclerView;
     private BaseRecyclerViewContract.Presenter recyclerPresenter;
-    private int pageNo = 1;
-
-    public int getPageNo() {
-        return pageNo;
-    }
 
     @Override
-    public void init() {
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
         recyclerPresenter = new BaseRecyclerViewPresenter(this,
                 new RecyclerDataRepository(this, LocalRecyclerDataSource.getInstance()));
 

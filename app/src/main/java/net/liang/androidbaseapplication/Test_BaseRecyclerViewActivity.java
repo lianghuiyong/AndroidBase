@@ -30,8 +30,6 @@ public class Test_BaseRecyclerViewActivity extends BaseRecyclerViewActivity<List
 
     @Override
     public void init() {
-        super.init();
-
         recyclerView.addOnItemTouchListener(new OnItemChildClickListener() {
 
             @Override
