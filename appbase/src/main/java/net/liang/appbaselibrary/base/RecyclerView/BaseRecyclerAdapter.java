@@ -85,10 +85,10 @@ public abstract class BaseRecyclerAdapter<T> extends BaseQuickAdapter<T, Binding
 
     /**
      * 单页面数据
-     * */
+     */
     public void showList(List<T> listData) {
-        if (listData == null) {
-                showNoDataView();
+        if (listData == null || listData.size() == 0) {
+            showNoDataView();
             return;
         }
 
@@ -98,9 +98,9 @@ public abstract class BaseRecyclerAdapter<T> extends BaseQuickAdapter<T, Binding
 
     /**
      * 多页面数据
-     * */
+     */
     public void showList(List<T> listData, int pageNo) {
-        if (listData == null) {
+        if (listData == null || listData.size() == 0) {
             if (pageNo == 1) {
                 showNoDataView();
             }

@@ -31,8 +31,8 @@ public abstract class BaseRecyclerViewFragment<T> extends BaseFragment implement
     private BaseRecyclerViewContract.Presenter recyclerPresenter;
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void init() {
+        super.init();
 
         recyclerPresenter = new BaseRecyclerViewPresenter(this,
                 new RecyclerDataRepository(this, LocalRecyclerDataSource.getInstance()));
@@ -50,6 +50,9 @@ public abstract class BaseRecyclerViewFragment<T> extends BaseFragment implement
         recyclerView.setAdapter(adapter);
         adapter.setOnLoadMoreListener(this);
     }
+
+
+
 
     @Override
     public void setListRefresh(boolean isShow) {

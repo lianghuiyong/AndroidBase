@@ -12,6 +12,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.zhy.changeskin.SkinManager;
+
 import net.liang.appbaselibrary.AppManager;
 import net.liang.appbaselibrary.R;
 import net.liang.appbaselibrary.base.mvp.MvpPresenter;
@@ -41,6 +43,9 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
         AppManager.getAppManager().addActivity(this);
 
+        //换肤注册
+        SkinManager.getInstance().register(this);
+
         binding = DataBindingUtil.setContentView(this, getLayoutId());
 
         ButterKnife.bind(this, getView());
@@ -48,6 +53,33 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
 
         init();
         initTabs();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        if (getPresenter() != null) {
+            getPresenter().subscribe();
+        }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+
+        if (getPresenter() != null) {
+            getPresenter().unSubscribe();
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
+        AppManager.getAppManager().finishActivity(this);
+        //换肤注册
+        SkinManager.getInstance().unregister(this);
     }
 
     protected ViewDataBinding getBinding() {
@@ -248,30 +280,5 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
             intent.putExtras(bundle);
         }
         startActivity(intent);
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-
-        if (getPresenter() != null) {
-            getPresenter().subscribe();
-        }
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-
-        if (getPresenter() != null) {
-            getPresenter().unSubscribe();
-        }
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        EventBus.getDefault().unregister(this);
-        AppManager.getAppManager().finishActivity(this);
     }
 }

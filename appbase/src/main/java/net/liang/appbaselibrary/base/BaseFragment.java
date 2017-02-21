@@ -31,6 +31,7 @@ public abstract class BaseFragment extends Fragment implements BaseViewInterface
     protected abstract MvpPresenter getPresenter();
 
     protected abstract int getLayoutId();
+
     private DialogHelper dialogHelper;
 
     @Override
@@ -53,7 +54,7 @@ public abstract class BaseFragment extends Fragment implements BaseViewInterface
     }
 
     @Subscribe
-    public void onEvent(String string){
+    public void onEvent(String string) {
 
     }
 
@@ -108,7 +109,7 @@ public abstract class BaseFragment extends Fragment implements BaseViewInterface
             getPresenter().unSubscribe();
         }
 
-        if (dialogHelper != null){
+        if (dialogHelper != null) {
             dialogHelper.dismissProgressDialog();
         }
     }

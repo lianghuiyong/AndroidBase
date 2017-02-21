@@ -11,6 +11,8 @@ import android.widget.Toast;
 
 import net.liang.appbaselibrary.R;
 
+import es.dmoral.toasty.Toasty;
+
 /**
  * Created by lenovo on 2017/1/4.
  */
@@ -29,6 +31,16 @@ public class ToastUtils {
     }
 
     public static void showToast(Context context, String s) {
+        Toast.makeText(context, s, Toast.LENGTH_SHORT)
+                .show();
+    }
+
+    public static void showErrorToast(Context context, String s) {
+        Toast.makeText(context, s, Toast.LENGTH_SHORT)
+                .show();
+    }
+
+    public static void showSuccessToast(Context context, String s) {
         Toast.makeText(context, s, Toast.LENGTH_SHORT)
                 .show();
     }
