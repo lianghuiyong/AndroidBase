@@ -29,8 +29,8 @@ public abstract class BaseRecyclerViewActivity<T> extends BaseAppCompatActivity 
     private BaseRecyclerViewContract.Presenter recyclerPresenter;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void init() {
+        super.init();
 
         recyclerPresenter = new BaseRecyclerViewPresenter(this,
                 new RecyclerDataRepository(this, LocalRecyclerDataSource.getInstance()));
