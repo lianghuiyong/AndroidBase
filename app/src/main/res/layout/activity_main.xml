@@ -7,7 +7,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <include layout="@layout/toolbar_center"/>
+        <include layout="@layout/toolbar_center_tv"/>
 
         <Button
             android:id="@+id/baseRecyclerViewActivity"

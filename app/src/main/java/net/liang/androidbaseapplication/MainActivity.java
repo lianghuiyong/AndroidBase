@@ -25,7 +25,7 @@ public class MainActivity extends BaseAppCompatActivity {
 
     @Override
     public void init() {
-        setToolbarCentel(true,"测试");
+        setToolbarCentel_tv(true,"测试","哈哈");
     }
 
     @OnClick({R.id.baseRecyclerViewActivity, R.id.baseRecyclerViewFragment})

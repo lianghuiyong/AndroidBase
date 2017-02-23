@@ -80,7 +80,7 @@ public abstract class BaseFragment extends Fragment implements BaseViewInterface
 
     @Override
     public void showToast(String toast) {
-        ToastUtils.showSnackbar(getView(), toast);
+        ToastUtils.showToast(getContext(), toast);
     }
 
     protected ViewDataBinding getBinding() {

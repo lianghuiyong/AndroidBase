@@ -117,7 +117,7 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
 
     @Override
     public void showToast(String toast) {
-        ToastUtils.showSnackbar(getView(), toast);
+        ToastUtils.showToast(this, toast);
     }
 
     public void setToolbar(Boolean hasBackHome) {

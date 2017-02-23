@@ -30,18 +30,15 @@ public class ToastUtils {
         sb.show();
     }
 
-    public static void showToast(Context context, String s) {
-        Toast.makeText(context, s, Toast.LENGTH_SHORT)
-                .show();
+    public static void showToast(Context context, String string) {
+        Toasty.normal(context, string).show();
     }
 
-    public static void showErrorToast(Context context, String s) {
-        Toast.makeText(context, s, Toast.LENGTH_SHORT)
-                .show();
+    public static void showErrorToast(Context context, String string) {
+        Toasty.error(context, string, Toast.LENGTH_SHORT, true).show();
     }
 
-    public static void showSuccessToast(Context context, String s) {
-        Toast.makeText(context, s, Toast.LENGTH_SHORT)
-                .show();
+    public static void showSuccessToast(Context context, String string) {
+        Toasty.success(context, string, Toast.LENGTH_SHORT, true).show();
     }
 }
