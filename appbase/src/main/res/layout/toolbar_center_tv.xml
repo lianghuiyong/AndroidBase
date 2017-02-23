@@ -68,7 +68,6 @@
                     android:gravity="center"
                     android:textColor="@color/toolbar_back"
                     android:background="@drawable/shape_toolbar_tv"
-                    android:clickable="true"
                     android:padding="@dimen/space_5"
                     android:layout_centerVertical="true"
                     android:layout_alignParentRight="true"
