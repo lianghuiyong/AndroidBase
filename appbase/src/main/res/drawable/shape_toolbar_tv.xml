@@ -2,7 +2,7 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!-- 填充的颜色 -->
-    <solid android:color="@color/base_select" />
+    <solid android:color="@color/appbase_tv_select" />
     <!-- 设置矩形的四个角为弧形 -->
     <!-- android:radius 弧形的半径 -->
     <corners android:radius="4dp" />

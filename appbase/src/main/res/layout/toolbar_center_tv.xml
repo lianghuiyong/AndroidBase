@@ -51,6 +51,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
+                    android:lines="1"
                     android:textColor="@color/toolbar_tv"
                     android:layout_marginLeft="@dimen/space_100"
                     android:layout_marginRight="@dimen/space_100"
