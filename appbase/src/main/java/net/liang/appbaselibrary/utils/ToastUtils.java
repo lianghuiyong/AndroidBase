@@ -25,7 +25,7 @@ public class ToastUtils {
         theme.resolveAttribute(R.attr.colorPrimary, typedValue, true);
 
         Snackbar sb = Snackbar.make(view, s, Snackbar.LENGTH_SHORT);
-        sb.getView().setBackgroundColor(Resources.getSystem().getColor(R.color.snackBar_back));
+        //sb.getView().setBackgroundColor(Resources.getSystem().getColor(R.color.snackBar_back));
         ((TextView) sb.getView().findViewById(R.id.snackbar_text)).setTextColor(Color.WHITE);
         sb.show();
     }

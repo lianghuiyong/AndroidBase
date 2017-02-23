@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 
@@ -31,8 +32,8 @@ public abstract class BaseRecyclerViewFragment<T> extends BaseFragment implement
     private BaseRecyclerViewContract.Presenter recyclerPresenter;
 
     @Override
-    public void init() {
-        super.init();
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
         recyclerPresenter = new BaseRecyclerViewPresenter(this,
                 new RecyclerDataRepository(this, LocalRecyclerDataSource.getInstance()));
@@ -50,9 +51,6 @@ public abstract class BaseRecyclerViewFragment<T> extends BaseFragment implement
         recyclerView.setAdapter(adapter);
         adapter.setOnLoadMoreListener(this);
     }
-
-
-
 
     @Override
     public void setListRefresh(boolean isShow) {

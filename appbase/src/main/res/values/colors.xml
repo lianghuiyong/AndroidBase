@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="snackBar_back">#1984d4</color>
     <color name="toolbar_back">#FFFFFF</color>
     <color name="toolbar_tv">#FFFFFF</color>
     <color name="colorAccent">#FF4081</color>
