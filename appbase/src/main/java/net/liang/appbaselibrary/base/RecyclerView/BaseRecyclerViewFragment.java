@@ -32,9 +32,7 @@ public abstract class BaseRecyclerViewFragment<T> extends BaseFragment implement
     private BaseRecyclerViewContract.Presenter recyclerPresenter;
 
     @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
+    public void init() {
         recyclerPresenter = new BaseRecyclerViewPresenter(this,
                 new RecyclerDataRepository(this, LocalRecyclerDataSource.getInstance()));
 
