@@ -2,17 +2,22 @@ package net.liang.androidbaseapplication;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
+import android.view.MotionEvent;
 import android.view.View;
-
-import com.socks.library.KLog;
+import android.widget.EditText;
 
 import net.liang.appbaselibrary.base.BaseAppCompatActivity;
 import net.liang.appbaselibrary.base.mvp.MvpPresenter;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MainActivity extends BaseAppCompatActivity {
+
+    @BindView(R.id.edit)
+    EditText edit;
 
     @Override
     protected int getLayoutId() {
@@ -27,9 +32,18 @@ public class MainActivity extends BaseAppCompatActivity {
     @Override
     public void init() {
         setToolbarCentel_tv(true, "测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试", "哈哈");
+
+        edit.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+
+                edit.setInputType(InputType.TYPE_NULL);
+                return true;
+            }
+        });
     }
 
-    @OnClick({R.id.baseRecyclerViewActivity, R.id.baseRecyclerViewFragment})
+    @OnClick({R.id.baseRecyclerViewActivity, R.id.baseRecyclerViewFragment, R.id.edit})
     public void onClick(View view) {
         Intent intent = new Intent();
         switch (view.getId()) {
@@ -42,6 +56,7 @@ public class MainActivity extends BaseAppCompatActivity {
                 intent.setClass(this, Test_BaseRecyclerViewFragment.class);
                 startActivity(intent);
                 break;
+
         }
 
     }
@@ -51,10 +66,5 @@ public class MainActivity extends BaseAppCompatActivity {
         super.onCreate(savedInstanceState);
         // TODO: add setContentView(...) invocation
         ButterKnife.bind(this);
-    }
-
-    @OnClick(R.id.right_tv)
-    public void onClick() {
-        KLog.e("55555555555");
     }
 }

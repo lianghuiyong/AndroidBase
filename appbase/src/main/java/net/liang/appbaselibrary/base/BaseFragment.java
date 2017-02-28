@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -47,10 +48,15 @@ public abstract class BaseFragment extends Fragment implements BaseViewInterface
         super.onViewCreated(view, savedInstanceState);
 
         ButterKnife.bind(this, getView());
-        EventBus.getDefault().register(this);
 
         init();
         initTabs();
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        EventBus.getDefault().register(this);
     }
 
     @Subscribe
