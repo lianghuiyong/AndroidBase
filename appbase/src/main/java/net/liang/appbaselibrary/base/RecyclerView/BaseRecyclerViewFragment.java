@@ -32,7 +32,7 @@ public abstract class BaseRecyclerViewFragment<T> extends BaseFragment implement
     private BaseRecyclerViewContract.Presenter recyclerPresenter;
 
     @Override
-    public void init() {
+    public void initRecyclerView() {
         recyclerPresenter = new BaseRecyclerViewPresenter(this,
                 new RecyclerDataRepository(this, LocalRecyclerDataSource.getInstance()));
 

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge xmlns:android="http://schemas.android.com/apk/res/android"
+<merge
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
@@ -10,8 +11,7 @@
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:colorControlNormal="@android:color/black"
-        app:elevation="@dimen/space_0">
+        app:colorControlNormal="@android:color/black">
 
         <!--
             app:layout_scrollFlags="scroll|snap|enterAlways"
@@ -34,55 +34,49 @@
                     android:id="@+id/toolbar_back"
                     android:layout_width="@dimen/space_60"
                     android:layout_height="match_parent"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    android:clickable="true"
-                    android:paddingLeft="@dimen/space_16"
                     android:paddingRight="@dimen/space_16"
-                    android:visibility="visible"
-                    app:srcCompat="@drawable/ic_toolbar_back" />
+                    android:paddingLeft="@dimen/space_16"
+                    android:clickable="true"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    app:srcCompat="@drawable/ic_toolbar_back"
+                    android:visibility="visible"/>
 
                 <TextView
+                    android:ellipsize="marquee"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
                     android:id="@+id/title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="@dimen/space_100"
-                    android:layout_marginRight="@dimen/space_100"
-                    android:clickable="true"
-                    android:ellipsize="marquee"
-                    android:focusable="true"
-                    android:focusableInTouchMode="true"
                     android:gravity="center"
                     android:lines="1"
                     android:textColor="@color/toolbar_tv"
-                    android:textSize="@dimen/text_size_20" />
+                    android:layout_marginLeft="@dimen/space_100"
+                    android:layout_marginRight="@dimen/space_100"
+                    android:textSize="@dimen/text_size_20"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true" />
 
                 <TextView
+                    android:layout_marginRight="@dimen/space_5"
                     android:id="@+id/right_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
                     android:layout_gravity="right"
-                    android:layout_marginRight="@dimen/space_5"
-                    android:background="@drawable/shape_toolbar_tv"
                     android:gravity="center"
+                    android:textColor="@color/toolbar_back"
+                    android:background="@drawable/shape_toolbar_tv"
                     android:padding="@dimen/space_5"
-                    android:textColor="@color/toolbar_back" />
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true" />
 
 
             </RelativeLayout>
 
         </android.support.v7.widget.Toolbar>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/space_4"
-            android:background="@drawable/shape_shadow_top"
-            android:paddingBottom="@dimen/neg_space_4" />
 
     </android.support.design.widget.AppBarLayout>
 </merge>

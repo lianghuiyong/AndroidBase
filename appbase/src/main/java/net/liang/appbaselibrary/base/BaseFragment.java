@@ -49,6 +49,7 @@ public abstract class BaseFragment extends Fragment implements BaseViewInterface
 
         ButterKnife.bind(this, getView());
 
+        initRecyclerView();
         init();
         initTabs();
     }
@@ -66,6 +67,11 @@ public abstract class BaseFragment extends Fragment implements BaseViewInterface
 
     @Override
     public void init() {
+
+    }
+
+    @Override
+    public void initRecyclerView() {
 
     }
 

@@ -8,5 +8,6 @@ package net.liang.appbaselibrary.base;
 public interface BaseViewInterface {
     void init();
 
+    void initRecyclerView();
     void initTabs();
 }

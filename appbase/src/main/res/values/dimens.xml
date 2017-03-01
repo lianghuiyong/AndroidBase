@@ -715,4 +715,14 @@
     <dimen name="space_0.2">0.2dp</dimen>
     <dimen name="space_0.1">0.1dp</dimen>
     <dimen name="space_0">0dp</dimen>
+
+    <dimen name="neg_space_9">-9.0dp</dimen>
+    <dimen name="neg_space_8">-8.0dp</dimen>
+    <dimen name="neg_space_7">-7.0dp</dimen>
+    <dimen name="neg_space_6">-6.0dp</dimen>
+    <dimen name="neg_space_5">-5.0dp</dimen>
+    <dimen name="neg_space_4">-4.0dp</dimen>
+    <dimen name="neg_space_3">-3.0dp</dimen>
+    <dimen name="neg_space_2">-2.0dp</dimen>
+    <dimen name="neg_space_1">-1.0dp</dimen>
 </resources>

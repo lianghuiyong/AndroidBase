@@ -29,7 +29,7 @@ public abstract class BaseRecyclerViewActivity<T> extends BaseAppCompatActivity 
     private BaseRecyclerViewContract.Presenter recyclerPresenter;
 
     @Override
-    public void init() {
+    public void initRecyclerView() {
         recyclerPresenter = new BaseRecyclerViewPresenter(this,
                 new RecyclerDataRepository(this, LocalRecyclerDataSource.getInstance()));
 

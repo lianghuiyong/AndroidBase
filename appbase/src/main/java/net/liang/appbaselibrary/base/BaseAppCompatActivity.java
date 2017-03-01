@@ -51,6 +51,7 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
         ButterKnife.bind(this, getView());
         EventBus.getDefault().register(this);
 
+        initRecyclerView();
         init();
         initTabs();
     }
@@ -97,6 +98,11 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
 
     @Override
     public void init() {
+
+    }
+
+    @Override
+    public void initRecyclerView() {
 
     }
 
