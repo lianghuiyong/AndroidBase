@@ -50,8 +50,8 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="right"
                 android:background="?attr/selectableItemBackgroundBorderless"
-                android:paddingRight="@dimen/space_16"
-                android:paddingLeft="@dimen/space_16" />
+                android:paddingRight="@dimen/space_13"
+                android:paddingLeft="@dimen/space_13" />
         </android.support.v7.widget.Toolbar>
 
         <View

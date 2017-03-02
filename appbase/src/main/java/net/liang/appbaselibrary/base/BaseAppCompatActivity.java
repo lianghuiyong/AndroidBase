@@ -83,6 +83,12 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
         SkinManager.getInstance().unregister(this);
     }
 
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        //解决fragment里getActivity为null问题
+        //super.onSaveInstanceState(outState);
+    }
+
     protected ViewDataBinding getBinding() {
         return binding;
     }
