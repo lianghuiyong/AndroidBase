@@ -81,8 +81,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/space_4"
-            android:background="@drawable/shape_shadow_top"
-            android:paddingBottom="@dimen/neg_space_4" />
+            android:background="@drawable/shape_shadow_top" />
 
     </android.support.design.widget.AppBarLayout>
 </merge>
