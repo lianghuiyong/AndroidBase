@@ -12,7 +12,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.zhy.changeskin.SkinManager;
+
+import com.dino.changeskin.SkinManager;
 
 import net.liang.appbaselibrary.AppManager;
 import net.liang.appbaselibrary.R;

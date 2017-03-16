@@ -3,12 +3,15 @@
 
     <data/>
 
-    <FrameLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include layout="@layout/toolbar_center_tv"/>
 
         <include layout="@layout/layout_recyclerview"/>
 
-    </FrameLayout>
+    </LinearLayout>
 
 </layout>
