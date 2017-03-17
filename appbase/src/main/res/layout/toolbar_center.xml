@@ -34,7 +34,8 @@
                 android:paddingLeft="@dimen/space_16"
                 android:clickable="true"
                 android:background="?attr/selectableItemBackgroundBorderless"
-                app:srcCompat = "@drawable/ic_toolbar_back"
+                android:src="@mipmap/toolbar_back"
+                android:tag="skin:toolbar_back:src"
                 android:visibility="gone"/>
 
             <TextView
@@ -43,6 +44,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:textColor="@color/toolbar_tv"
+                android:tag="skin:toolbar_tv:textColor"
                 android:textSize="@dimen/text_size_20"/>
         </android.support.v7.widget.Toolbar>
 

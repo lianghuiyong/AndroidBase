@@ -39,7 +39,8 @@
                     android:paddingLeft="@dimen/space_16"
                     android:paddingRight="@dimen/space_16"
                     android:visibility="visible"
-                    app:srcCompat="@drawable/ic_toolbar_back" />
+                    android:src="@mipmap/toolbar_back"
+                    android:tag="skin:toolbar_back:src"/>
 
                 <TextView
                     android:id="@+id/title"
@@ -71,7 +72,8 @@
                     android:background="@drawable/shape_toolbar_tv"
                     android:gravity="center"
                     android:padding="@dimen/space_5"
-                    android:textColor="@color/toolbar_back" />
+                    android:textColor="@color/toolbar_back"
+                    android:tag="skin:toolbar_back:textColor|skin:shape_toolbar_tv:background"/>
 
 
             </RelativeLayout>
