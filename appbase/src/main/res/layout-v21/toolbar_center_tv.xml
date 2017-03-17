@@ -38,7 +38,8 @@
                     android:paddingLeft="@dimen/space_16"
                     android:clickable="true"
                     android:background="?attr/selectableItemBackgroundBorderless"
-                    app:srcCompat="@drawable/ic_toolbar_back"
+                    android:src="@mipmap/toolbar_back"
+                    android:tag="skin:toolbar_back:src"
                     android:visibility="visible"/>
 
                 <TextView
@@ -52,6 +53,7 @@
                     android:gravity="center"
                     android:lines="1"
                     android:textColor="@color/toolbar_tv"
+                    android:tag="skin:toolbar_tv:textColor"
                     android:layout_marginLeft="@dimen/space_100"
                     android:layout_marginRight="@dimen/space_100"
                     android:textSize="@dimen/text_size_20"
@@ -71,7 +73,8 @@
                     android:padding="@dimen/space_5"
                     android:layout_centerVertical="true"
                     android:layout_alignParentRight="true"
-                    android:layout_alignParentEnd="true" />
+                    android:layout_alignParentEnd="true"
+                    android:tag="skin:toolbar_back:textColor|skin:shape_toolbar_tv:background"/>
 
 
             </RelativeLayout>

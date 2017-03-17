@@ -58,6 +58,7 @@
                     android:gravity="center"
                     android:lines="1"
                     android:textColor="@color/toolbar_tv"
+                    android:tag="skin:toolbar_tv:textColor"
                     android:textSize="@dimen/text_size_20" />
 
                 <TextView
