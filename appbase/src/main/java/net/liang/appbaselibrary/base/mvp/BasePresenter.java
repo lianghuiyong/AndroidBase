@@ -24,4 +24,13 @@ public class BasePresenter implements MvpPresenter {
             disposables.clear();
         }
     }
+
+    /**
+     * 为测试而写的方法，无需做任何操作
+     * @return
+     */
+    public static BasePresenter getInstance(){
+        return null;
+    }
+
 }
