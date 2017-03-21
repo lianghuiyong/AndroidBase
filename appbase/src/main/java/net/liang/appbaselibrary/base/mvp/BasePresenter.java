@@ -29,7 +29,7 @@ public class BasePresenter implements MvpPresenter {
      * 为测试而写的方法，无需做任何操作
      * @return
      */
-    public static BasePresenter getInstance(){
+    public static Object getInstance(){
         return null;
     }
 
