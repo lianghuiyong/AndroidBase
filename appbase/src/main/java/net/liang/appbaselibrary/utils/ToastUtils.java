@@ -1,5 +1,7 @@
 package net.liang.appbaselibrary.utils;
 
+import android.annotation.SuppressLint;
+import android.app.Application;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -8,6 +10,8 @@ import android.util.TypedValue;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.socks.library.KLog;
 
 import net.liang.appbaselibrary.R;
 
@@ -18,6 +22,19 @@ import es.dmoral.toasty.Toasty;
  */
 
 public class ToastUtils {
+    //单例实现
+    private Application application;
+
+    @SuppressLint("StaticFieldLeak")
+    private static ToastUtils instances;
+
+    private ToastUtils(Application application) {
+        this.application = application;
+    }
+
+    public static void init(Application application) {
+        instances = new ToastUtils(application);
+    }
 
     public static void showSnackbar(View view, String s) {
         TypedValue typedValue = new TypedValue();
@@ -30,15 +47,32 @@ public class ToastUtils {
         sb.show();
     }
 
-    public static void showToast(Context context, String string) {
-        Toasty.normal(context, string).show();
+    public static void showToast(String string) {
+        if (instances == null) {
+            KLog.e("ToastUtils instances is null, you need call init() method.");
+            return;
+        }
+
+        Toasty.normal(instances.application, string).show();
     }
 
-    public static void showErrorToast(Context context, String string) {
-        Toasty.error(context, string, Toast.LENGTH_SHORT, true).show();
+    public static void showErrorToast( String string) {
+
+        if (instances == null) {
+            KLog.e("ToastUtils instances is null, you need call init() method.");
+            return;
+        }
+
+        Toasty.error(instances.application, string, Toast.LENGTH_SHORT, true).show();
     }
 
-    public static void showSuccessToast(Context context, String string) {
-        Toasty.success(context, string, Toast.LENGTH_SHORT, true).show();
+    public static void showSuccessToast(String string) {
+
+        if (instances == null) {
+            KLog.e("ToastUtils instances is null, you need call init() method.");
+            return;
+        }
+
+        Toasty.success(instances.application, string, Toast.LENGTH_SHORT, true).show();
     }
 }

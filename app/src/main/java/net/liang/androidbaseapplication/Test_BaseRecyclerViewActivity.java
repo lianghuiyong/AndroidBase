@@ -39,7 +39,7 @@ public class Test_BaseRecyclerViewActivity extends BaseRecyclerViewActivity<List
                 super.onItemClick(adapter, view, position);
                 String string = (String) baseQuickAdapter.getData().get(position);
                 ToastUtils.showSnackbar(getView(), string);
-                ToastUtils.showToast(Test_BaseRecyclerViewActivity.this, string);
+                ToastUtils.showToast(string);
             }
 
             @Override

@@ -130,7 +130,7 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
 
     @Override
     public void showToast(String toast) {
-        ToastUtils.showToast(this, toast);
+        ToastUtils.showToast(toast);
     }
 
     public void setToolbar(Boolean hasBackHome) {

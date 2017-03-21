@@ -9,6 +9,7 @@ import android.widget.EditText;
 
 import net.liang.appbaselibrary.base.BaseAppCompatActivity;
 import net.liang.appbaselibrary.base.mvp.MvpPresenter;
+import net.liang.appbaselibrary.utils.ToastUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -41,6 +42,10 @@ public class MainActivity extends BaseAppCompatActivity {
                 return true;
             }
         });
+
+        ToastUtils.showSuccessToast("Success");
+        ToastUtils.showErrorToast("Error");
+        ToastUtils.showToast("Toast");
     }
 
     @OnClick({R.id.baseRecyclerViewActivity, R.id.baseRecyclerViewFragment, R.id.edit})

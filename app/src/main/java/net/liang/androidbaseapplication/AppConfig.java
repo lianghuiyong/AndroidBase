@@ -4,6 +4,8 @@ import android.app.Application;
 
 import com.squareup.leakcanary.LeakCanary;
 
+import net.liang.appbaselibrary.utils.ToastUtils;
+
 /**
  * Created by lenovo on 2017/1/3.
  */
@@ -25,5 +27,7 @@ public class AppConfig extends Application{
             }
             LeakCanary.install(this);
         }
+
+        ToastUtils.init(this);
     }
 }

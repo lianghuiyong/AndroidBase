@@ -33,7 +33,7 @@ public class ImageLoadUtils {
     public static void loadImage(Object image, ImageView imageView, int defultImage) {
         Glide.with(imageView.getContext())
                 .load(image)
-                .error(defultImage)
+                .placeholder(defultImage)
                 .crossFade()
                 .into(imageView);
     }
@@ -53,7 +53,7 @@ public class ImageLoadUtils {
         Glide.with(imageView.getContext())
                 .load(image)
                 .bitmapTransform(new CropCircleTransformation(imageView.getContext()))
-                .error(defultImage)
+                .placeholder(defultImage)
                 .crossFade()
                 .into(imageView);
     }
@@ -68,7 +68,7 @@ public class ImageLoadUtils {
         Glide.with(imageView.getContext())
                 .load(image)
                 .bitmapTransform(new CropCircleTransformation(imageView.getContext()))
-                .error(defultImage)
+                .placeholder(defultImage)
                 .skipMemoryCache(true)
                 .diskCacheStrategy(DiskCacheStrategy.NONE)
                 .crossFade()
@@ -89,7 +89,7 @@ public class ImageLoadUtils {
         Glide.with(imageView.getContext())
                 .load(image)
                 .bitmapTransform(new BlurTransformation(imageView.getContext(), 25))
-                .error(defultImageID)
+                .placeholder(defultImageID)
                 .crossFade()
                 .into(imageView);
     }
@@ -109,7 +109,7 @@ public class ImageLoadUtils {
                 .load(image)
                 .bitmapTransform(new BlurTransformation(imageView.getContext(), 25),
                         new CropCircleTransformation(imageView.getContext()))
-                .error(defultImageID)
+                .placeholder(defultImageID)
                 .crossFade()
                 .into(imageView);
     }
@@ -129,7 +129,7 @@ public class ImageLoadUtils {
         Glide.with(imageView.getContext())
                 .load(image)
                 .bitmapTransform(new RoundedCornersTransformation(imageView.getContext(), 15, 0, RoundedCornersTransformation.CornerType.ALL))
-                .error(defultImage)
+                .placeholder(defultImage)
                 .crossFade()
                 .into(imageView);
     }
@@ -147,7 +147,7 @@ public class ImageLoadUtils {
         Glide.with(imageView.getContext())
                 .load(image)
                 .bitmapTransform(new RoundedCornersTransformation(imageView.getContext(), 15, 0, RoundedCornersTransformation.CornerType.ALL))
-                .error(defultImage)
+                .placeholder(defultImage)
                 .skipMemoryCache(true)
                 .diskCacheStrategy(DiskCacheStrategy.NONE)
                 .crossFade()
