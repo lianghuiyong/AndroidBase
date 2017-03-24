@@ -4,19 +4,21 @@ package net.liang.appbaselibrary.utils;
  * Created by lenovo on 2017/1/9.
  */
 
+import android.annotation.SuppressLint;
+import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.annotation.Nullable;
 
+import com.socks.library.KLog;
+
 import java.util.Map;
 
 /**
- * <pre>
- *     author: Blankj
- *     blog  : http://blankj.com
- *     time  : 2016/8/2
- *     desc  : SP相关工具类
- * </pre>
+ * author: 梁惠涌
+ * desc  : SP相关工具类
+ * <p>
+ * desc  : SP相关工具类
  */
 public class SPUtils {
 
@@ -24,24 +26,24 @@ public class SPUtils {
     private SharedPreferences.Editor editor;
     private String name = "APP_SP_File.db";
 
-    @Nullable
-    private static SPUtils INSTANCE;
-
-    public static  SPUtils getInstance(Context context) {
-        if (INSTANCE == null) {
-            INSTANCE = new SPUtils(context);
-        }
-        return INSTANCE;
-    }
+    private Application application;
+    @SuppressLint("StaticFieldLeak")
+    private static SPUtils instances;
 
     /**
      * SPUtils构造函数
-     * @param context  context
+     *
+     * @param application
      */
-    public SPUtils(Context context) {
-        sp = context.getSharedPreferences(name, Context.MODE_PRIVATE);
+    private SPUtils(Application application) {
+        this.application = application;
+        sp = this.application.getSharedPreferences(name, Context.MODE_PRIVATE);
         editor = sp.edit();
         editor.apply();
+    }
+
+    public static void init(Application application) {
+        instances = new SPUtils(application);
     }
 
     /**
@@ -51,7 +53,11 @@ public class SPUtils {
      * @param value 值
      */
     public void putString(String key, String value) {
-        editor.putString(key, value).apply();
+        if (instances == null) {
+            KLog.e("SPUtils instances is null, you need call init() method.");
+            return;
+        }
+        instances.editor.putString(key, value).apply();
     }
 
     /**
@@ -72,7 +78,11 @@ public class SPUtils {
      * @return 存在返回对应值，不存在返回默认值{@code defaultValue}
      */
     public String getString(String key, String defaultValue) {
-        return sp.getString(key, defaultValue);
+        if (instances == null) {
+            KLog.e("SPUtils instances is null, you need call init() method.");
+            return defaultValue;
+        }
+        return instances.sp.getString(key, defaultValue);
     }
 
     /**
@@ -82,7 +92,11 @@ public class SPUtils {
      * @param value 值
      */
     public void putInt(String key, int value) {
-        editor.putInt(key, value).apply();
+        if (instances == null) {
+            KLog.e("SPUtils instances is null, you need call init() method.");
+            return;
+        }
+        instances.editor.putInt(key, value).apply();
     }
 
     /**
@@ -103,7 +117,11 @@ public class SPUtils {
      * @return 存在返回对应值，不存在返回默认值{@code defaultValue}
      */
     public int getInt(String key, int defaultValue) {
-        return sp.getInt(key, defaultValue);
+        if (instances == null) {
+            KLog.e("SPUtils instances is null, you need call init() method.");
+            return defaultValue;
+        }
+        return instances.sp.getInt(key, defaultValue);
     }
 
     /**
@@ -113,7 +131,11 @@ public class SPUtils {
      * @param value 值
      */
     public void putLong(String key, long value) {
-        editor.putLong(key, value).apply();
+        if (instances == null) {
+            KLog.e("SPUtils instances is null, you need call init() method.");
+            return;
+        }
+        instances.editor.putLong(key, value).apply();
     }
 
     /**
@@ -134,7 +156,11 @@ public class SPUtils {
      * @return 存在返回对应值，不存在返回默认值{@code defaultValue}
      */
     public long getLong(String key, long defaultValue) {
-        return sp.getLong(key, defaultValue);
+        if (instances == null) {
+            KLog.e("SPUtils instances is null, you need call init() method.");
+            return defaultValue;
+        }
+        return instances.sp.getLong(key, defaultValue);
     }
 
     /**
@@ -144,7 +170,12 @@ public class SPUtils {
      * @param value 值
      */
     public void putFloat(String key, float value) {
-        editor.putFloat(key, value).apply();
+        if (instances == null) {
+            KLog.e("SPUtils instances is null, you need call init() method.");
+            return;
+        }
+
+        instances.editor.putFloat(key, value).apply();
     }
 
     /**
@@ -165,7 +196,11 @@ public class SPUtils {
      * @return 存在返回对应值，不存在返回默认值{@code defaultValue}
      */
     public float getFloat(String key, float defaultValue) {
-        return sp.getFloat(key, defaultValue);
+        if (instances == null) {
+            KLog.e("SPUtils instances is null, you need call init() method.");
+            return defaultValue;
+        }
+        return instances.sp.getFloat(key, defaultValue);
     }
 
     /**
@@ -175,7 +210,11 @@ public class SPUtils {
      * @param value 值
      */
     public void putBoolean(String key, boolean value) {
-        editor.putBoolean(key, value).apply();
+        if (instances == null) {
+            KLog.e("SPUtils instances is null, you need call init() method.");
+            return;
+        }
+        instances.editor.putBoolean(key, value).apply();
     }
 
     /**
@@ -196,7 +235,11 @@ public class SPUtils {
      * @return 存在返回对应值，不存在返回默认值{@code defaultValue}
      */
     public boolean getBoolean(String key, boolean defaultValue) {
-        return sp.getBoolean(key, defaultValue);
+        if (instances == null) {
+            KLog.e("SPUtils instances is null, you need call init() method.");
+            return defaultValue;
+        }
+        return instances.sp.getBoolean(key, defaultValue);
     }
 
     /**
@@ -205,7 +248,11 @@ public class SPUtils {
      * @return Map对象
      */
     public Map<String, ?> getAll() {
-        return sp.getAll();
+        if (instances == null) {
+            KLog.e("SPUtils instances is null, you need call init() method.");
+            return null;
+        }
+        return instances.sp.getAll();
     }
 
     /**
@@ -214,7 +261,11 @@ public class SPUtils {
      * @param key 键
      */
     public void remove(String key) {
-        editor.remove(key).apply();
+        if (instances == null) {
+            KLog.e("SPUtils instances is null, you need call init() method.");
+            return;
+        }
+        instances.editor.remove(key).apply();
     }
 
     /**
@@ -224,13 +275,22 @@ public class SPUtils {
      * @return {@code true}: 存在<br>{@code false}: 不存在
      */
     public boolean contains(String key) {
-        return sp.contains(key);
+        if (instances == null) {
+            KLog.e("SPUtils instances is null, you need call init() method.");
+            return false;
+        }
+        return instances.sp.contains(key);
     }
 
     /**
      * SP中清除所有数据
      */
     public void clear() {
-        editor.clear().apply();
+        if (instances == null) {
+            KLog.e("SPUtils instances is null, you need call init() method.");
+            return;
+        }
+
+        instances.editor.clear().apply();
     }
 }
