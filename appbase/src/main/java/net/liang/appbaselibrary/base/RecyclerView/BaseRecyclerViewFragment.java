@@ -88,4 +88,8 @@ public abstract class BaseRecyclerViewFragment<T> extends BaseFragment implement
         adapter.showNetWorkErrorView();
     }
 
+    @Override
+    public void onListError(Throwable error) {
+
+    }
 }

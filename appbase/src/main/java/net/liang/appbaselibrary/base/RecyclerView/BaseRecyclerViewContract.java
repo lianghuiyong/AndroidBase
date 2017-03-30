@@ -18,6 +18,8 @@ public class BaseRecyclerViewContract {
 
         void onListSuccess(T t, int pageNo);
 
+        void onListError(Throwable error);
+
         BaseRecyclerAdapter addListAdapter();
     }
 

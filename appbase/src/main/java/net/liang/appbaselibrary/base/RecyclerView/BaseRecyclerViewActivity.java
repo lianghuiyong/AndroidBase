@@ -70,6 +70,11 @@ public abstract class BaseRecyclerViewActivity<T> extends BaseAppCompatActivity 
     }
 
     @Override
+    public void onListError(Throwable error) {
+
+    }
+
+    @Override
     public void onPause() {
         super.onPause();
         recyclerPresenter.unSubscribe();

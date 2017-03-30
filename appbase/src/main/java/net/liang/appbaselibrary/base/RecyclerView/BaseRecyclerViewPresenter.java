@@ -10,6 +10,8 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.observers.DisposableObserver;
 import io.reactivex.schedulers.Schedulers;
 
+import static net.liang.appbaselibrary.bean.ResponseCode.NODATA;
+
 /**
  * Created by lianghuiyong@outlook.com
  * Date on 2016/11/25
@@ -73,6 +75,8 @@ public class BaseRecyclerViewPresenter<T> extends BasePresenter implements BaseR
                         if (getListPageNo() == 1){
                             view.showNetworkFail("网络错误");
                         }
+
+                        view.onListError(e);
                     }
 
                     @Override
