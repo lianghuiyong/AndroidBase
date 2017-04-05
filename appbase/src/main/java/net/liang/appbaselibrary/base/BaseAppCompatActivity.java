@@ -14,11 +14,14 @@ import android.widget.TextView;
 
 
 import com.dino.changeskin.SkinManager;
+import com.socks.library.KLog;
 
 import net.liang.appbaselibrary.AppManager;
+import net.liang.appbaselibrary.NetWorkStateReceiver;
 import net.liang.appbaselibrary.R;
 import net.liang.appbaselibrary.base.mvp.MvpPresenter;
 import net.liang.appbaselibrary.base.mvp.MvpView;
+import net.liang.appbaselibrary.utils.NetworkUtils;
 import net.liang.appbaselibrary.utils.StringUtils;
 import net.liang.appbaselibrary.utils.ToastUtils;
 
@@ -38,6 +41,7 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
 
     private ViewDataBinding binding;
     protected Toolbar toolbar;
+    private TextView tv_netWorkInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,9 +56,14 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
         ButterKnife.bind(this, getView());
         EventBus.getDefault().register(this);
 
+        tv_netWorkInfo = (TextView) findViewById(R.id.tv_netWorkInfo);
+
         initRecyclerView();
         init();
         initTabs();
+
+        //初始化网络状态
+        initNetWorkInfo(NetworkUtils.isConnected(this));
     }
 
     @Override
@@ -84,11 +93,11 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
         SkinManager.getInstance().unregister(this);
     }
 
-    @Override
+/*    @Override
     protected void onSaveInstanceState(Bundle outState) {
         //解决fragment里getActivity为null问题
         //super.onSaveInstanceState(outState);
-    }
+    }*/
 
     protected ViewDataBinding getBinding() {
         return binding;
@@ -96,11 +105,6 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
 
     public View getView() {
         return binding.getRoot();
-    }
-
-    @Subscribe
-    public void onEvent(String string) {
-
     }
 
     @Override
@@ -294,4 +298,26 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
         }
         startActivity(intent);
     }
+
+    //网络状态监听
+    @Subscribe
+    public void onEvent(NetWorkStateReceiver.NetWorkState state) {
+
+            switch (state){
+                case CONNECTED:
+                    initNetWorkInfo(true);
+                    break;
+
+                case DISCONNECTED:
+                    initNetWorkInfo(false);
+                    break;
+            }
+    }
+
+    private void initNetWorkInfo(boolean isConnect){
+        if (tv_netWorkInfo != null){
+            tv_netWorkInfo.setVisibility(isConnect? View.GONE:View.VISIBLE);
+        }
+    }
+
 }

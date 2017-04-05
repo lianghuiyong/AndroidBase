@@ -1,65 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <!--
-    阴影控制
-    app:elevation="@dimen/space_0"
-    -->
-    <android.support.design.widget.AppBarLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:colorControlNormal="@android:color/black">
+        android:orientation="vertical">
 
         <!--
-            app:layout_scrollFlags="scroll|snap|enterAlways"
-            scroll单独使用，会出现toolbar停留在动画中间的效果，不是很好
-            配合snap使用可以解决这个问题-->
-
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
+        阴影控制
+        app:elevation="@dimen/space_0"
+        -->
+        <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/space_56"
-            android:layout_gravity="center"
-            app:contentInsetStart="@dimen/space_0"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+            android:layout_height="wrap_content"
+            app:colorControlNormal="@android:color/black">
 
-            <ImageView
-                android:id="@+id/toolbar_back"
-                android:layout_width="@dimen/space_60"
-                android:layout_height="match_parent"
-                android:paddingRight="@dimen/space_16"
-                android:paddingLeft="@dimen/space_16"
-                android:clickable="true"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:src="@mipmap/toolbar_back"
-                android:tag="skin:toolbar_back:src"
-                android:visibility="gone" />
+            <!--
+                app:layout_scrollFlags="scroll|snap|enterAlways"
+                scroll单独使用，会出现toolbar停留在动画中间的效果，不是很好
+                配合snap使用可以解决这个问题-->
 
-            <TextView
-                android:id="@+id/title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/space_56"
                 android:layout_gravity="center"
-                android:textColor="@color/toolbar_tv"
-                android:tag="skin:toolbar_tv:textColor"
-                android:textSize="@dimen/text_size_20"/>
+                app:contentInsetStart="@dimen/space_0"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
-            <ImageView
-                android:id="@+id/image"
-                android:layout_width="@dimen/space_45"
-                android:layout_height="match_parent"
-                android:layout_gravity="right"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:paddingRight="@dimen/space_13"
-                android:paddingLeft="@dimen/space_13" />
-        </android.support.v7.widget.Toolbar>
+                <ImageView
+                    android:id="@+id/toolbar_back"
+                    android:layout_width="@dimen/space_60"
+                    android:layout_height="match_parent"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:clickable="true"
+                    android:paddingLeft="@dimen/space_16"
+                    android:paddingRight="@dimen/space_16"
+                    android:src="@mipmap/toolbar_back"
+                    android:tag="skin:toolbar_back:src"
+                    android:visibility="gone" />
 
-        <View
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:tag="skin:toolbar_tv:textColor"
+                    android:textColor="@color/toolbar_tv"
+                    android:textSize="@dimen/text_size_20" />
+
+                <ImageView
+                    android:id="@+id/image"
+                    android:layout_width="@dimen/space_45"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:paddingLeft="@dimen/space_13"
+                    android:paddingRight="@dimen/space_13" />
+            </android.support.v7.widget.Toolbar>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/space_4"
+                android:background="@drawable/shape_shadow_top" />
+
+        </android.support.design.widget.AppBarLayout>
+
+        <TextView
+            android:id="@+id/tv_netWorkInfo"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/space_4"
-            android:background="@drawable/shape_shadow_top" />
-
-    </android.support.design.widget.AppBarLayout>
+            android:layout_height="@dimen/space_40"
+            android:background="#FFDCDC"
+            android:gravity="center"
+            android:text="网咯不给力，请检查网络设置。"
+            android:visibility="gone" />
+    </LinearLayout>
 </merge>

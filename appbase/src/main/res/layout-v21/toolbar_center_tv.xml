@@ -1,85 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
-    <!--
-    阴影控制
-    app:elevation="@dimen/space_0"
-    -->
-    <android.support.design.widget.AppBarLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:colorControlNormal="@android:color/black">
-
+        android:orientation="vertical">
         <!--
-            app:layout_scrollFlags="scroll|snap|enterAlways"
-            scroll单独使用，会出现toolbar停留在动画中间的效果，不是很好
-            配合snap使用可以解决这个问题-->
-
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
+            阴影控制
+            app:elevation="@dimen/space_0"
+            -->
+        <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/space_56"
-            android:layout_gravity="center"
-            app:contentInsetStart="@dimen/space_0"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+            android:layout_height="wrap_content"
+            app:colorControlNormal="@android:color/black">
 
-            <RelativeLayout
+            <!--
+                app:layout_scrollFlags="scroll|snap|enterAlways"
+                scroll单独使用，会出现toolbar停留在动画中间的效果，不是很好
+                配合snap使用可以解决这个问题-->
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="@dimen/space_56"
+                android:layout_gravity="center"
+                app:contentInsetStart="@dimen/space_0"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
-                <ImageView
-                    android:id="@+id/toolbar_back"
-                    android:layout_width="@dimen/space_60"
-                    android:layout_height="match_parent"
-                    android:paddingRight="@dimen/space_16"
-                    android:paddingLeft="@dimen/space_16"
-                    android:clickable="true"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    android:src="@mipmap/toolbar_back"
-                    android:tag="skin:toolbar_back:src"
-                    android:visibility="visible"/>
-
-                <TextView
-                    android:ellipsize="marquee"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:focusableInTouchMode="true"
-                    android:id="@+id/title"
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:lines="1"
-                    android:textColor="@color/toolbar_tv"
-                    android:tag="skin:toolbar_tv:textColor"
-                    android:layout_marginLeft="@dimen/space_100"
-                    android:layout_marginRight="@dimen/space_100"
-                    android:textSize="@dimen/text_size_20"
-                    android:layout_centerVertical="true"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true" />
+                    android:layout_height="match_parent">
 
-                <TextView
-                    android:layout_marginRight="@dimen/space_5"
-                    android:id="@+id/right_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="right"
-                    android:gravity="center"
-                    android:textColor="@color/toolbar_back"
-                    android:background="@drawable/shape_toolbar_tv"
-                    android:padding="@dimen/space_5"
-                    android:layout_centerVertical="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentEnd="true"
-                    android:tag="skin:toolbar_back:textColor|skin:shape_toolbar_tv:background"/>
+                    <ImageView
+                        android:id="@+id/toolbar_back"
+                        android:layout_width="@dimen/space_60"
+                        android:layout_height="match_parent"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:clickable="true"
+                        android:paddingLeft="@dimen/space_16"
+                        android:paddingRight="@dimen/space_16"
+                        android:src="@mipmap/toolbar_back"
+                        android:tag="skin:toolbar_back:src"
+                        android:visibility="visible" />
 
+                    <TextView
+                        android:id="@+id/title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/space_100"
+                        android:layout_marginRight="@dimen/space_100"
+                        android:clickable="true"
+                        android:ellipsize="marquee"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:gravity="center"
+                        android:lines="1"
+                        android:tag="skin:toolbar_tv:textColor"
+                        android:textColor="@color/toolbar_tv"
+                        android:textSize="@dimen/text_size_20" />
 
-            </RelativeLayout>
+                    <TextView
+                        android:id="@+id/right_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="right"
+                        android:layout_marginRight="@dimen/space_5"
+                        android:background="@drawable/shape_toolbar_tv"
+                        android:gravity="center"
+                        android:padding="@dimen/space_5"
+                        android:tag="skin:toolbar_back:textColor|skin:shape_toolbar_tv:background"
+                        android:textColor="@color/toolbar_back" />
+                </RelativeLayout>
+            </android.support.v7.widget.Toolbar>
+        </android.support.design.widget.AppBarLayout>
 
-        </android.support.v7.widget.Toolbar>
+        <TextView
+            android:id="@+id/tv_netWorkInfo"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space_40"
+            android:background="#FFDCDC"
+            android:text="网咯不给力，请检查网络设置。"
+            android:gravity="center"
+            android:visibility="gone"/>
+    </LinearLayout>
 
-    </android.support.design.widget.AppBarLayout>
 </merge>
