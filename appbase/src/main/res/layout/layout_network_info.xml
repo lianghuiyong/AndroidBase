@@ -2,6 +2,7 @@
 <merge xmlns:android="http://schemas.android.com/apk/res/android">
 
     <LinearLayout
+        android:id="@+id/tv_netWorkInfo"
         android:layout_width="match_parent"
         android:layout_height="@dimen/space_45"
         android:background="#FFDCDC"
@@ -15,7 +16,6 @@
             android:src="@mipmap/base_img_plaint"/>
 
         <TextView
-            android:id="@+id/tv_netWorkInfo"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="网咯不给力，请检查网络设置。"
