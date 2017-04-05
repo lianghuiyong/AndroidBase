@@ -41,7 +41,7 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
 
     private ViewDataBinding binding;
     protected Toolbar toolbar;
-    private TextView tv_netWorkInfo;
+    private View view_netInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +56,7 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
         ButterKnife.bind(this, getView());
         EventBus.getDefault().register(this);
 
-        tv_netWorkInfo = (TextView) findViewById(R.id.tv_netWorkInfo);
+        view_netInfo = findViewById(R.id.tv_netWorkInfo);
 
         initRecyclerView();
         init();
@@ -315,8 +315,8 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
     }
 
     private void initNetWorkInfo(boolean isConnect){
-        if (tv_netWorkInfo != null){
-            tv_netWorkInfo.setVisibility(isConnect? View.GONE:View.VISIBLE);
+        if (view_netInfo != null){
+            view_netInfo.setVisibility(isConnect? View.GONE:View.VISIBLE);
         }
     }
 

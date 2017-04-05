@@ -68,13 +68,6 @@
 
         </android.support.design.widget.AppBarLayout>
 
-        <TextView
-            android:id="@+id/tv_netWorkInfo"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/space_40"
-            android:background="#FFDCDC"
-            android:gravity="center"
-            android:text="网咯不给力，请检查网络设置。"
-            android:visibility="gone" />
+        <include layout="@layout/layout_network_info"/>
     </LinearLayout>
 </merge>
