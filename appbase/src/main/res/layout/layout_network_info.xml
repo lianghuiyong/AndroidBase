@@ -2,11 +2,9 @@
 <merge xmlns:android="http://schemas.android.com/apk/res/android">
 
     <LinearLayout
-        android:id="@+id/tv_netWorkInfo"
         android:layout_width="match_parent"
         android:layout_height="@dimen/space_45"
-        android:background="#FFDCDC"
-        android:visibility="gone">
+        android:background="#FFDCDC">
 
         <ImageView
             android:padding="@dimen/space_8"

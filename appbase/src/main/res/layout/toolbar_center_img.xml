@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
         <!--
         阴影控制
@@ -15,6 +9,7 @@
         <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:elevation="@dimen/space_0"
             app:colorControlNormal="@android:color/black">
 
             <!--
@@ -61,13 +56,16 @@
                     android:paddingRight="@dimen/space_13" />
             </android.support.v7.widget.Toolbar>
 
-            <View
+            <net.liang.appbaselibrary.widget.ShadowViewTop
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/space_4"
-                android:background="@drawable/shape_shadow_top" />
+                android:layout_height="wrap_content"/>
+
+            <net.liang.appbaselibrary.widget.NetInfoView
+                android:id="@+id/tv_netWorkInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"/>
 
         </android.support.design.widget.AppBarLayout>
 
-        <include layout="@layout/layout_network_info"/>
-    </LinearLayout>
 </merge>

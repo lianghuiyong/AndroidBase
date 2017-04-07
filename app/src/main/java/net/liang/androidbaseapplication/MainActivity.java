@@ -1,12 +1,15 @@
 package net.liang.androidbaseapplication;
 
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
 
+import net.liang.appbaselibrary.NetWorkStateReceiver;
 import net.liang.appbaselibrary.base.BaseAppCompatActivity;
 import net.liang.appbaselibrary.base.mvp.MvpPresenter;
 import net.liang.appbaselibrary.utils.ToastUtils;
@@ -71,5 +74,14 @@ public class MainActivity extends BaseAppCompatActivity {
         super.onCreate(savedInstanceState);
         // TODO: add setContentView(...) invocation
         ButterKnife.bind(this);
+
+        startNetReciver();
+    }
+
+    //动态启动网络监听广播
+    private void startNetReciver(){
+        IntentFilter mFilter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        NetWorkStateReceiver mReceiver = new NetWorkStateReceiver();
+        registerReceiver(mReceiver, mFilter);
     }
 }

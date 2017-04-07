@@ -2,63 +2,60 @@
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <LinearLayout
+    <!--
+    阴影控制
+    app:elevation="@dimen/space_0"
+    -->
+
+    <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <!--
-        阴影控制
         app:elevation="@dimen/space_0"
-        -->
+        app:colorControlNormal="@android:color/black">
 
-        <android.support.design.widget.AppBarLayout
+        <!--
+            app:layout_scrollFlags="scroll|snap|enterAlways"
+            scroll单独使用，会出现toolbar停留在动画中间的效果，不是很好
+            配合snap使用可以解决这个问题-->
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space_56"
+            android:layout_gravity="center"
+            app:contentInsetStart="@dimen/space_0"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+            <ImageView
+                android:id="@+id/toolbar_back"
+                android:layout_width="@dimen/space_60"
+                android:layout_height="match_parent"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:paddingLeft="@dimen/space_16"
+                android:paddingRight="@dimen/space_16"
+                android:src="@mipmap/toolbar_back"
+                android:tag="skin:toolbar_back:src"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textColor="@color/toolbar_tv"
+                android:textSize="@dimen/text_size_20" />
+        </android.support.v7.widget.Toolbar>
+
+        <net.liang.appbaselibrary.widget.ShadowViewTop
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <net.liang.appbaselibrary.widget.NetInfoView
+            android:id="@+id/tv_netWorkInfo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:colorControlNormal="@android:color/black">
-
-            <!--
-                app:layout_scrollFlags="scroll|snap|enterAlways"
-                scroll单独使用，会出现toolbar停留在动画中间的效果，不是很好
-                配合snap使用可以解决这个问题-->
-
-            <android.support.v7.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/space_56"
-                android:layout_gravity="center"
-                app:contentInsetStart="@dimen/space_0"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
-
-                <ImageView
-                    android:id="@+id/toolbar_back"
-                    android:layout_width="@dimen/space_60"
-                    android:layout_height="match_parent"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    android:clickable="true"
-                    android:paddingLeft="@dimen/space_16"
-                    android:paddingRight="@dimen/space_16"
-                    android:src="@mipmap/toolbar_back"
-                    android:tag="skin:toolbar_back:src"
-                    android:visibility="gone" />
-
-                <TextView
-                    android:id="@+id/title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:tag="skin:toolbar_tv:textColor"
-                    android:textColor="@color/toolbar_tv"
-                    android:textSize="@dimen/text_size_20" />
-            </android.support.v7.widget.Toolbar>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/space_4"
-                android:background="@drawable/shape_shadow_top" />
-
-        </android.support.design.widget.AppBarLayout>
-
-        <include layout="@layout/layout_network_info"/>
-    </LinearLayout>
+            android:visibility="gone"/>
+    </android.support.design.widget.AppBarLayout>
 
 </merge>
