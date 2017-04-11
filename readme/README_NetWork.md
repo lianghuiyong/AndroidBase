@@ -20,6 +20,7 @@
 # 2、列表无网络提示
 
 1)列表Adapter需继承BaseRecyclerAdapter
+
 2)若页面继承于BaseRecyclerViewActivity或者BaseRecyclerViewFragment(使用方式：[一个好用的列表页面基类](./README_RecyclerView.md "一个好用的列表页面基类")),
 
 只需要网络失败的时候调用
