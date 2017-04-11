@@ -8,12 +8,6 @@
         NetWorkStateReceiver mReceiver = new NetWorkStateReceiver();
         registerReceiver(mReceiver, mFilter);
     }
-    
-## 效果
-
-![](http://oeqej1j2m.bkt.clouddn.com/appbase_net1.png)
-
-![](http://oeqej1j2m.bkt.clouddn.com/appbase_net2.png)
 
 ## 自定义ui
 
@@ -39,3 +33,11 @@
     
     2、在请求网络失败的地方调用
     adapter.showNetWorkErrorView();
+    
+## 效果
+
+![](http://oeqej1j2m.bkt.clouddn.com/appbase_net1.png)
+
+![](http://oeqej1j2m.bkt.clouddn.com/appbase_net2.png)
+
+![](http://oeqej1j2m.bkt.clouddn.com/appbase_net3.png)
