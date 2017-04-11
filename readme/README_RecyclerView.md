@@ -1,7 +1,7 @@
 # 一个好用的列表页面基类
 
-###1. 继承BaseRecyclerViewFragment<T>或者 BaseRecyclerViewActivity<T>, T是列表对象类型
-###2. XML文件，请引用
+### 1. 继承BaseRecyclerViewFragment<T>或者 BaseRecyclerViewActivity<T>, T是列表对象类型
+### 2. XML文件，请引用
 
 		<include layout="@layout/layout_recyclerview"/>
 
@@ -10,7 +10,7 @@
 		SwipeRefreshLayout使用@+id/swiperefresh，
 		RecyclerView使用@+id/recyclerView
 
-###3. 实现三个接口(示例：[Test_BaseRecyclerViewActivity.java](../app/src/main/java/net/liang/androidbaseapplication/Test_BaseRecyclerViewActivity.java "Test_BaseRecyclerViewActivity.java"))
+### 3. 实现三个接口(示例：[Test_BaseRecyclerViewActivity.java](../app/src/main/java/net/liang/androidbaseapplication/Test_BaseRecyclerViewActivity.java "Test_BaseRecyclerViewActivity.java"))
 >
 ```
      // 列表适配器

@@ -8,17 +8,17 @@
             enabled = true
         }
 
-###1.初始化方法
+### 1.初始化方法
     init()
 
-###2.已添加的使用支持
+### 2.已添加的使用支持
     EventBus3.0、ButterKnife、DataBinding、
     mvp架构getPresenter获取到了p句柄，页面关闭时会释放观察者（p对象需要继承BasePresenter）
 
-###3.获取页面View
+### 3.获取页面View
     showToast(s)
 
-###4.接口
+### 4.接口
 **1、getLayoutId()**
 ```
 @Override
@@ -31,12 +31,12 @@
     Mvp的P句柄，有则返回，无则返回null就行了
 ```
 
-###5.获取databinding
+### 5.获取databinding
     getBinding();
 
-###6.Toast
+### 6.Toast
     showToast(s)
 
-###7.设置标题栏
+### 7.设置标题栏
     xml里引用：<include layout="@layout/toolbar_center"/>
     设置标题：setToolbarCentel(true,"测试");
