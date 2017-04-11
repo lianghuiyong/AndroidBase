@@ -86,7 +86,7 @@ public abstract class BaseRecyclerViewFragment<T> extends BaseFragment implement
     }
 
     @Override
-    public void showNetworkFail(String err) {
+    public void showNetworkFail() {
         adapter.showNetWorkErrorView();
     }
 

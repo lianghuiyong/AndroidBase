@@ -9,5 +9,6 @@ public interface BaseViewInterface {
     void init();
 
     void initRecyclerView();
+
     void initTabs();
 }

@@ -147,12 +147,7 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
             ImageView back = (ImageView) findViewById(R.id.toolbar_back);
             back.setVisibility(View.VISIBLE);
 
-            back.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    onBackPressed();
-                }
-            });
+            back.setOnClickListener(view -> onBackPressed());
         }
     }
 
@@ -171,12 +166,7 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
             ImageView back = (ImageView) findViewById(R.id.toolbar_back);
             back.setVisibility(View.VISIBLE);
 
-            back.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    onBackPressed();
-                }
-            });
+            back.setOnClickListener(view -> onBackPressed());
         }
     }
 
@@ -197,12 +187,7 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
             ImageView back = (ImageView) findViewById(R.id.toolbar_back);
             back.setVisibility(View.VISIBLE);
 
-            back.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    onBackPressed();
-                }
-            });
+            back.setOnClickListener(view -> onBackPressed());
         }
     }
 
@@ -223,12 +208,7 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
             ImageView back = (ImageView) findViewById(R.id.toolbar_back);
             back.setVisibility(View.VISIBLE);
 
-            back.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    onBackPressed();
-                }
-            });
+            back.setOnClickListener(view -> onBackPressed());
         }
 
         ImageView image = (ImageView) findViewById(R.id.image);
@@ -252,12 +232,7 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
             ImageView back = (ImageView) findViewById(R.id.toolbar_back);
             back.setVisibility(View.VISIBLE);
 
-            back.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    onBackPressed();
-                }
-            });
+            back.setOnClickListener(view -> onBackPressed());
         }
 
         TextView right_tv = (TextView) findViewById(R.id.right_tv);
