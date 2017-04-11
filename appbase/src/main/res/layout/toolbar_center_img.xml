@@ -2,6 +2,11 @@
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
         <!--
         阴影控制
         app:elevation="@dimen/space_0"
@@ -56,16 +61,18 @@
                     android:paddingRight="@dimen/space_13" />
             </android.support.v7.widget.Toolbar>
 
-            <net.liang.appbaselibrary.widget.ShadowViewTop
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-            <net.liang.appbaselibrary.widget.NetInfoView
-                android:id="@+id/tv_netWorkInfo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:visibility="gone"/>
-
         </android.support.design.widget.AppBarLayout>
+
+        <net.liang.appbaselibrary.widget.ShadowViewTop
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <net.liang.appbaselibrary.widget.NetInfoView
+            android:id="@+id/tv_netWorkInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"/>
+
+    </LinearLayout>
 
 </merge>

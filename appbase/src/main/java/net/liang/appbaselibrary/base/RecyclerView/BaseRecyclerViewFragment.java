@@ -15,6 +15,7 @@ import net.liang.appbaselibrary.base.BaseFragment;
 import net.liang.appbaselibrary.data.RecyclerDataRepository;
 import net.liang.appbaselibrary.data.RecyclerDataSource;
 import net.liang.appbaselibrary.data.local.LocalRecyclerDataSource;
+import net.liang.appbaselibrary.interf.OnRecyclerAdapterListener;
 
 
 /**
@@ -48,6 +49,7 @@ public abstract class BaseRecyclerViewFragment<T> extends BaseFragment implement
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(adapter);
         adapter.setOnLoadMoreListener(this);
+        adapter.addOnRecyclerAdapterListener(() -> onRefresh());
     }
 
     @Override

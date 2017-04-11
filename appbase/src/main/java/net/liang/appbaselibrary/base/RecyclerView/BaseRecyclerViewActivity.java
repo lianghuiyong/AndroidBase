@@ -1,10 +1,10 @@
 package net.liang.appbaselibrary.base.RecyclerView;
 
 import android.graphics.Color;
-import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 
@@ -21,7 +21,7 @@ import net.liang.appbaselibrary.data.local.LocalRecyclerDataSource;
  * @param <T> 是获取的数据类型
  */
 
-public abstract class BaseRecyclerViewActivity<T> extends BaseAppCompatActivity implements BaseRecyclerViewContract.View<T>, RecyclerDataSource<T>, SwipeRefreshLayout.OnRefreshListener, BaseQuickAdapter.RequestLoadMoreListener {
+public abstract class BaseRecyclerViewActivity<T> extends BaseAppCompatActivity implements BaseRecyclerViewContract.View<T>, RecyclerDataSource<T>, SwipeRefreshLayout.OnRefreshListener, BaseQuickAdapter.RequestLoadMoreListener, View.OnClickListener {
 
     protected BaseRecyclerAdapter adapter;
     protected SwipeRefreshLayout swipeRefresh;
@@ -45,6 +45,7 @@ public abstract class BaseRecyclerViewActivity<T> extends BaseAppCompatActivity 
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(adapter);
         adapter.setOnLoadMoreListener(this);
+        adapter.addOnRecyclerAdapterListener(() -> onRefresh());
     }
 
     @Override
@@ -59,7 +60,7 @@ public abstract class BaseRecyclerViewActivity<T> extends BaseAppCompatActivity 
     }
 
     @Override
-    public void showNetworkFail(String err) {
+    public void showNetworkFail() {
         adapter.showNetWorkErrorView();
     }
 
@@ -88,5 +89,10 @@ public abstract class BaseRecyclerViewActivity<T> extends BaseAppCompatActivity 
     @Override
     public void onLoadMoreRequested() {
         recyclerPresenter.onListLoadMore();
+    }
+
+    @Override
+    public void onClick(View v) {
+        onRefresh();
     }
 }

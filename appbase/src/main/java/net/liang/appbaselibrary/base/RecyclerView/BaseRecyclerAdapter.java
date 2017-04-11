@@ -9,10 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.socks.library.KLog;
 
 import net.liang.appbaselibrary.R;
 import net.liang.appbaselibrary.base.BindingViewHolder;
+import net.liang.appbaselibrary.interf.OnRecyclerAdapterListener;
 
 import java.util.List;
 
@@ -22,6 +22,7 @@ import java.util.List;
  */
 public abstract class BaseRecyclerAdapter<T> extends BaseQuickAdapter<T, BindingViewHolder> {
 
+    private OnRecyclerAdapterListener listener;
     private RecyclerView recyclerView;
     private Context context;
     private View netErrorView;
@@ -54,6 +55,12 @@ public abstract class BaseRecyclerAdapter<T> extends BaseQuickAdapter<T, Binding
     private void setBaseView() {
         netErrorView = LayoutInflater.from(context)
                 .inflate(R.layout.recycler_item_neterror, (ViewGroup) recyclerView.getParent(), false);
+
+        netErrorView.findViewById(R.id.net_error_layout).setOnClickListener(v -> {
+            if (listener != null){
+                listener.onListRefresh();
+            }
+        });
 
         notDataView = LayoutInflater.from(context)
                 .inflate(R.layout.recycler_item_nodata, (ViewGroup) recyclerView.getParent(), false);
@@ -141,4 +148,7 @@ public abstract class BaseRecyclerAdapter<T> extends BaseQuickAdapter<T, Binding
         return new BindingViewHolder(view);
     }
 
+    void addOnRecyclerAdapterListener(OnRecyclerAdapterListener listener){
+        this.listener = listener;
+    }
 }

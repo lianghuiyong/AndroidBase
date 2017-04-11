@@ -15,8 +15,8 @@
             android:layout_width="@dimen/space_60"
             android:layout_height="@dimen/space_60"
             android:layout_centerInParent="true"
-            android:layout_marginBottom="@dimen/space_20"
-            android:src="@mipmap/no_infos_response" />
+            android:layout_marginBottom="@dimen/space_10"
+            android:src="@mipmap/base_net_nodata" />
 
         <TextView
             android:id="@+id/text_tv"

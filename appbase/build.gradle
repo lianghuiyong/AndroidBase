@@ -2,6 +2,9 @@ apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
 
+//lambda 支持
+apply plugin: 'me.tatarka.retrolambda'
+
 buildscript {
     repositories {
         jcenter()
@@ -11,6 +14,9 @@ buildscript {
         classpath 'com.android.tools.build:gradle:2.2.3'
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7'
         classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
+
+        //lambda 支持
+        classpath 'me.tatarka:gradle-retrolambda:3.5.0'
     }
 }
 
@@ -22,7 +28,7 @@ android {
         minSdkVersion 15
         targetSdkVersion 25
         versionCode 1
-        versionName "1.1.9"
+        versionName "1.1.11"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
@@ -36,6 +42,12 @@ android {
 
     dataBinding {
         enabled = true
+    }
+
+    //lambda 支持
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 

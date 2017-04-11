@@ -20,8 +20,6 @@ import butterknife.OnClick;
 
 public class MainActivity extends BaseAppCompatActivity {
 
-    @BindView(R.id.edit)
-    EditText edit;
 
     @Override
     protected int getLayoutId() {
@@ -35,23 +33,14 @@ public class MainActivity extends BaseAppCompatActivity {
 
     @Override
     public void init() {
-        setToolbarCentel_tv(true, "测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试", "哈哈");
-
-        edit.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-
-                edit.setInputType(InputType.TYPE_NULL);
-                return true;
-            }
-        });
+        setToolbarCentel_tv(true, "测试测", "哈哈");
 
         ToastUtils.showSuccessToast("Success");
         ToastUtils.showErrorToast("Error");
         ToastUtils.showToast("Toast");
     }
 
-    @OnClick({R.id.baseRecyclerViewActivity, R.id.baseRecyclerViewFragment, R.id.edit})
+    @OnClick({R.id.baseRecyclerViewActivity, R.id.baseRecyclerViewFragment, R.id.net_RecyclerViewActivity})
     public void onClick(View view) {
         Intent intent = new Intent();
         switch (view.getId()) {
@@ -65,6 +54,10 @@ public class MainActivity extends BaseAppCompatActivity {
                 startActivity(intent);
                 break;
 
+            case R.id.net_RecyclerViewActivity:
+                intent.setClass(this, NetRecyclerViewActivity.class);
+                startActivity(intent);
+                break;
         }
 
     }

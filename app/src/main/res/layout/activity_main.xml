@@ -21,11 +21,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-        <EditText
-            android:id="@+id/edit"
+        <Button
+            android:id="@+id/net_RecyclerViewActivity"
+            android:text="网络请求列表"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/space_60"
-            />
+            android:layout_height="wrap_content" />
     </LinearLayout>
 
 </layout>
