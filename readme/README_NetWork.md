@@ -27,7 +27,7 @@
     
     showNetworkFail();
 
-3)若不是承该BaseRecyclerViewActivity或者BaseRecyclerViewFragment
+3)若不是继承BaseRecyclerViewActivity或者BaseRecyclerViewFragment
 
     1、adapter.addOnRecyclerAdapterListener(() -> onRefresh());
     onRefresh()为刷新页面方法
