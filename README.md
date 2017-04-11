@@ -1,5 +1,5 @@
 # 项目开发基类
-**起于开源中国(OsChina Android)的示例,又取于 RxJava + MVP + RecyclerView实现的BaseAppCompatActivity、BaseFragment、BaseRecyclerViewActivity、BaseRecyclerViewFragment**
+**起于开源中国(OsChina Android)的示例,又取于 RxJava + MVP + DataBinding + RecyclerView实现的BaseAppCompatActivity、BaseFragment、BaseRecyclerViewActivity、BaseRecyclerViewFragment**
 
 # compile 'com.better.android:appbase:1.1.11'
 
