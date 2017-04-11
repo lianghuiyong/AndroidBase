@@ -19,10 +19,8 @@
 >
 
 ## 2. 颜色（可在自己的项目里重新定义颜色值）
-### （1） SnackBar提示栏的背景颜色
-    <color name="snackBar_back">#1984d4</color>
 
-### （2） ToolBar的返回建和标题栏的颜色值
+### （1） ToolBar的返回建和标题栏的颜色值
     <color name="toolbar_back">#FFFFFF</color>
     <color name="toolbar_tv">#FFFFFF</color>
 
