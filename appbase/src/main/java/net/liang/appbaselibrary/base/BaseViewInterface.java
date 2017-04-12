@@ -11,4 +11,6 @@ public interface BaseViewInterface {
     void initRecyclerView();
 
     void initTabs();
+
+    boolean isUseButterKnife();
 }

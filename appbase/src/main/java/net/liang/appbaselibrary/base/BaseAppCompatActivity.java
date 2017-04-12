@@ -53,7 +53,10 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
 
         binding = DataBindingUtil.setContentView(this, getLayoutId());
 
-        ButterKnife.bind(this, getView());
+        if (isUseButterKnife()){
+            ButterKnife.bind(this, getView());
+        }
+
         EventBus.getDefault().register(this);
 
         view_netInfo = findViewById(R.id.tv_netWorkInfo);
@@ -64,6 +67,11 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
 
         //初始化网络状态
         initNetWorkInfo(NetworkUtils.isConnected(this));
+    }
+
+    @Override
+    public boolean isUseButterKnife() {
+        return true;
     }
 
     @Override

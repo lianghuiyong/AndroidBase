@@ -47,11 +47,19 @@ public abstract class BaseFragment extends Fragment implements BaseViewInterface
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        ButterKnife.bind(this, getView());
+        if (isUseButterKnife()){
+            ButterKnife.bind(this, getView());
+        }
 
         initRecyclerView();
         init();
         initTabs();
+    }
+
+
+    @Override
+    public boolean isUseButterKnife() {
+        return true;
     }
 
     @Override
