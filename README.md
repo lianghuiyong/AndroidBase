@@ -49,7 +49,7 @@ distributionUrl=https\://services.gradle.org/distributions/gradle-3.3-all.zip
 
 ## 附
 
-![lambda配置](https://github.com/lianghuiyong/AndroidBase/wiki/lambda-%E9%85%8D%E7%BD%AE)
+ - [lambda配置](https://github.com/lianghuiyong/AndroidBase/wiki/lambda-%E9%85%8D%E7%BD%AE)
 
 ## 致谢
  
