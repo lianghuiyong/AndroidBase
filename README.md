@@ -3,7 +3,8 @@
 [![](https://img.shields.io/badge/minSdk-15-blue.svg)]()
 [![](https://img.shields.io/badge/Java-1.8-blue.svg)]()
 [![](https://img.shields.io/badge/Java-lambda-blue.svg)]()
-
+![](https://img.shields.io/github/stars/lianghuiyong/AndroidBase.svg)
+![](https://img.shields.io/github/forks/lianghuiyong/AndroidBase.svg) 
 # 项目开发基类
 
 ## Gradle
