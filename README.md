@@ -6,6 +6,8 @@
 起于开源中国(OsChina Android)的示例,又取于 RxJava + MVP + DataBinding + RecyclerView实现的
 BaseAppCompatActivity、BaseFragment、BaseRecyclerViewActivity、BaseRecyclerViewFragment
 
+
+
 # Gradle
 
 ```gradle
