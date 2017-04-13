@@ -2,19 +2,20 @@
 [![](https://img.shields.io/badge/moven%20center-1.1.13-brightgreen.svg?style=flat)](https://bintray.com/betterliang/Android/appbase/1.1.13)
 [![](https://img.shields.io/badge/minSdk-15-blue.svg)]()
 [![](https://img.shields.io/badge/Java-1.8-blue.svg)]()
+[![](https://img.shields.io/badge/Java-lambda-blue.svg)]()
 
 # 项目开发基类
  基于
  
- [![](https://img.shields.io/badge/OsChina%20App-2.8.0-blue.svg)](http://git.oschina.net/oschina/android-app)
+ [![](https://img.shields.io/badge/OsChina%20App-2.8.0-brightgreen.svg)](http://git.oschina.net/oschina/android-app)
  
- [![](https://img.shields.io/badge/RxJava-2.0-blue.svg)](https://github.com/ReactiveX/RxJava)   
+ [![](https://img.shields.io/badge/RxJava-2.0-brightgreen.svg)](https://github.com/ReactiveX/RxJava)   
  
- [![](https://img.shields.io/badge/todo-MVP-blue.svg)](https://github.com/googlesamples/android-architecture/tree/todo-mvp/) 
+ [![](https://img.shields.io/badge/todo-MVP-brightgreen.svg)](https://github.com/googlesamples/android-architecture/tree/todo-mvp/) 
  
- [![](https://img.shields.io/badge/todo-DataBinding-blue.svg)](https://github.com/googlesamples/android-architecture/tree/todo-databinding/) 
+ [![](https://img.shields.io/badge/todo-DataBinding-brightgreen.svg)](https://github.com/googlesamples/android-architecture/tree/todo-databinding/) 
  
- [![](https://img.shields.io/badge/BaseRecyclerViewAdapterHelper-2.9.0-blue.svg)](https://github.com/ReactiveX/RxJava) 
+ [![](https://img.shields.io/badge/BaseRecyclerViewAdapterHelper-2.9.0-brightgreen.svg)](https://github.com/ReactiveX/RxJava) 
  
  实现的BaseAppCompatActivity、BaseFragment、BaseRecyclerViewActivity、BaseRecyclerViewFragment
 
