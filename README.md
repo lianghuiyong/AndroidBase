@@ -6,9 +6,6 @@
 
 # 项目开发基类
 
-[TOCM]
-
-
 ## Gradle
 
 ```gradle
