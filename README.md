@@ -9,9 +9,29 @@
 ## Gradle
 
 ```gradle
+
+    allprojects {
+        repositories {
+            jcenter()
+            maven { url "https://jitpack.io" }
+        }
+    }
+
+    android {
+        dataBinding {
+            enabled = true
+        }
+    }
+
     dependencies {
         compile 'com.better.android:appbase:1.1.13'
     }
+```
+
+## gradle-wrapper.properties
+
+```gradle
+distributionUrl=https\://services.gradle.org/distributions/gradle-3.3-all.zip
 ```
 
  [1、一些好用的基类](./readme/README_Base.md "一些好用的基类")
