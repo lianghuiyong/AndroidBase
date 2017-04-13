@@ -34,38 +34,6 @@
 distributionUrl=https\://services.gradle.org/distributions/gradle-3.3-all.zip
 ```
 
-## lambda 支持
-
-```gradle
-
-//lambda 支持
-apply plugin: 'me.tatarka.retrolambda'
-    
-buildscript {
-    
-    ......
-    
-    dependencies {
-    
-        ......
-        
-        //lambda 支持
-        classpath 'me.tatarka:gradle-retrolambda:3.5.0'
-    }
-}
-        
-android {
-    
-    ......
-    
-    //lambda 支持
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-}
-
-```
 
  [1、一些好用的基类](./readme/README_Base.md "一些好用的基类")
  
@@ -79,6 +47,9 @@ android {
  
  [6、基类页面或列表的网络提示](./readme/README_NetWork.md "网络提示")
 
+## 附
+
+![lambda配置](https://github.com/lianghuiyong/AndroidBase/wiki/lambda-%E9%85%8D%E7%BD%AE)
 
 ## 致谢
  
