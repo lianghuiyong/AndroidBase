@@ -4,11 +4,18 @@
 [![](https://img.shields.io/badge/Java-1.8-blue.svg)]()
 
 # 项目开发基类
-起于开源中国(OsChina Android)的示例,又取于
+ 基于
+ 
+ [![](https://img.shields.io/badge/OsChina%20App-2.8.0-blue.svg)](http://git.oschina.net/oschina/android-app)
+ 
  [![](https://img.shields.io/badge/RxJava-2.0-blue.svg)](https://github.com/ReactiveX/RxJava)   
- [![](https://img.shields.io/badge/MVP--blue.svg?style=social)](https://github.com/ReactiveX/RxJava) 
- [![](https://img.shields.io/badge/DataBinding--blue.svg?style=social)](https://github.com/ReactiveX/RxJava) 
- [![](https://img.shields.io/badge/RecyclerView--blue.svg?style=social)](https://github.com/ReactiveX/RxJava) 
+ 
+ [![](https://img.shields.io/badge/todo-MVP-blue.svg?style=social)](https://github.com/googlesamples/android-architecture/tree/todo-mvp/) 
+ 
+ [![](https://img.shields.io/badge/todo-DataBinding-blue.svg?style=social)](https://github.com/googlesamples/android-architecture/tree/todo-databinding/) 
+ 
+ [![](https://img.shields.io/badge/BaseRecyclerViewAdapterHelper-2.9.0-blue.svg?style=social)](https://github.com/ReactiveX/RxJava) 
+ 
  实现的BaseAppCompatActivity、BaseFragment、BaseRecyclerViewActivity、BaseRecyclerViewFragment
 
 
