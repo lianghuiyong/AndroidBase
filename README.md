@@ -10,11 +10,11 @@
  
  [![](https://img.shields.io/badge/RxJava-2.0-blue.svg)](https://github.com/ReactiveX/RxJava)   
  
- [![](https://img.shields.io/badge/todo-MVP-blue.svg?style=social)](https://github.com/googlesamples/android-architecture/tree/todo-mvp/) 
+ [![](https://img.shields.io/badge/todo-MVP-blue.svg)](https://github.com/googlesamples/android-architecture/tree/todo-mvp/) 
  
- [![](https://img.shields.io/badge/todo-DataBinding-blue.svg?style=social)](https://github.com/googlesamples/android-architecture/tree/todo-databinding/) 
+ [![](https://img.shields.io/badge/todo-DataBinding-blue.svg)](https://github.com/googlesamples/android-architecture/tree/todo-databinding/) 
  
- [![](https://img.shields.io/badge/BaseRecyclerViewAdapterHelper-2.9.0-blue.svg?style=social)](https://github.com/ReactiveX/RxJava) 
+ [![](https://img.shields.io/badge/BaseRecyclerViewAdapterHelper-2.9.0-blue.svg)](https://github.com/ReactiveX/RxJava) 
  
  实现的BaseAppCompatActivity、BaseFragment、BaseRecyclerViewActivity、BaseRecyclerViewFragment
 
