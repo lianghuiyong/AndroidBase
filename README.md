@@ -46,6 +46,15 @@ distributionUrl=https\://services.gradle.org/distributions/gradle-3.3-all.zip
  
  [6、基类页面或列表的网络提示](./readme/README_NetWork.md "网络提示")
 
+
+## proguard-rules.pro
+
+```gradle
+-keep class com.chad.library.adapter.** {
+   *;
+}
+```
+
 ## 附
 
  - [lambda配置](https://github.com/lianghuiyong/AndroidBase/wiki/lambda-%E9%85%8D%E7%BD%AE)
