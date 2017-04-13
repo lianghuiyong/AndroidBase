@@ -1,6 +1,7 @@
 
 [![](https://img.shields.io/badge/moven%20center-1.1.13-brightgreen.svg?style=flat)](https://bintray.com/betterliang/Android/appbase/1.1.13)
 [![](https://img.shields.io/badge/minSdk-15-blue.svg)]()
+[![](https://https://img.shields.io/badge/Java-1.8-blue.svg)]()
 
 # 项目开发基类
 起于开源中国(OsChina Android)的示例,又取于 RxJava + MVP + DataBinding + RecyclerView实现的
