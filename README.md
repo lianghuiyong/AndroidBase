@@ -1,7 +1,17 @@
-# 项目开发基类
-**起于开源中国(OsChina Android)的示例,又取于 RxJava + MVP + DataBinding + RecyclerView实现的BaseAppCompatActivity、BaseFragment、BaseRecyclerViewActivity、BaseRecyclerViewFragment**
 
-# compile 'com.better.android:appbase:1.1.11'
+[![](https://img.shields.io/badge/moven%20center-1.1.13-blue.svg?style=flat)](https://bintray.com/betterliang/Android/appbase/1.1.13)
+# 项目开发基类
+起于开源中国(OsChina Android)的示例,又取于 RxJava + MVP + DataBinding + RecyclerView实现的
+BaseAppCompatActivity、BaseFragment、BaseRecyclerViewActivity、BaseRecyclerViewFragment
+
+--
+# Gradle
+
+```gradle
+    dependencies {
+        compile 'com.better.android:appbase:1.1.13'
+    }
+```
 
 ## [1、一些好用的基类](./readme/README_Base.md "一些好用的基类")
 ## [2、一个好用的列表页面基类](./readme/README_RecyclerView.md "一个好用的列表页面基类")
