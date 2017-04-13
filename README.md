@@ -1,5 +1,6 @@
 
 [![](https://img.shields.io/badge/moven%20center-1.1.13-brightgreen.svg?style=flat)](https://bintray.com/betterliang/Android/appbase/1.1.13)
+[![GitHub stars](https://img.shields.io/github/stars/badges/shields.svg?style=social&label=Star)]()
 
 # 项目开发基类
 起于开源中国(OsChina Android)的示例,又取于 RxJava + MVP + DataBinding + RecyclerView实现的
