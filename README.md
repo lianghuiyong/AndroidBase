@@ -15,7 +15,7 @@
  
  [![](https://img.shields.io/badge/todo-DataBinding-brightgreen.svg)](https://github.com/googlesamples/android-architecture/tree/todo-databinding/) 
  
- [![](https://img.shields.io/badge/BaseRecyclerViewAdapterHelper-2.9.0-brightgreen.svg)](https://github.com/ReactiveX/RxJava) 
+ [![](https://img.shields.io/badge/BaseRecyclerViewAdapterHelper-2.9.0-brightgreen.svg)](https://github.com/CymChad/BaseRecyclerViewAdapterHelper) 
  
  实现的BaseAppCompatActivity、BaseFragment、BaseRecyclerViewActivity、BaseRecyclerViewFragment
 
