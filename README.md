@@ -34,6 +34,39 @@
 distributionUrl=https\://services.gradle.org/distributions/gradle-3.3-all.zip
 ```
 
+## lambda 支持
+
+```gradle
+
+//lambda 支持
+apply plugin: 'me.tatarka.retrolambda'
+    
+buildscript {
+    
+    ......
+    
+    dependencies {
+    
+        ......
+        
+        //lambda 支持
+        classpath 'me.tatarka:gradle-retrolambda:3.5.0'
+    }
+}
+        
+android {
+    
+    ......
+    
+    //lambda 支持
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+```
+
  [1、一些好用的基类](./readme/README_Base.md "一些好用的基类")
  
  [2、一个好用的列表页面基类](./readme/README_RecyclerView.md "一个好用的列表页面基类")
