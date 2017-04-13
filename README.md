@@ -5,13 +5,11 @@
 
 # 项目开发基类
 起于开源中国(OsChina Android)的示例,又取于
- [![](https://img.shields.io/badge/RxJava-2.0-blue.svg)](https://github.com/ReactiveX/RxJava) 
+ [![](https://img.shields.io/badge/RxJava-2.0-blue.svg)](https://github.com/ReactiveX/RxJava)   
  [![](https://img.shields.io/badge/MVP--blue.svg?style=social)](https://github.com/ReactiveX/RxJava) 
  [![](https://img.shields.io/badge/DataBinding--blue.svg?style=social)](https://github.com/ReactiveX/RxJava) 
  [![](https://img.shields.io/badge/RecyclerView--blue.svg?style=social)](https://github.com/ReactiveX/RxJava) 
- MVP + DataBinding + RecyclerView实现的
- 
-BaseAppCompatActivity、BaseFragment、BaseRecyclerViewActivity、BaseRecyclerViewFragment
+ 实现的BaseAppCompatActivity、BaseFragment、BaseRecyclerViewActivity、BaseRecyclerViewFragment
 
 
 
