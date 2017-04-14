@@ -275,6 +275,9 @@ public class ExampleBaseRecyclerViewActivity extends BaseRecyclerViewActivity<Li
      android:layout_height="wrap_content"
      android:visibility="gone"/>
 ```
+<div align="center">
+  	<img src="http://oeqej1j2m.bkt.clouddn.com/appbase_net03.png" width="128">
+</div>
 
  - 列表页面
  
@@ -299,13 +302,7 @@ adapter.showNetWorkErrorView();
 ```
 
 <div align="center">
- 	<img src="http://oeqej1j2m.bkt.clouddn.com/appbase_net01.png" width="128">
-</div>
-<div align="center">
  	<img src="http://oeqej1j2m.bkt.clouddn.com/appbase_net02.png" width="128">
-</div>
-<div align="center">
-  	<img src="http://oeqej1j2m.bkt.clouddn.com/appbase_net03.png" width="128">
 </div>
 
 ## proguard-rules.pro
