@@ -222,7 +222,7 @@ public class LocalExampleDataSource implements ExampleApi {
  
  [4、常用的网络请求Code](./readme/README_ResponseCode.md "常用的网络请求Code")
  
- [5、一个常用的工具类包（来自AndroidUtilCode）](https://github.com/Blankj/AndroidUtilCode "一个常用的工具类包（来自AndroidUtilCode）")
+ [5、一个常用的工具类包（来自AndroidUtilCode）]( "一个常用的工具类包（来自AndroidUtilCode）")
  
  [6、基类页面或列表的网络提示](./readme/README_NetWork.md "网络提示")
 
@@ -247,4 +247,5 @@ public class LocalExampleDataSource implements ExampleApi {
  - [![](https://img.shields.io/badge/todo-MVP-brightgreen.svg)](https://github.com/googlesamples/android-architecture/tree/todo-mvp/) 
  - [![](https://img.shields.io/badge/todo-DataBinding-brightgreen.svg)](https://github.com/googlesamples/android-architecture/tree/todo-databinding/) 
  - [![](https://img.shields.io/badge/BaseRecyclerViewAdapterHelper-2.9.0-brightgreen.svg)](https://github.com/CymChad/BaseRecyclerViewAdapterHelper) 
+ - [![](https://img.shields.io/badge/AndroidUtilCode-1.3.5-brightgreen.svg)](https://github.com/Blankj/AndroidUtilCode) 
  
