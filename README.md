@@ -1,5 +1,5 @@
 
-[![](https://img.shields.io/badge/moven%20center-1.1.13-brightgreen.svg?style=flat)](https://bintray.com/betterliang/Android/appbase/1.1.13)
+[![](https://img.shields.io/badge/moven%20center-1.1.20-brightgreen.svg?style=flat)](https://bintray.com/betterliang/Android/appbase/1.1.20)
 ![](https://img.shields.io/badge/minSdk-15-blue.svg)
 [![](https://img.shields.io/github/stars/lianghuiyong/AndroidBase.svg)](https://github.com/lianghuiyong/AndroidBase/stargazers)
 [![](https://img.shields.io/github/forks/lianghuiyong/AndroidBase.svg)](https://github.com/lianghuiyong/AndroidBase/network)
@@ -23,7 +23,7 @@
     }
 
     dependencies {
-        compile 'com.better.android:appbase:1.1.13'
+        compile 'com.better.android:appbase:x.y.z'
     }
 ```
 
@@ -36,7 +36,7 @@ distributionUrl=https\://services.gradle.org/distributions/gradle-3.3-all.zip
 
 ## MVP基类使用介绍
 
-### V
+- **V**
 
 ```java
 public class ExampleV extends BaseAppCompatActivity(or BaseFragment) implements ExampleContract.View{
@@ -54,7 +54,7 @@ public class ExampleV extends BaseAppCompatActivity(or BaseFragment) implements 
 }
 ```
 
-### P
+- **P**
 
 ```java
 public class ExamplePresenter extends BasePresenter implements ExampleContract.Presenter {
@@ -73,7 +73,7 @@ public class ExamplePresenter extends BasePresenter implements ExampleContract.P
 }
 ```
 
-### Contract
+- **Contract**
 
 ```java
 public interface ExampleContract {
@@ -93,7 +93,7 @@ public interface ExampleContract {
 }
 ```
 
-### M
+- **M**
 
 ```java
 /**
@@ -214,16 +214,16 @@ public class LocalExampleDataSource implements ExampleApi {
 }
 ```
 
- [1、一些好用的基类](./readme/README_Base.md "一些好用的基类")
+## 列表页面基类
+
+
  
  [2、一个好用的列表页面基类](./readme/README_RecyclerView.md "一个好用的列表页面基类")
  
  [3、一些好用的资源](./readme/README_Resources.md "一些好用的资源")
  
  [4、常用的网络请求Code](./readme/README_ResponseCode.md "常用的网络请求Code")
- 
- [5、一个常用的工具类包（来自AndroidUtilCode）]( "一个常用的工具类包（来自AndroidUtilCode）")
- 
+  
  [6、基类页面或列表的网络提示](./readme/README_NetWork.md "网络提示")
 
 
