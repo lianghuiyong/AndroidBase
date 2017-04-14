@@ -101,12 +101,6 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
         SkinManager.getInstance().unregister(this);
     }
 
-/*    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        //解决fragment里getActivity为null问题
-        //super.onSaveInstanceState(outState);
-    }*/
-
     protected ViewDataBinding getBinding() {
         return binding;
     }
@@ -132,7 +126,11 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
 
     @Override
     public void showNetworkFail() {
-        showNetworkFail("网络错误!");
+        if (NetworkUtils.isConnected(getBaseContext())){
+            showToast("加载失败!");
+        }else {
+            showToast("网咯不给力，请检查网络设置!");
+        }
     }
 
     @Override

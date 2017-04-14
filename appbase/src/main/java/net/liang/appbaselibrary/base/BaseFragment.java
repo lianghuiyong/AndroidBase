@@ -14,6 +14,7 @@ import com.socks.library.KLog;
 
 import net.liang.appbaselibrary.base.mvp.MvpPresenter;
 import net.liang.appbaselibrary.base.mvp.MvpView;
+import net.liang.appbaselibrary.utils.NetworkUtils;
 import net.liang.appbaselibrary.utils.ToastUtils;
 import net.liang.appbaselibrary.widget.dialog.DialogHelper;
 
@@ -90,7 +91,11 @@ public abstract class BaseFragment extends Fragment implements BaseViewInterface
 
     @Override
     public void showNetworkFail() {
-        showNetworkFail("网络错误!");
+        if (NetworkUtils.isConnected(getContext())){
+            showToast("加载失败!");
+        }else {
+            showToast("网咯不给力，请检查网络设置!");
+        }
     }
 
     @Override
