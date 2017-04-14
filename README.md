@@ -216,16 +216,97 @@ public class LocalExampleDataSource implements ExampleApi {
 
 ## 列表页面基类
 
+``` 
+    <include layout="@layout/layout_recyclerview"/>
+    
+    或者使用相同的ID：
+    
+    	SwipeRefreshLayout使用@+id/swiperefresh，
+    	RecyclerView使用@+id/recyclerView
+```
 
- 
- [2、一个好用的列表页面基类](./readme/README_RecyclerView.md "一个好用的列表页面基类")
- 
- [3、一些好用的资源](./readme/README_Resources.md "一些好用的资源")
- 
- [4、常用的网络请求Code](./readme/README_ResponseCode.md "常用的网络请求Code")
-  
- [6、基类页面或列表的网络提示](./readme/README_NetWork.md "网络提示")
+``` java
+public class ExampleBaseRecyclerViewActivity extends BaseRecyclerViewActivity<List<String>> {
+     
+    @Override
+    public BaseRecyclerAdapter addListAdapter() {
+     
+        // 默认一页页数为10，可使用setPageSize(int pageSize)修改
+        return new RecyclerAdapter(this, recyclerView, null);
+    }
+    
+    // 请求成功时的回调方法;
+    // onListSuccess返回的数据为完整的请求数据，需要自己拆解列表数据，添加到适配器里
+    @Override
+    public void onListSuccess(List<String> strings, int pageNo) {
+        //单页使用
+        //adapter.showList(strings);
+        //多页使用
+        adapter.showList(strings, pageNo);
+    }
+    
+    // 获取网络数据接口，注意返回的是被观察者对象
+    @Override
+    public Observable<List<String>> onListGetData(int pageNo) {
+        ......
+    }
+}
+``` 
 
+
+## 无网络状态页面提示
+ - 普通页面
+ 
+代码里动态注册该广播监听、动态注册（为了兼容7.0）
+``` java
+ //动态启动网络监听广播
+ private void startNetReciver(){
+     IntentFilter mFilter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+     NetWorkStateReceiver mReceiver = new NetWorkStateReceiver();
+     registerReceiver(mReceiver, mFilter);
+ }
+```
+
+自定义ui
+``` xml
+ <net.liang.appbaselibrary.widget.NetInfoView
+     android:id="@+id/tv_netWorkInfo"
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:visibility="gone"/>
+```
+
+ - 列表页面
+ 
+1、列表Adapter需继承BaseRecyclerAdapter
+
+2、若页面继承于BaseRecyclerViewActivity或者BaseRecyclerViewFragment(使用方式：一个好用的列表页面基类),
+
+只需要网络失败的时候调用
+```
+showNetworkFail();
+```
+3、若不是继承BaseRecyclerViewActivity或者BaseRecyclerViewFragment
+
+1)adapter回调
+```
+adapter.addOnRecyclerAdapterListener(() -> onRefresh());
+onRefresh()为刷新页面方法
+```
+2)在请求网络失败的地方调用
+```
+adapter.showNetWorkErrorView(); 
+```
+
+<div align="center">
+ 	<img src="http://oeqej1j2m.bkt.clouddn.com/appbase_net01.png" width="128">
+</div>
+<div align="center">
+ 	<img src="http://oeqej1j2m.bkt.clouddn.com/appbase_net02.png" width="128">
+</div>
+<div align="center">
+  	<img src="http://oeqej1j2m.bkt.clouddn.com/appbase_net03.png" width="128">
+</div>
 
 ## proguard-rules.pro
 
