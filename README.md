@@ -1,5 +1,5 @@
 
-[![](https://img.shields.io/badge/moven%20center-1.1.25-brightgreen.svg?style=flat)](https://bintray.com/betterliang/Android/appbase/1.1.25)
+[![](https://img.shields.io/badge/moven%20center-1.1.30-brightgreen.svg?style=flat)](https://bintray.com/betterliang/Android/appbase/1.1.30)
 ![](https://img.shields.io/badge/minSdk-15-blue.svg)
 [![](https://img.shields.io/github/stars/lianghuiyong/AndroidBase.svg)](https://github.com/lianghuiyong/AndroidBase/stargazers)
 [![](https://img.shields.io/github/forks/lianghuiyong/AndroidBase.svg)](https://github.com/lianghuiyong/AndroidBase/network)

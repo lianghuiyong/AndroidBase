@@ -148,7 +148,7 @@ public abstract class BaseRecyclerAdapter<T> extends BaseQuickAdapter<T, Binding
         return new BindingViewHolder(view);
     }
 
-    void addOnRecyclerAdapterListener(OnRecyclerAdapterListener listener){
+    public void addOnRecyclerAdapterListener(OnRecyclerAdapterListener listener){
         this.listener = listener;
     }
 }
