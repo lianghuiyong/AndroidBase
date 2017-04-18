@@ -29,11 +29,11 @@ public class Test_DaggerListPresenter extends BasePresenter implements Test_Dagg
     }
 
     @Override
-    public void getListData() {
+    public List<String> getListData() {
         List<String> listFinal = new ArrayList<>();
         listFinal.addAll(repository1.testGet());
         listFinal.addAll(repository2.testGet());
 
-        mView.showList(listFinal);
+        return listFinal;
     }
 }

@@ -7,10 +7,10 @@ import java.util.List;
 import javax.inject.Singleton;
 
 /**
- * Created by Liang on 2017/4/15.
+ *
+ * 数据remote实现方式
  */
 
-@Singleton
 public class Test1RemoteDataSource implements Test1Api {
 
     @Override

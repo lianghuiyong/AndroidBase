@@ -21,6 +21,9 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 
+/**
+ * 该页面使用一个数据源
+ */
 public class Test_DaggerNormalActivity  extends BaseAppCompatActivity implements Test_DaggerNormalContract.View, SwipeRefreshLayout.OnRefreshListener {
 
     @BindView(R.id.recyclerView)
@@ -65,7 +68,6 @@ public class Test_DaggerNormalActivity  extends BaseAppCompatActivity implements
                 .presenterModule(new PresenterModule(this))
                 .build()
                 .inject(this);
-
     }
 
     @Override

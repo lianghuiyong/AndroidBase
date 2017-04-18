@@ -1,9 +1,13 @@
 
-[![](https://img.shields.io/badge/moven%20center-1.1.30-brightgreen.svg?style=flat)](https://bintray.com/betterliang/Android/appbase/1.1.30)
+[![](https://img.shields.io/badge/moven%20center-1.1.35-brightgreen.svg?style=flat)](https://bintray.com/betterliang/Android/appbase/1.1.35)
 ![](https://img.shields.io/badge/minSdk-15-blue.svg)
 [![](https://img.shields.io/github/stars/lianghuiyong/AndroidBase.svg)](https://github.com/lianghuiyong/AndroidBase/stargazers)
 [![](https://img.shields.io/github/forks/lianghuiyong/AndroidBase.svg)](https://github.com/lianghuiyong/AndroidBase/network)
 # 项目开发基类
+
+## 项目说明
+
+MVP基类库+Dagger使用示例
 
 ## Gradle
 
@@ -34,12 +38,16 @@ distributionUrl=https\://services.gradle.org/distributions/gradle-3.3-all.zip
 ```
 
 
-## MVP基类使用介绍
+## MVP+Dagger使用介绍
 
 - **V**
 
 ```java
 public class ExampleV extends BaseAppCompatActivity(or BaseFragment) implements ExampleContract.View{
+    
+    @Inject
+    ExamplePresenter presenter;
+    
     @Override
     protected int getLayoutId() {
         return R.layout.Example;
@@ -47,9 +55,20 @@ public class ExampleV extends BaseAppCompatActivity(or BaseFragment) implements 
     
     @Override
     protected MvpPresenter getPresenter() {
-        return null;
+        return presenter;
     }
     
+    @Override
+    public void init() {
+        super.init();
+
+        //使用Dagger创建presenter,并不需要new对象。
+        DaggerViewComponent.builder()
+                .repositoryComponent(DaggerRepositoryComponent.builder().build())
+                .presenterModule(new PresenterModule(this))
+                .build()
+                .inject(this);
+    }
     ......
 }
 ```
@@ -59,6 +78,12 @@ public class ExampleV extends BaseAppCompatActivity(or BaseFragment) implements 
 ```java
 public class ExamplePresenter extends BasePresenter implements ExampleContract.Presenter {
     
+    @Inject
+    Test1Repository repository1;
+
+    @Inject
+    Test2Repository repository2;
+    
     @NonNull
     private ExampleContract.View view;
     
@@ -66,9 +91,9 @@ public class ExamplePresenter extends BasePresenter implements ExampleContract.P
     @NonNull
     private ExampleRepository repository;
     
-    public ExamplePresenter(@NonNull ExampleContract.View view) {
-        this.view = checkNotNull(view, "view cannot be null!");
-        this.repository = ExampleRepository.getInstance(RemoteExampleDataSource.getInstance(), LocalExampleDataSource.getInstance());
+    //注意
+    public ExamplePresenter(MvpView view) {
+       this.mView = (ExampleContract.View)mView;
     }
 }
 ```

@@ -13,7 +13,7 @@ import dagger.Module;
 import dagger.Provides;
 
 /**
- * This is used by Dagger to inject the required arguments into the {@link TestRepository}.
+ * Test2Repository的module
  */
 @Module
 public class Test2RepositoryModule {
