@@ -1,9 +1,10 @@
-package net.liang.androidbaseapplication;
+package net.liang.androidbaseapplication.mvp;
 
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 
+import net.liang.androidbaseapplication.R;
 import net.liang.appbaselibrary.base.RecyclerView.BaseRecyclerAdapter;
 import net.liang.appbaselibrary.base.RecyclerView.BaseRecyclerViewFragment;
 import net.liang.appbaselibrary.base.BindingViewHolder;

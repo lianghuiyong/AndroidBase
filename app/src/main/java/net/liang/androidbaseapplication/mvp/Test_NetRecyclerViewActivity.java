@@ -1,8 +1,9 @@
-package net.liang.androidbaseapplication;
+package net.liang.androidbaseapplication.mvp;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 
+import net.liang.androidbaseapplication.R;
 import net.liang.appbaselibrary.base.BindingViewHolder;
 import net.liang.appbaselibrary.base.RecyclerView.BaseRecyclerAdapter;
 import net.liang.appbaselibrary.base.RecyclerView.BaseRecyclerViewActivity;
@@ -13,7 +14,7 @@ import java.util.List;
 
 import io.reactivex.Observable;
 
-public class NetRecyclerViewActivity extends BaseRecyclerViewActivity<List<String>> {
+public class Test_NetRecyclerViewActivity extends BaseRecyclerViewActivity<List<String>> {
 
     @Override
     protected int getLayoutId() {

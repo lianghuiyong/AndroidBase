@@ -19,9 +19,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Test_BaseRecyclerViewActivity" />
-        <activity android:name=".Test_BaseRecyclerViewFragment" />
-        <activity android:name=".NetRecyclerViewActivity"/>
+        <activity android:name=".mvp.Test_BaseRecyclerViewActivity" />
+        <activity android:name=".mvp.Test_BaseRecyclerViewFragment" />
+        <activity android:name=".mvp.Test_NetRecyclerViewActivity" />
+        <activity android:name=".mvp.daggernormal.Test_DaggerNormalActivity" />
+        <activity android:name=".mvp.daggerlist.Test_DaggerListActivity"></activity>
     </application>
 
 </manifest>

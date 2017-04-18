@@ -4,17 +4,17 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
-import android.text.InputType;
-import android.view.MotionEvent;
 import android.view.View;
-import android.widget.EditText;
 
+import net.liang.androidbaseapplication.mvp.Test_BaseRecyclerViewActivity;
+import net.liang.androidbaseapplication.mvp.Test_BaseRecyclerViewFragment;
+import net.liang.androidbaseapplication.mvp.Test_NetRecyclerViewActivity;
+import net.liang.androidbaseapplication.mvp.daggerlist.Test_DaggerListActivity;
+import net.liang.androidbaseapplication.mvp.daggernormal.Test_DaggerNormalActivity;
 import net.liang.appbaselibrary.NetWorkStateReceiver;
 import net.liang.appbaselibrary.base.BaseAppCompatActivity;
 import net.liang.appbaselibrary.base.mvp.MvpPresenter;
-import net.liang.appbaselibrary.utils.ToastUtils;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -33,14 +33,14 @@ public class MainActivity extends BaseAppCompatActivity {
 
     @Override
     public void init() {
-        setToolbarCentel_tv(true, "测试测", "哈哈");
-
-        ToastUtils.showSuccessToast("Success");
-        ToastUtils.showErrorToast("Error");
-        ToastUtils.showToast("Toast");
+        setToolbarCentel(false, "测试");
     }
 
-    @OnClick({R.id.baseRecyclerViewActivity, R.id.baseRecyclerViewFragment, R.id.net_RecyclerViewActivity})
+    @OnClick({R.id.baseRecyclerViewActivity,
+            R.id.baseRecyclerViewFragment,
+            R.id.net_RecyclerViewActivity,
+            R.id.dagger_normal_use,
+            R.id.dagger_list_use})
     public void onClick(View view) {
         Intent intent = new Intent();
         switch (view.getId()) {
@@ -55,7 +55,17 @@ public class MainActivity extends BaseAppCompatActivity {
                 break;
 
             case R.id.net_RecyclerViewActivity:
-                intent.setClass(this, NetRecyclerViewActivity.class);
+                intent.setClass(this, Test_NetRecyclerViewActivity.class);
+                startActivity(intent);
+                break;
+
+            case R.id.dagger_normal_use:
+                intent.setClass(this, Test_DaggerNormalActivity.class);
+                startActivity(intent);
+                break;
+
+            case R.id.dagger_list_use:
+                intent.setClass(this, Test_DaggerListActivity.class);
                 startActivity(intent);
                 break;
         }

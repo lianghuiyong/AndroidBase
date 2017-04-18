@@ -7,7 +7,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <include layout="@layout/toolbar_center_tv"/>
+        <include layout="@layout/toolbar_center"/>
 
         <Button
             android:id="@+id/baseRecyclerViewActivity"
@@ -24,6 +24,18 @@
         <Button
             android:id="@+id/net_RecyclerViewActivity"
             android:text="网络请求列表"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/dagger_normal_use"
+            android:text="Dagger基本使用示例"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/dagger_list_use"
+            android:text="Dagger列表使用示例"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </LinearLayout>

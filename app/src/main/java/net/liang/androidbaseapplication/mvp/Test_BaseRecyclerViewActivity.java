@@ -1,4 +1,4 @@
-package net.liang.androidbaseapplication;
+package net.liang.androidbaseapplication.mvp;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -8,6 +8,7 @@ import android.view.View;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.listener.OnItemChildClickListener;
 
+import net.liang.androidbaseapplication.R;
 import net.liang.appbaselibrary.base.RecyclerView.BaseRecyclerAdapter;
 import net.liang.appbaselibrary.base.RecyclerView.BaseRecyclerViewActivity;
 import net.liang.appbaselibrary.base.BindingViewHolder;
@@ -31,6 +32,7 @@ public class Test_BaseRecyclerViewActivity extends BaseRecyclerViewActivity<List
     @Override
     public void init() {
         super.init();
+        setToolbarCentel(true,"Activity列表示例");
 
         recyclerView.addOnItemTouchListener(new OnItemChildClickListener() {
 
