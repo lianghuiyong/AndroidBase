@@ -7,9 +7,9 @@ import java.lang.annotation.RetentionPolicy;
 import javax.inject.Scope;
 
 /**
- * Created by Roger on 2016/4/13.
+ * Created by 梁惠涌
  * <p>
- * 控制Activity的生命周期
+ * 控制Presenter的生命周期
  */
 @Documented
 @Scope
