@@ -13,8 +13,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 
-import com.dino.changeskin.SkinManager;
-import com.socks.library.KLog;
 
 import net.liang.appbaselibrary.AppManager;
 import net.liang.appbaselibrary.NetWorkStateReceiver;
@@ -48,8 +46,6 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
         AppManager.getAppManager().addActivity(this);
 
-        //换肤注册
-        SkinManager.getInstance().register(this);
 
         binding = DataBindingUtil.setContentView(this, getLayoutId());
 
@@ -97,8 +93,6 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
         super.onDestroy();
         EventBus.getDefault().unregister(this);
         AppManager.getAppManager().finishActivity(this);
-        //换肤注册
-        SkinManager.getInstance().unregister(this);
     }
 
     protected ViewDataBinding getBinding() {
