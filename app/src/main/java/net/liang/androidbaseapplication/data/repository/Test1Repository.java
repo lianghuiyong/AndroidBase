@@ -12,7 +12,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 /**
- * Created by Liang on 2017/4/15.
+ * 数据管理仓库，控制选择使用remote数据还是local数据（SP、数据库、缓存）
  */
 
 public class Test1Repository implements Test1Api {

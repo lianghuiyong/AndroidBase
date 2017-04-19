@@ -11,10 +11,9 @@ import java.util.List;
 
 public class Test_DaggerListContract {
     public interface View extends MvpView{
-        void showList(List<String> list);
     }
 
     public interface Presenter extends MvpPresenter{
-        void getListData();
+        List<String> getListData();
     }
 }

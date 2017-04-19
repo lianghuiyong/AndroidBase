@@ -1,5 +1,6 @@
 package net.liang.androidbaseapplication.mvp.daggerlist;
 
+import net.liang.androidbaseapplication.dagger.DaggerRepositoryComponent;
 import net.liang.androidbaseapplication.data.repository.Test1Repository;
 import net.liang.androidbaseapplication.data.repository.Test2Repository;
 import net.liang.appbaselibrary.base.mvp.BasePresenter;
@@ -26,14 +27,15 @@ public class Test_DaggerListPresenter extends BasePresenter implements Test_Dagg
     @Inject
     public Test_DaggerListPresenter(MvpView mView) {
         this.mView = (Test_DaggerListContract.View)mView;
+        DaggerRepositoryComponent.builder().build();
     }
 
     @Override
-    public void getListData() {
+    public List<String> getListData() {
         List<String> listFinal = new ArrayList<>();
         listFinal.addAll(repository1.testGet());
         listFinal.addAll(repository2.testGet());
 
-        mView.showList(listFinal);
+        return listFinal;
     }
 }

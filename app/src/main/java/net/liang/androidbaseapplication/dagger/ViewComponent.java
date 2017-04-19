@@ -8,11 +8,15 @@ import net.liang.androidbaseapplication.mvp.daggernormal.Test_DaggerNormalActivi
 import dagger.Component;
 
 /**
- * This is a Dagger component. Refer to {@link ToDoApplication} for the list of Dagger components
- * used in this application.
- * <P>
- * Because this component depends on the {@link TasksRepositoryComponent}, which is a singleton, a
- * scope must be specified. All fragment components use a custom scope for this purpose.
+ * View注入P的参数清单
+ *
+ * 如果该V是集成MvpView,则在下列新增对应的V方法
+ * 比如：
+ *      Test_DaggerListActivity
+ * 新增：
+ *      void inject(Test_DaggerListActivity activity);
+ *
+ * 否则：另建与之相对应的Component
  */
 @ActivityScoped
 @Component(dependencies = RepositoryComponent.class, modules = PresenterModule.class)

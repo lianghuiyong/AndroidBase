@@ -1,18 +1,18 @@
 package net.liang.androidbaseapplication.mvp.daggerlist;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+
+import com.socks.library.KLog;
 
 import net.liang.androidbaseapplication.R;
 import net.liang.androidbaseapplication.dagger.DaggerRepositoryComponent;
 import net.liang.androidbaseapplication.dagger.DaggerViewComponent;
 import net.liang.androidbaseapplication.dagger.PresenterModule;
-import net.liang.appbaselibrary.base.BaseAppCompatActivity;
 import net.liang.appbaselibrary.base.BindingViewHolder;
 import net.liang.appbaselibrary.base.RecyclerView.BaseRecyclerAdapter;
+import net.liang.appbaselibrary.base.RecyclerView.BaseRecyclerViewActivity;
 import net.liang.appbaselibrary.base.mvp.MvpPresenter;
 
 import java.util.List;
@@ -20,15 +20,19 @@ import java.util.List;
 import javax.inject.Inject;
 
 import butterknife.BindView;
+import io.reactivex.Observable;
 
-public class Test_DaggerListActivity extends BaseAppCompatActivity implements Test_DaggerListContract.View, SwipeRefreshLayout.OnRefreshListener {
+
+/**
+ * 该页面使用BaseRecyclerViewActivity基类，
+ * 并使用Dagger实现两个数据源数据返回
+ */
+public class Test_DaggerListActivity extends BaseRecyclerViewActivity<List<String>> implements Test_DaggerListContract.View{
 
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
     @BindView(R.id.swiperefresh)
     SwipeRefreshLayout swiperefresh;
-
-    TestAdapter adapter;
 
     @Inject
     Test_DaggerListPresenter presenter;
@@ -40,24 +44,12 @@ public class Test_DaggerListActivity extends BaseAppCompatActivity implements Te
 
     @Override
     protected MvpPresenter getPresenter() {
-        return null;
+        return presenter;
     }
 
     @Override
     public void init() {
-        super.init();
-
-        setToolbarCentel(true,"Dagger示例");
-
-        adapter = new TestAdapter(this, recyclerView, null);
-
-        swiperefresh.setColorSchemeColors(Color.RED, Color.BLUE, Color.GREEN, Color.YELLOW);
-        swiperefresh.setOnRefreshListener(this);
-
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setAdapter(adapter);
-        showList(null);
+        setToolbarCentel(true,"列表页面使用Dagger示例");
 
         // Create the presenter
         DaggerViewComponent.builder()
@@ -65,22 +57,25 @@ public class Test_DaggerListActivity extends BaseAppCompatActivity implements Te
                 .presenterModule(new PresenterModule(this))
                 .build()
                 .inject(this);
-
     }
 
     @Override
-    public void showList(List<String> list) {
+    public Observable<List<String>> onListGetData(int pageNo) {
+        return Observable.just(presenter.getListData());
+    }
+
+    @Override
+    public void onListSuccess(List<String> list, int pageNo) {
         adapter.showList(list);
-        swiperefresh.setRefreshing(false);
     }
 
     @Override
-    public void onRefresh() {
-        presenter.getListData();
+    public BaseRecyclerAdapter addListAdapter() {
+        return new TestAdapter(this, recyclerView, null);
     }
 
     class TestAdapter extends BaseRecyclerAdapter<String> {
-        public TestAdapter(Context context, RecyclerView recyclerView, List<String> data) {
+        TestAdapter(Context context, RecyclerView recyclerView, List<String> data) {
             super(context, recyclerView, R.layout.item_base_recyclerview_layout, data);
         }
 

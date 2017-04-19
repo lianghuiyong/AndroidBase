@@ -1,9 +1,13 @@
 
-[![](https://img.shields.io/badge/moven%20center-1.1.30-brightgreen.svg?style=flat)](https://bintray.com/betterliang/Android/appbase/1.1.30)
+[![](https://img.shields.io/badge/moven%20center-1.1.35-brightgreen.svg?style=flat)](https://bintray.com/betterliang/Android/appbase/1.1.35)
 ![](https://img.shields.io/badge/minSdk-15-blue.svg)
 [![](https://img.shields.io/github/stars/lianghuiyong/AndroidBase.svg)](https://github.com/lianghuiyong/AndroidBase/stargazers)
 [![](https://img.shields.io/github/forks/lianghuiyong/AndroidBase.svg)](https://github.com/lianghuiyong/AndroidBase/network)
 # 项目开发基类
+
+## 项目说明
+
+MVP基类库+Dagger使用示例
 
 ## Gradle
 
@@ -34,12 +38,18 @@ distributionUrl=https\://services.gradle.org/distributions/gradle-3.3-all.zip
 ```
 
 
-## MVP基类使用介绍
+## MVP+Dagger使用介绍
 
+
+### MVP使用
 - **V**
 
 ```java
 public class ExampleV extends BaseAppCompatActivity(or BaseFragment) implements ExampleContract.View{
+    
+    @Inject
+    ExamplePresenter presenter;
+    
     @Override
     protected int getLayoutId() {
         return R.layout.Example;
@@ -47,9 +57,20 @@ public class ExampleV extends BaseAppCompatActivity(or BaseFragment) implements 
     
     @Override
     protected MvpPresenter getPresenter() {
-        return null;
+        return presenter;
     }
     
+    @Override
+    public void init() {
+        super.init();
+
+        //使用Dagger创建presenter,并不需要new对象。
+        DaggerViewComponent.builder()
+                .repositoryComponent(DaggerRepositoryComponent.builder().build())
+                .presenterModule(new PresenterModule(this))
+                .build()
+                .inject(this);
+    }
     ......
 }
 ```
@@ -59,6 +80,12 @@ public class ExampleV extends BaseAppCompatActivity(or BaseFragment) implements 
 ```java
 public class ExamplePresenter extends BasePresenter implements ExampleContract.Presenter {
     
+    @Inject
+    Test1Repository repository1;
+
+    @Inject
+    Test2Repository repository2;
+    
     @NonNull
     private ExampleContract.View view;
     
@@ -66,9 +93,9 @@ public class ExamplePresenter extends BasePresenter implements ExampleContract.P
     @NonNull
     private ExampleRepository repository;
     
-    public ExamplePresenter(@NonNull ExampleContract.View view) {
-        this.view = checkNotNull(view, "view cannot be null!");
-        this.repository = ExampleRepository.getInstance(RemoteExampleDataSource.getInstance(), LocalExampleDataSource.getInstance());
+    //参数使用MvpView类型，便于view的清单管理和PresenterModule的单一
+    public ExamplePresenter(MvpView view) {
+       this.mView = (ExampleContract.View)mView;
     }
 }
 ```
@@ -88,6 +115,7 @@ public interface ExampleContract {
      * Presenter接口层 处理业务
      */
     interface Presenter extends MvpPresenter{
+        List<String> getListData();
         ......
     }
 }
@@ -99,120 +127,201 @@ public interface ExampleContract {
 /**
  * 数据管理仓库，控制选择使用remote数据还是local数据（SP、数据库、缓存）
  */
-public class ExampleRepository implements ExampleApi {
-    @Nullable
-    private static ExampleRepository INSTANCE = null;
-    @NonNull
-    private final ExampleApi localDataSource;
-    @NonNull
-    private final ExampleApi remoteDataSource;
-    
-    public ExampleRepository(@NonNull ExampleApi localDataSource, @NonNull ExampleApi remoteDataSource) {
-        this.localDataSource = checkNotNull(localDataSource);
-        this.remoteDataSource = checkNotNull(remoteDataSource);
+public class Test1Repository implements Test1Api {
+
+    private final Test1Api mTest1RemoteDataSource;
+
+    private final Test1Api mTest1LocalDataSource;
+
+    @Inject
+    public Test1Repository(@Local Test1LocalDataSource mTest1LocalDataSource, @Remote Test1RemoteDataSource mTest1RemoteDataSource) {
+        this.mTest1RemoteDataSource = mTest1RemoteDataSource;
+        this.mTest1LocalDataSource = mTest1LocalDataSource;
     }
-    
-    public static ExampleRepository getINSTANCE(@NonNull ExampleApi localDataSource, @NonNull ExampleApi remoteDataSource) {
-        if (INSTANCE == null) {
-            INSTANCE = new ExampleRepository(localDataSource, remoteDataSource);
-        }
-        return INSTANCE;
-    }
-    
+
     @Override
-    public Observable<BaseResponseData<String>> register(@Body ExampleRegisterBean sendBean) {
-        return remoteDataSource.register(sendBean);
-    }
-    
-    @Override
-    public Observable<BaseResponseData<String>> unregister(@Body ExampleUnRegisterBean sendBean) {
-        return localDataSource.unregister(sendBean);
+    public List<String> testGet() {
+        return mTest1LocalDataSource.testGet();
     }
 }
 ```
 
 ```java
-public interface ExampleApi {
- 
+public interface Test1Api {
     /**
-     * 注册
-     * 使用retrofit请求
+     * 测试接口
      */
-    @POST("services/device/register")
-    Observable<BaseResponseData<String>> register(@Body RegisterBean sendBean);
-
-    /**
-     * 注销
-     * 使用非retrofit请求
-     */
-    Observable<BaseResponseData<String>> unregister(UnRegisterBean sendBean);
+    List<String> testGet();
 }
 ```
 
 ```java
-//remote数据实现
-public class RemoteExampleDataSource implements ExampleApi {
+public class Test1RemoteDataSource implements Test1Api {
 
-    private static RemoteExampleDataSource INSTANCE;
-
-    public static RemoteExampleDataSource getInstance() {
-        if (INSTANCE == null) {
-            INSTANCE = new RemoteExampleDataSource();
-        }
-        return INSTANCE;
-    }
-    
     @Override
-    public Observable<BaseResponseData<String>> register(@Body RegisterBean sendBean) {
-        /**
-        * public static ExampleApi getExampleApi() {
-        *     if (ExampleApi == null) {
-        *         Retrofit retrofit = new Retrofit.Builder()
-        *                 .client(new OkHttpClient())
-        *                 .baseUrl(UrlConstants.HOST)
-        *                 .addConverterFactory(GsonConverterFactory.create())
-        *                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-        *                 .build();
-        *         ExampleApi = retrofit.create(ExampleApi.class);
-        *     }
-        *     return ExampleApi;
-        * }
-        */
-        return NetWork.getExampleApi().register(sendBean);
-    }
-    
-    @Override
-    public Observable<BaseResponseData<String>> unregister(UnRegisterBean sendBean) {
+    public List<String> testGet() {
         return null;
     }
 }
 ```
 
 ```java
-public class LocalExampleDataSource implements ExampleApi {
+/**
+ *
+ * 数据local实现方式
+ */
+public class Test1LocalDataSource implements Test1Api {
 
-    @Nullable
-    private static LocalExampleDataSource INSTANCE;
+    @Override
+    public List<String> testGet() {
 
-    public static LocalExampleDataSource getInstance() {
-        if (INSTANCE == null) {
-            INSTANCE = new LocalExampleDataSource();
-        }
-        return INSTANCE;
-    }
-    
-    @Override
-    public Observable<BaseResponseData<String>> register(@Body RegisterBean sendBean) {
-        return null;
-    }
-    
-    @Override
-    public Observable<BaseResponseData<String>> unregister(UnRegisterBean sendBean) {
-        ......
-        return Observable.just(baseResponseData);
+        List<String> list = new ArrayList<>();
+        list.add("数据源一：1");
+        list.add("数据源一：2");
+        list.add("数据源一：3");
+        list.add("数据源一：4");
+        list.add("数据源一：5");
+        list.add("数据源一：6");
+        list.add("数据源一：7");
+        list.add("数据源一：8");
+        return list;
     }
 }
 ```
+
+### Dagger使用
+
+简单说明：
+
+一般创建对象方式，new一个Presenter对象，找到该对象的构造方法，传递参数，presenter指向该对象空间：
+```    
+    Presenter presenter = new Presenter(testActivity);
+```
+Dagger则是把对象的构建方法、构造参数和具体的new动作，做了拆分到不同文件来处理
+
+#### Dagger使用方式一：构造参数为当前this时
+
+1、构造方法使用@Inject标注构造方法，表明该构造方法是Dagger注入入口
+```
+    @Inject
+    public Presenter(MvpView mView) {
+        this.mView = (Test_DaggerListContract.View)mView;
+    }
+```
+2、使用@Module标注，创建构造方法使用时参数的Module，@Provides标注为该方法返回参数实体类型
+```
+    @Module
+    public class PresenterModule {
+    
+        private final MvpView mView;
+    
+        public PresenterModule(MvpView view) {
+            mView = view;
+        }
+    
+        @Provides
+        @ActivityScoped
+        MvpView provideTasksContractView() {
+            return mView;
+        }
+    }
+```
+3、创建ViewComponent，@Component标注的方法，ViewComponent会自动生成一个DaggerViewComponent的方法，modules后面为参数的Module，dependencies后面为注入的依赖。
+```java
+@ActivityScoped
+@Component(modules = PresenterModule.class)
+public interface ViewComponent {
+    void inject(Test_DaggerListActivity activity);
+}
+```
+4、通过DaggerViewComponent的方法注入，@Inject标注的presenter对象已经实例化了。
+```java
+public class Test_DaggerListActivity {
+    @Inject
+    Test_DaggerListPresenter presenter;
+    
+    @Override
+    public void init() {
+        DaggerViewComponent.builder()
+            //(new PresenterModule(this))时，通过this参数也已经把view对象传递给了module里的view了
+            .presenterModule(new PresenterModule(this))
+            .build()
+            .inject(this);
+    }
+}
+```
+
+#### Dagger使用方式二：构造参数非当前this
+
+1、构造方法使用@Inject标注构造方法，表明该构造方法是Dagger注入入口
+```
+public class Test2Repository implements Test2Api {
+    
+    private final Test2Api mTest2RemoteDataSource;
+    
+    private final Test2Api mTest2LocalDataSource;
+    
+    @Inject
+    public Test2Repository(@Local Test2LocalDataSource mTestLocalDataSource, @Remote Test2RemoteDataSource mTestRemoteDataSource) {
+        this.mTest2RemoteDataSource = mTestRemoteDataSource;
+        this.mTest2LocalDataSource = mTestLocalDataSource;
+    }
+    
+    ......
+}
+```
+2、使用@Module标注，创建构造方法使用时参数的Module，@Provides标注为该方法返回参数实体类型
+```
+@Module
+public class Test1RepositoryModule {
+
+    @Singleton
+    @Provides
+    @Local
+    Test1LocalDataSource provideTest1LocalDataSource() {
+        return new Test1LocalDataSource();
+    }
+
+    @Singleton
+    @Provides
+    @Remote
+    Test1RemoteDataSource provideTest1RemoteDataSource() {
+        return new Test1RemoteDataSource();
+    }
+
+}
+```
+3、创建ViewComponent，@Component标注的方法，ViewComponent会自动生成一个DaggerViewComponent的方法，modules后面为参数的Module，dependencies后面为注入的依赖。
+```java
+@Singleton
+@Component(modules = {Test1RepositoryModule.class})
+public interface RepositoryComponent {
+    
+    Test1Repository getTest1Repository();
+}
+```
+4、通过DaggerRepositoryComponent的方法注入，@Inject标注的repository1、repository2对象已经实例化了。
+```java
+public class Test_DaggerListPresenter{
+   
+    
+    @Inject
+    Test1Repository repository1;
+    
+    @Inject
+    Test2Repository repository2;
+    
+    public Test_DaggerListPresenter() {
+        DaggerRepositoryComponent.builder().build();
+    }
+    ......
+}
+```
+具体使用示例：
+ - [MVP+Dagger实现一个数据源数据返回](https://github.com/lianghuiyong/AndroidBase/blob/appbase-2.0/app/src/main/java/net/liang/androidbaseapplication/mvp/daggernormal/Test_DaggerNormalActivity.java)
+ - [MVP+Dagger使用基类列表页面实现两个数据源数据返回](https://github.com/lianghuiyong/AndroidBase/blob/appbase-2.0/app/src/main/java/net/liang/androidbaseapplication/mvp/daggerlist/Test_DaggerListActivity.java)
+
+
 
 ## 列表页面基类
 
@@ -252,6 +361,7 @@ public class ExampleBaseRecyclerViewActivity extends BaseRecyclerViewActivity<Li
     }
 }
 ``` 
+
 
 
 ## 无网络状态页面提示

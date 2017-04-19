@@ -8,9 +8,9 @@ import java.util.List;
 import javax.inject.Singleton;
 
 /**
- * Created by Liang on 2017/4/15.
+ *
+ * 数据local实现方式
  */
-@Singleton
 public class Test1LocalDataSource implements Test1Api {
 
     @Override

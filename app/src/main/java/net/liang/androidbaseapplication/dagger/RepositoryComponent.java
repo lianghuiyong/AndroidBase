@@ -11,12 +11,9 @@ import javax.inject.Singleton;
 import dagger.Component;
 
 /**
- * This is a Dagger component. Refer to {@link com.tyky.fda.AppConfig} for the list of Dagger components
- * used in this application.
- * <P>
- * Even though Dagger allows annotating a {@link Component @Component} as a singleton, the code
- * itself must ensure only one instance of the class is created. This is done in {@link
- * com.tyky.fda.AppConfig}.
+ * 数据源注入清单
+ * 每个数据源仓库，要有与之对应的数据源Module
+ * 比如：Test1Repository 对应 Test1RepositoryModule
  */
 @Singleton
 @Component(modules = {Test1RepositoryModule.class,
