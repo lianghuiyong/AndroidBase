@@ -72,10 +72,7 @@ public class BaseRecyclerViewPresenter<T> extends BasePresenter implements BaseR
                     @Override
                     public void onError(Throwable e) {
                         view.setListRefresh(false);
-                        if (getListPageNo() == 1){
-                            view.showNetworkFail();
-                        }
-                        view.onListError(e);
+                        view.onListError(pageNo,e);
                     }
 
                     @Override

@@ -1,24 +1,9 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.github.dcendents.android-maven'
-apply plugin: 'com.jfrog.bintray'
+//apply plugin: 'com.github.dcendents.android-maven'
+//apply plugin: 'com.jfrog.bintray'
 
 //lambda 支持
 apply plugin: 'me.tatarka.retrolambda'
-
-buildscript {
-    repositories {
-        jcenter()
-        maven { url "https://jitpack.io" }
-    }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:2.2.3'
-        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7'
-        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
-
-        //lambda 支持
-        classpath 'me.tatarka:gradle-retrolambda:3.5.0'
-    }
-}
 
 android {
     compileSdkVersion 25
@@ -28,12 +13,16 @@ android {
         minSdkVersion 15
         targetSdkVersion 25
         versionCode 1
-        versionName "2.0.1"
-
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        vectorDrawables.useSupportLibrary = true
+        versionName "2.0.15"
     }
+
     buildTypes {
+
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
@@ -53,21 +42,15 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    //compile 'com.android.support:appcompat-v7:25.3.0'
-    //compile 'com.android.support:design:25.3.0'
+    compile 'com.android.support:appcompat-v7:25.3.0'
+    compile 'com.android.support:design:25.3.0'
+
     compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.0'
 
-    compile 'io.reactivex.rxjava2:rxjava:2.+'
-    compile 'io.reactivex.rxjava2:rxandroid:2.+'
+    compile 'io.reactivex.rxjava2:rxjava:2.0.8'
+    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
     //Log
     compile 'com.github.zhaokaiqiang.klog:library:1.5.0'
-
-    compile 'com.jakewharton:butterknife:8.5.1'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
-
-    //dagger 编译支持
-    //compile 'com.google.dagger:dagger:2.0'
-    //annotationProcessor 'com.google.dagger:dagger-compiler:2.0'
 
     compile 'com.github.bumptech.glide:glide:3.7.0'
     compile 'jp.wasabeef:glide-transformations:2.0.1'

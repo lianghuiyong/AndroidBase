@@ -29,7 +29,9 @@ public class Test_NetRecyclerViewActivity extends BaseRecyclerViewActivity<List<
     @Override
     public void init() {
         super.init();
-        setToolbarCentel(true,"网络请求测试");
+        setToolbarCentel(true, "网络请求测试");
+
+        adapter.showNetWorkErrorView();
     }
 
     @Override
@@ -44,7 +46,6 @@ public class Test_NetRecyclerViewActivity extends BaseRecyclerViewActivity<List<
     @Override
     public void onListSuccess(List<String> strings, int pageNo) {
         showToast(strings.toString());
-        showNetworkFail();
     }
 
     @Override
@@ -52,9 +53,9 @@ public class Test_NetRecyclerViewActivity extends BaseRecyclerViewActivity<List<
         return new TestAdapter(this, recyclerView, null);
     }
 
-    class TestAdapter extends BaseRecyclerAdapter<String>{
+    class TestAdapter extends BaseRecyclerAdapter<String> {
         public TestAdapter(Context context, RecyclerView recyclerView, List<String> data) {
-            super(context, recyclerView,R.layout.recycler_item, data);
+            super(context, recyclerView, R.layout.recycler_item, data);
         }
 
         @Override

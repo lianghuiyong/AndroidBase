@@ -86,12 +86,9 @@ public abstract class BaseRecyclerViewFragment<T> extends BaseFragment implement
     }
 
     @Override
-    public void showNetworkFail() {
-        adapter.showNetWorkErrorView();
-    }
-
-    @Override
-    public void onListError(Throwable error) {
-
+    public void onListError(int pageNo, Throwable error) {
+        if(pageNo == 1){
+            adapter.showNetWorkErrorView();
+        }
     }
 }

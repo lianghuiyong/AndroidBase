@@ -18,8 +18,5 @@ package net.liang.appbaselibrary.base.mvp;
 
 public interface MvpView {
 
-    void showNetworkFail();
-    void showNetworkFail(String err);
-
     void showToast(String toast);
 }

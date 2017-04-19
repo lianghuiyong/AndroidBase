@@ -2,9 +2,12 @@ package net.liang.androidbaseapplication.mvp.daggernormal;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+
+import com.socks.library.KLog;
 
 import net.liang.androidbaseapplication.R;
 import net.liang.androidbaseapplication.dagger.DaggerRepositoryComponent;
@@ -20,21 +23,22 @@ import java.util.List;
 import javax.inject.Inject;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * 该页面使用一个数据源
  */
-public class Test_DaggerNormalActivity  extends BaseAppCompatActivity implements Test_DaggerNormalContract.View, SwipeRefreshLayout.OnRefreshListener {
-
-    @BindView(R.id.recyclerView)
-    RecyclerView recyclerView;
-    @BindView(R.id.swiperefresh)
-    SwipeRefreshLayout swiperefresh;
+public class Test_DaggerNormalActivity extends BaseAppCompatActivity implements Test_DaggerNormalContract.View, SwipeRefreshLayout.OnRefreshListener {
 
     TestAdapter adapter;
 
     @Inject
     Test_DaggerNormalPresenter presenter;
+
+    @BindView(R.id.recyclerView)
+    RecyclerView recyclerView;
+    @BindView(R.id.swiperefresh)
+    SwipeRefreshLayout swiperefresh;
 
     @Override
     protected int getLayoutId() {
@@ -49,8 +53,7 @@ public class Test_DaggerNormalActivity  extends BaseAppCompatActivity implements
     @Override
     public void init() {
         super.init();
-
-        setToolbarCentel(true,"Dagger示例");
+        setToolbarCentel(true, "Dagger示例");
 
         adapter = new TestAdapter(this, recyclerView, null);
 
@@ -79,6 +82,13 @@ public class Test_DaggerNormalActivity  extends BaseAppCompatActivity implements
     @Override
     public void onRefresh() {
         presenter.getListData();
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.bind(this);
     }
 
     class TestAdapter extends BaseRecyclerAdapter<String> {

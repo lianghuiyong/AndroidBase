@@ -10,18 +10,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.socks.library.KLog;
-
 import net.liang.appbaselibrary.base.mvp.MvpPresenter;
 import net.liang.appbaselibrary.base.mvp.MvpView;
-import net.liang.appbaselibrary.utils.NetworkUtils;
 import net.liang.appbaselibrary.utils.ToastUtils;
-import net.liang.appbaselibrary.widget.dialog.DialogHelper;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
-
-import butterknife.ButterKnife;
 
 /**
  * Created by lianghuiyong@outlook.com on 2016/6/22.
@@ -34,8 +28,6 @@ public abstract class BaseFragment extends Fragment implements BaseViewInterface
 
     protected abstract int getLayoutId();
 
-    private DialogHelper dialogHelper;
-
     @Override
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container,
@@ -45,22 +37,11 @@ public abstract class BaseFragment extends Fragment implements BaseViewInterface
     }
 
     @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-        if (isUseButterKnife()){
-            ButterKnife.bind(this, getView());
-        }
-
+    public void onStart() {
+        super.onStart();
         initRecyclerView();
         init();
         initTabs();
-    }
-
-
-    @Override
-    public boolean isUseButterKnife() {
-        return true;
     }
 
     @Override
@@ -87,20 +68,6 @@ public abstract class BaseFragment extends Fragment implements BaseViewInterface
     @Override
     public void initTabs() {
 
-    }
-
-    @Override
-    public void showNetworkFail() {
-        if (NetworkUtils.isConnected(getContext())){
-            showToast("加载失败!");
-        }else {
-            showToast("网咯不给力，请检查网络设置!");
-        }
-    }
-
-    @Override
-    public void showNetworkFail(String err) {
-        showToast(err);
     }
 
     @Override
@@ -132,10 +99,6 @@ public abstract class BaseFragment extends Fragment implements BaseViewInterface
 
         if (getPresenter() != null) {
             getPresenter().unSubscribe();
-        }
-
-        if (dialogHelper != null) {
-            dialogHelper.dismissProgressDialog();
         }
     }
 

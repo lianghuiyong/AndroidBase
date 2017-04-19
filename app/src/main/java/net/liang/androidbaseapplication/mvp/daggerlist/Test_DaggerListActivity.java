@@ -1,10 +1,10 @@
 package net.liang.androidbaseapplication.mvp.daggerlist;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
-
-import com.socks.library.KLog;
+import android.widget.ImageView;
 
 import net.liang.androidbaseapplication.R;
 import net.liang.androidbaseapplication.dagger.DaggerRepositoryComponent;
@@ -19,7 +19,6 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import butterknife.BindView;
 import io.reactivex.Observable;
 
 
@@ -27,12 +26,7 @@ import io.reactivex.Observable;
  * 该页面使用BaseRecyclerViewActivity基类，
  * 并使用Dagger实现两个数据源数据返回
  */
-public class Test_DaggerListActivity extends BaseRecyclerViewActivity<List<String>> implements Test_DaggerListContract.View{
-
-    @BindView(R.id.recyclerView)
-    RecyclerView recyclerView;
-    @BindView(R.id.swiperefresh)
-    SwipeRefreshLayout swiperefresh;
+public class Test_DaggerListActivity extends BaseRecyclerViewActivity<List<String>> implements Test_DaggerListContract.View {
 
     @Inject
     Test_DaggerListPresenter presenter;
@@ -49,7 +43,7 @@ public class Test_DaggerListActivity extends BaseRecyclerViewActivity<List<Strin
 
     @Override
     public void init() {
-        setToolbarCentel(true,"列表页面使用Dagger示例");
+        setToolbarCentel(true, "列表页面使用Dagger示例");
 
         // Create the presenter
         DaggerViewComponent.builder()

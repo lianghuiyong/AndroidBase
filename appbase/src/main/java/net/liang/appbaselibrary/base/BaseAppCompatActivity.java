@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 
+import com.socks.library.KLog;
 
 import net.liang.appbaselibrary.AppManager;
 import net.liang.appbaselibrary.NetWorkStateReceiver;
@@ -25,8 +26,6 @@ import net.liang.appbaselibrary.utils.ToastUtils;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
-
-import butterknife.ButterKnife;
 
 /**
  * Created by lianghuiyong@outlook.com on 2016/5/25.
@@ -46,32 +45,26 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
         AppManager.getAppManager().addActivity(this);
 
-
         binding = DataBindingUtil.setContentView(this, getLayoutId());
 
-        if (isUseButterKnife()){
-            ButterKnife.bind(this, getView());
-        }
-
         EventBus.getDefault().register(this);
+    }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        //初始化网络状态
         view_netInfo = findViewById(R.id.tv_netWorkInfo);
+        initNetWorkInfo(NetworkUtils.isConnected(this));
 
         initRecyclerView();
         init();
         initTabs();
-
-        //初始化网络状态
-        initNetWorkInfo(NetworkUtils.isConnected(this));
     }
 
     @Override
-    public boolean isUseButterKnife() {
-        return true;
-    }
-
-    @Override
-    public void onResume() {
+    protected void onResume() {
         super.onResume();
 
         if (getPresenter() != null) {
@@ -80,7 +73,7 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
     }
 
     @Override
-    public void onPause() {
+    protected void onPause() {
         super.onPause();
 
         if (getPresenter() != null) {
@@ -116,20 +109,6 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
     @Override
     public void initTabs() {
 
-    }
-
-    @Override
-    public void showNetworkFail() {
-        if (NetworkUtils.isConnected(getBaseContext())){
-            showToast("加载失败!");
-        }else {
-            showToast("网咯不给力，请检查网络设置!");
-        }
-    }
-
-    @Override
-    public void showNetworkFail(String err) {
-        showToast(err);
     }
 
     @Override
@@ -278,20 +257,20 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
     @Subscribe
     public void onEvent(NetWorkStateReceiver.NetWorkState state) {
 
-            switch (state){
-                case CONNECTED:
-                    initNetWorkInfo(true);
-                    break;
+        switch (state) {
+            case CONNECTED:
+                initNetWorkInfo(true);
+                break;
 
-                case DISCONNECTED:
-                    initNetWorkInfo(false);
-                    break;
-            }
+            case DISCONNECTED:
+                initNetWorkInfo(false);
+                break;
+        }
     }
 
-    private void initNetWorkInfo(boolean isConnect){
-        if (view_netInfo != null){
-            view_netInfo.setVisibility(isConnect? View.GONE:View.VISIBLE);
+    private void initNetWorkInfo(boolean isConnect) {
+        if (view_netInfo != null) {
+            view_netInfo.setVisibility(isConnect ? View.GONE : View.VISIBLE);
         }
     }
 

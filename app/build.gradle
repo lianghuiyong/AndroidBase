@@ -1,4 +1,7 @@
 apply plugin: 'com.android.application'
+//apply plugin: 'com.github.dcendents.android-maven'
+//apply plugin: 'com.jfrog.bintray'
+apply plugin: 'me.tatarka.retrolambda'
 
 android {
     compileSdkVersion 25
@@ -11,6 +14,17 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
+    // 65533方法数限制解决办法
+    dexOptions {
+        jumboMode true
+    }
+
+    // 移除lint检查的error
+    lintOptions {
+        abortOnError false
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -20,6 +34,12 @@ android {
 
     dataBinding {
         enabled = true
+    }
+
+    //lambda 支持
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 
@@ -32,8 +52,7 @@ dependencies {
     compile 'com.android.support:design:25.3.0'
     testCompile 'junit:junit:4.12'
 
-    //compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.0'
-
+    //butterknife
     compile 'com.jakewharton:butterknife:8.5.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
 
