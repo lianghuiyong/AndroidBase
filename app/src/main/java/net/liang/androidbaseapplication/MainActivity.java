@@ -4,8 +4,10 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
+import android.util.Pair;
 import android.view.View;
 
+import net.liang.androidbaseapplication.mvp.TestAnimActivity;
 import net.liang.androidbaseapplication.mvp.Test_BaseRecyclerViewActivity;
 import net.liang.androidbaseapplication.mvp.Test_BaseRecyclerViewFragment;
 import net.liang.androidbaseapplication.mvp.Test_NetRecyclerViewActivity;
@@ -40,7 +42,8 @@ public class MainActivity extends BaseAppCompatActivity {
             R.id.baseRecyclerViewFragment,
             R.id.net_RecyclerViewActivity,
             R.id.dagger_normal_use,
-            R.id.dagger_list_use})
+            R.id.dagger_list_use,
+            R.id.test_anim})
     public void onClick(View view) {
         Intent intent = new Intent();
         switch (view.getId()) {
@@ -67,6 +70,11 @@ public class MainActivity extends BaseAppCompatActivity {
             case R.id.dagger_list_use:
                 intent.setClass(this, Test_DaggerListActivity.class);
                 startActivity(intent);
+                break;
+            case R.id.test_anim:
+                nextActivityWithAnim(TestAnimActivity.class,null,ANIM_FADE,
+                        Pair.create(findViewById(R.id.test_anim_back),"toolbar_back"),
+                        Pair.create(findViewById(R.id.ic_launcher),"ic_launcher"));
                 break;
         }
 
