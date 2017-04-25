@@ -24,6 +24,7 @@
         <activity android:name=".mvp.Test_NetRecyclerViewActivity" />
         <activity android:name=".mvp.daggernormal.Test_DaggerNormalActivity" />
         <activity android:name=".mvp.daggerlist.Test_DaggerListActivity"></activity>
+        <activity android:name=".mvp.TestAnimActivity"></activity>
     </application>
 
 </manifest>
