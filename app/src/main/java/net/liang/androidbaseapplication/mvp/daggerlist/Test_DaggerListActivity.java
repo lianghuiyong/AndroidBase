@@ -65,12 +65,12 @@ public class Test_DaggerListActivity extends BaseRecyclerViewActivity<List<Strin
 
     @Override
     public BaseRecyclerAdapter addListAdapter() {
-        return new TestAdapter(this, recyclerView, null);
+        return new TestAdapter(recyclerView, null);
     }
 
     class TestAdapter extends BaseRecyclerAdapter<String> {
-        TestAdapter(Context context, RecyclerView recyclerView, List<String> data) {
-            super(context, recyclerView, R.layout.item_base_recyclerview_layout, data);
+        TestAdapter(RecyclerView recyclerView, List<String> data) {
+            super(recyclerView, R.layout.item_base_recyclerview_layout, data);
         }
 
         @Override

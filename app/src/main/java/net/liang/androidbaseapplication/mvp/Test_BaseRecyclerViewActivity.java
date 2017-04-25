@@ -64,7 +64,7 @@ public class Test_BaseRecyclerViewActivity extends BaseRecyclerViewActivity<List
      */
     @Override
     public BaseRecyclerAdapter addListAdapter() {
-        return new RecyclerAdapter(this, recyclerView, null);
+        return new RecyclerAdapter(recyclerView, null);
     }
 
     /**
@@ -102,8 +102,8 @@ public class Test_BaseRecyclerViewActivity extends BaseRecyclerViewActivity<List
      */
     class RecyclerAdapter extends BaseRecyclerAdapter<String> {
 
-        public RecyclerAdapter(Context context, RecyclerView recyclerView, List data) {
-            super(context, recyclerView, R.layout.item_base_recyclerview_layout, data);
+        public RecyclerAdapter(RecyclerView recyclerView, List data) {
+            super(recyclerView, R.layout.item_base_recyclerview_layout, data);
         }
 
         @Override

@@ -24,7 +24,6 @@ public abstract class BaseRecyclerAdapter<T> extends BaseQuickAdapter<T, Binding
 
     private OnRecyclerAdapterListener listener;
     private RecyclerView recyclerView;
-    private Context context;
     private View netErrorView;
     private View notDataView;
     private int pageSize = 10;
@@ -37,23 +36,21 @@ public abstract class BaseRecyclerAdapter<T> extends BaseQuickAdapter<T, Binding
         this.pageSize = pageSize;
     }
 
-    public BaseRecyclerAdapter(Context context, RecyclerView recyclerView, List<T> data) {
+    public BaseRecyclerAdapter(RecyclerView recyclerView, List<T> data) {
         super(data);
         this.recyclerView = recyclerView;
-        this.context = context;
         setBaseView();
     }
 
-    public BaseRecyclerAdapter(Context context, RecyclerView recyclerView, int layoutIdRes, List<T> data) {
+    public BaseRecyclerAdapter(RecyclerView recyclerView, int layoutIdRes, List<T> data) {
         super(layoutIdRes, data);
         this.recyclerView = recyclerView;
-        this.context = context;
         setBaseView();
     }
 
 
     private void setBaseView() {
-        netErrorView = LayoutInflater.from(context)
+        netErrorView = LayoutInflater.from(recyclerView.getContext())
                 .inflate(R.layout.recycler_item_neterror, (ViewGroup) recyclerView.getParent(), false);
 
         netErrorView.findViewById(R.id.net_error_layout).setOnClickListener(v -> {
@@ -62,7 +59,7 @@ public abstract class BaseRecyclerAdapter<T> extends BaseQuickAdapter<T, Binding
             }
         });
 
-        notDataView = LayoutInflater.from(context)
+        notDataView = LayoutInflater.from(recyclerView.getContext())
                 .inflate(R.layout.recycler_item_nodata, (ViewGroup) recyclerView.getParent(), false);
 
         BaseCustomLoadMoreView customLoadMoreView = new BaseCustomLoadMoreView();

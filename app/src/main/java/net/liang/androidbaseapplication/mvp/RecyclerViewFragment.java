@@ -52,7 +52,7 @@ public class RecyclerViewFragment extends BaseRecyclerViewFragment<List<String>>
 
     @Override
     public BaseRecyclerAdapter addListAdapter() {
-        return new RecyclerAdapter(getContext(), recyclerView, null);
+        return new RecyclerAdapter(recyclerView, null);
     }
 
     @Override
@@ -85,8 +85,8 @@ public class RecyclerViewFragment extends BaseRecyclerViewFragment<List<String>>
      */
     class RecyclerAdapter extends BaseRecyclerAdapter<String> {
 
-        public RecyclerAdapter(Context context, RecyclerView recyclerView, List data) {
-            super(context, recyclerView, R.layout.item_base_recyclerview_layout, data);
+        public RecyclerAdapter(RecyclerView recyclerView, List data) {
+            super(recyclerView, R.layout.item_base_recyclerview_layout, data);
         }
 
         @Override

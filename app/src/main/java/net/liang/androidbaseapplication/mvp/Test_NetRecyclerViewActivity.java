@@ -50,12 +50,12 @@ public class Test_NetRecyclerViewActivity extends BaseRecyclerViewActivity<List<
 
     @Override
     public BaseRecyclerAdapter addListAdapter() {
-        return new TestAdapter(this, recyclerView, null);
+        return new TestAdapter(recyclerView, null);
     }
 
     class TestAdapter extends BaseRecyclerAdapter<String> {
-        public TestAdapter(Context context, RecyclerView recyclerView, List<String> data) {
-            super(context, recyclerView, R.layout.recycler_item, data);
+        public TestAdapter(RecyclerView recyclerView, List<String> data) {
+            super(recyclerView, R.layout.recycler_item, data);
         }
 
         @Override

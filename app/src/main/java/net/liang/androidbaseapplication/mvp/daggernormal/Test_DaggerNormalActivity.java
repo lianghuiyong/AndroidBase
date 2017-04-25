@@ -55,7 +55,7 @@ public class Test_DaggerNormalActivity extends BaseAppCompatActivity implements 
         super.init();
         setToolbarCentel(true, "Dagger示例");
 
-        adapter = new TestAdapter(this, recyclerView, null);
+        adapter = new TestAdapter(recyclerView, null);
 
         swiperefresh.setColorSchemeColors(Color.RED, Color.BLUE, Color.GREEN, Color.YELLOW);
         swiperefresh.setOnRefreshListener(this);
@@ -92,8 +92,8 @@ public class Test_DaggerNormalActivity extends BaseAppCompatActivity implements 
     }
 
     class TestAdapter extends BaseRecyclerAdapter<String> {
-        public TestAdapter(Context context, RecyclerView recyclerView, List<String> data) {
-            super(context, recyclerView, R.layout.item_base_recyclerview_layout, data);
+        public TestAdapter(RecyclerView recyclerView, List<String> data) {
+            super(recyclerView, R.layout.item_base_recyclerview_layout, data);
         }
 
         @Override
