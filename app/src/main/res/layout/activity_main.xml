@@ -65,6 +65,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </LinearLayout>
+
+        <Button
+            android:id="@+id/multi_list"
+            android:text="多种类型的列表"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
     </LinearLayout>
 
 </layout>

@@ -8,7 +8,7 @@ import net.liang.appbaselibrary.base.mvp.MvpPresenter;
  * Created by Dino on 4/22 0022.
  */
 
-public class TestAnimActivity extends BaseAppCompatActivity {
+public class Test_AnimActivity extends BaseAppCompatActivity {
     @Override
     protected int getLayoutId() {
         return R.layout.activity_test_anim;

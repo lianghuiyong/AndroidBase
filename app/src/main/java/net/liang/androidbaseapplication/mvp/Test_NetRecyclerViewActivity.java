@@ -1,6 +1,5 @@
 package net.liang.androidbaseapplication.mvp;
 
-import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 
 import net.liang.androidbaseapplication.R;
@@ -55,7 +54,7 @@ public class Test_NetRecyclerViewActivity extends BaseRecyclerViewActivity<List<
 
     class TestAdapter extends BaseRecyclerAdapter<String> {
         public TestAdapter(RecyclerView recyclerView, List<String> data) {
-            super(recyclerView, R.layout.recycler_item, data);
+            super(recyclerView, R.layout.item_list_test, data);
         }
 
         @Override
