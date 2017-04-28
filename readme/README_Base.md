@@ -16,7 +16,7 @@
     mvp架构getPresenter获取到了p句柄，页面关闭时会释放观察者（p对象需要继承BasePresenter）
 
 ### 3.获取页面View
-    showToast(s)
+    getView()
 
 ### 4.接口
 **1、getLayoutId()**
