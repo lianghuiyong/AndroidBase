@@ -45,10 +45,10 @@ V层处理UI视图操作；P层实现业务逻辑操作（有设计需要的时�
 
 V-P之间的调用方式采取依赖倒置原则，俗话就是使用抽象接口（回调）；P与V，代码写多了，其实会发现，V可以正常的调用P，P则要尽量少调用V，或者使用DataBinding，数据的变化使用绑定方式；P与M，M只与P做沟通，数据一般来自后台延时操作，这块也就是使用RxJava情况较多的地方，网络请求可以尝试使用ReTrofit。一般情况下，一个V对应一个P，而P和M，会出现一个P对应多个M的情况（M的接口多了，或许会把M按模块创建）。
 
-# Dagger+MVP：
+Dagger+MVP，则是实现在MVP 结构代码中，P、M 的对象创建使用 Dagger 注入方式。
 
-则是实现在MVP 结构代码中，P、M 的对象创建使用 Dagger 注入方式。
-
+Detail List
+======================
 Name | Explain | Sample
 --- | --- | ---
 MVP   | [MVP使用](http://lianghuiyong.online/2017/04/18/MVP%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/) | NONE
