@@ -4,11 +4,12 @@
 [![](https://img.shields.io/github/stars/lianghuiyong/AndroidBase.svg)](https://github.com/lianghuiyong/AndroidBase/stargazers)
 [![](https://img.shields.io/github/forks/lianghuiyong/AndroidBase.svg)](https://github.com/lianghuiyong/AndroidBase/network)
 
-# 说明
 
 <img src="/art/appbase_media_2.1.0.gif" width="49%">
 
-## Gradle
+# 说明
+
+# Gradle
 
 ```gradle
 
@@ -36,7 +37,7 @@
 distributionUrl=https\://services.gradle.org/distributions/gradle-3.3-all.zip
 ```
 
-## MVP 
+# MVP 
 
  - [MVP使用笔记](http://lianghuiyong.online/2017/04/18/MVP%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/)
 
@@ -52,7 +53,7 @@ Dagger+MVP：
 
 则是实现在MVP 结构代码中，P、M 的对象创建使用 Dagger 注入方式。
 
-## MVP+Dagger
+# MVP+Dagger
  - [MVP+Dagger使用笔记](http://lianghuiyong.online/2017/04/18/MVP-Dagger%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/)
 ### 具体使用示例：
  - [MVP+Dagger实现一个数据源数据返回](https://github.com/lianghuiyong/AndroidBase/blob/appbase-2.0/app/src/main/java/net/liang/androidbaseapplication/mvp/daggernormal/Test_DaggerNormalActivity.java)
@@ -60,17 +61,17 @@ Dagger+MVP：
 
 
 
-## 列表页面
+# 列表页面
  - [列表页面使用](/readme/README_RecyclerView.md)
 
-## 网络状态
+# 网络状态
  - [网络状态提示](/readme/README_NetWork.md)
 
-## 附
+# 附
 
  - [lambda配置](https://github.com/lianghuiyong/AndroidBase/wiki/lambda-%E9%85%8D%E7%BD%AE)
 
-## 致谢
+# 致谢
  
  - [![](https://img.shields.io/badge/OsChina%20App-2.8.0-brightgreen.svg)](http://git.oschina.net/oschina/android-app)
  - [![](https://img.shields.io/badge/RxJava-2.0-brightgreen.svg)](https://github.com/ReactiveX/RxJava)   
