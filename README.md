@@ -6,7 +6,7 @@
 
 # 说明
 
-<img src="http://oeqej1j2m.bkt.clouddn.com/appbase_media_2.1.0.gif" width="49%">
+<img src="/art/appbase_media_2.1.0.gif" width="49%">
 
 ## Gradle
 
@@ -38,6 +38,8 @@ distributionUrl=https\://services.gradle.org/distributions/gradle-3.3-all.zip
 
 ## MVP 
 
+ - [MVP使用笔记](http://lianghuiyong.online/2017/04/18/MVP%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/)
+
 ![](http://oeqej1j2m.bkt.clouddn.com/MVP-Android.png)
 
 MVP：
@@ -49,8 +51,6 @@ V-P之间的调用方式采取依赖倒置原则，俗话就是使用抽象接�
 Dagger+MVP：
 
 则是实现在MVP 结构代码中，P、M 的对象创建使用 Dagger 注入方式。
-
- - [MVP使用笔记](http://lianghuiyong.online/2017/04/18/MVP%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/)
 
 ## MVP+Dagger
  - [MVP+Dagger使用笔记](http://lianghuiyong.online/2017/04/18/MVP-Dagger%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/)
