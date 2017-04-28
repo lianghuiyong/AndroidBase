@@ -51,6 +51,7 @@ V-P之间的调用方式采取依赖倒置原则，俗话就是使用抽象接�
 
 ======================
 Name | Explain | Sample
+--- | --- | ---
 MVP   | - [MVP使用笔记](http://lianghuiyong.online/2017/04/18/MVP%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/) |
 MVP+Dagger | - [MVP+Dagger使用笔记](http://lianghuiyong.online/2017/04/18/MVP-Dagger%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/) | - [MVP+Dagger实现一个数据源数据返回](https://github.com/lianghuiyong/AndroidBase/blob/appbase-2.0/app/src/main/java/net/liang/androidbaseapplication/mvp/daggernormal/Test_DaggerNormalActivity.java)  - [MVP+Dagger使用基类列表页面实现两个数据源数据返回](https://github.com/lianghuiyong/AndroidBase/blob/appbase-2.0/app/src/main/java/net/liang/androidbaseapplication/mvp/daggerlist/Test_DaggerListActivity.java)
 列表页面  |  - [列表页面使用](/readme/README_RecyclerView.md) |
