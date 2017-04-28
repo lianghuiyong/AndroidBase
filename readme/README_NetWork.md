@@ -1,4 +1,4 @@
-# 1、页面无网络提示
+# 1、基本页面，顶部无网络提示
 
 ## 代码里动态注册该广播监听、动态注册（为了兼容7.0）
 
@@ -17,7 +17,7 @@
         android:layout_height="wrap_content"
         android:visibility="gone"/>
 
-# 2、列表无网络提示
+# 2、列表页面，无网络提示
 
 1)列表Adapter需继承BaseRecyclerAdapter
 
@@ -36,9 +36,8 @@
     adapter.showNetWorkErrorView();
     
 ## 效果
-
-![](http://oeqej1j2m.bkt.clouddn.com/appbase_net01.png)
-
-![](http://oeqej1j2m.bkt.clouddn.com/appbase_net02.png)
-
-![](http://oeqej1j2m.bkt.clouddn.com/appbase_net03.png)
+<div align="center">
+  	<img src="http://oeqej1j2m.bkt.clouddn.com/appbase_net01.png" width="200">
+  	<img src="http://oeqej1j2m.bkt.clouddn.com/appbase_net02.png" width="200">
+  	<img src="http://oeqej1j2m.bkt.clouddn.com/appbase_net03.png" width="200">
+</div>
