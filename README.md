@@ -3,13 +3,10 @@
 ![](https://img.shields.io/badge/minSdk-15-blue.svg)
 [![](https://img.shields.io/github/stars/lianghuiyong/AndroidBase.svg)](https://github.com/lianghuiyong/AndroidBase/stargazers)
 [![](https://img.shields.io/github/forks/lianghuiyong/AndroidBase.svg)](https://github.com/lianghuiyong/AndroidBase/network)
-# 项目开发基类
 
-![gif](http://oeqej1j2m.bkt.clouddn.com/appbase_media_2.1.0.gif)
+# 说明
 
-## 项目说明
-
-MVP基类库+Dagger使用示例
+<img src="http://oeqej1j2m.bkt.clouddn.com/appbase_media_2.1.0.gif" width="49%">
 
 ## Gradle
 
@@ -41,7 +38,7 @@ distributionUrl=https\://services.gradle.org/distributions/gradle-3.3-all.zip
 
 ## MVP 
 
-![MVP](http://oeqej1j2m.bkt.clouddn.com/MVP-Android.png)
+![](http://oeqej1j2m.bkt.clouddn.com/MVP-Android.png)
 
 MVP：
 
