@@ -13,7 +13,7 @@ android {
         minSdkVersion 15
         targetSdkVersion 25
         versionCode 1
-        versionName "2.1.01"
+        versionName "2.1.02"
     }
 
     buildTypes {
@@ -45,7 +45,7 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.3.0'
     compile 'com.android.support:design:25.3.0'
 
-    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.0'
+    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.15'
 
     compile 'io.reactivex.rxjava2:rxjava:2.0.8'
     compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
