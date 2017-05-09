@@ -40,9 +40,7 @@
                     android:clickable="true"
                     android:paddingLeft="@dimen/space_16"
                     android:paddingRight="@dimen/space_16"
-                    android:src="@mipmap/toolbar_back"
-                    android:transitionName="toolbar_back"
-                    android:tag="skin:toolbar_back:src"
+                    android:src="@drawable/ic_toolbar_back"
                     android:visibility="gone" />
 
                 <TextView

@@ -58,7 +58,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:transitionName="toolbar_back"
-                android:src="@mipmap/toolbar_back"/>
+                android:src="@drawable/ic_toolbar_back"/>
             <Button
                 android:id="@+id/test_anim"
                 android:text="共享元素跳转"
