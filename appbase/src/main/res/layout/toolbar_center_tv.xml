@@ -14,6 +14,7 @@
         <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:elevation="@dimen/space_0"
             app:colorControlNormal="@android:color/black">
 
             <!--
@@ -75,7 +76,6 @@
                         android:background="@drawable/shape_toolbar_tv"
                         android:gravity="center"
                         android:padding="@dimen/space_5"
-                        android:tag="skin:toolbar_back:textColor|skin:shape_toolbar_tv:background"
                         android:textColor="@color/toolbar_back" />
                 </RelativeLayout>
             </android.support.v7.widget.Toolbar>
