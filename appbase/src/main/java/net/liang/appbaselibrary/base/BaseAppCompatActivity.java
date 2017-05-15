@@ -80,6 +80,9 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
         binding = DataBindingUtil.setContentView(this, getLayoutId());
 
         EventBus.getDefault().register(this);
+        init();
+        initRecyclerView();
+        initTabs();
     }
 
     @Override
@@ -89,10 +92,6 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
         //初始化网络状态
         view_netInfo = findViewById(R.id.tv_netWorkInfo);
         initNetWorkInfo(NetworkUtils.isConnected(this));
-
-        initRecyclerView();
-        init();
-        initTabs();
     }
 
     /**

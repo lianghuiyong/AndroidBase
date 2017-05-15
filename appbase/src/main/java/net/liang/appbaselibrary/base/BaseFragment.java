@@ -37,11 +37,16 @@ public abstract class BaseFragment extends Fragment implements BaseViewInterface
     }
 
     @Override
-    public void onStart() {
-        super.onStart();
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         initRecyclerView();
         init();
         initTabs();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
     }
 
     @Override
