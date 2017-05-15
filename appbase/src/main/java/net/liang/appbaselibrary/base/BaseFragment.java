@@ -17,11 +17,14 @@ import net.liang.appbaselibrary.utils.ToastUtils;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
+
 /**
  * Created by lianghuiyong@outlook.com on 2016/6/22.
  */
 public abstract class BaseFragment extends Fragment implements BaseViewInterface, MvpView {
-
+    private Unbinder unbinder;
     private ViewDataBinding binding;
 
     protected abstract MvpPresenter getPresenter();
@@ -33,6 +36,8 @@ public abstract class BaseFragment extends Fragment implements BaseViewInterface
                              ViewGroup container,
                              Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, getLayoutId(), container, false);
+        unbinder = ButterKnife.bind(this, binding.getRoot());
+        EventBus.getDefault().register(this);
         return getView();
     }
 
@@ -45,14 +50,15 @@ public abstract class BaseFragment extends Fragment implements BaseViewInterface
     }
 
     @Override
-    public void onStart() {
-        super.onStart();
+    public void onDestroyView() {
+        super.onDestroyView();
+        unbinder.unbind();
     }
 
+
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        EventBus.getDefault().register(this);
+    public void onStart() {
+        super.onStart();
     }
 
     @Subscribe

@@ -43,6 +43,8 @@ import net.liang.appbaselibrary.utils.ToastUtils;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
+import butterknife.ButterKnife;
+
 
 /**
  * Created by lianghuiyong@outlook.com on 2016/5/25.
@@ -80,8 +82,11 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
         binding = DataBindingUtil.setContentView(this, getLayoutId());
 
         EventBus.getDefault().register(this);
-        init();
+
+        ButterKnife.bind(this);
+
         initRecyclerView();
+        init();
         initTabs();
     }
 
