@@ -32,12 +32,17 @@ public abstract class BaseFragment extends Fragment implements BaseViewInterface
     protected abstract int getLayoutId();
 
     @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container,
                              Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, getLayoutId(), container, false);
         unbinder = ButterKnife.bind(this, binding.getRoot());
-        EventBus.getDefault().register(this);
         return getView();
     }
 
