@@ -1,3 +1,5 @@
+## Date:2017-12-31
+
 
 [![](https://img.shields.io/badge/moven%20center-1.1.30-brightgreen.svg?style=flat)](https://bintray.com/betterliang/Android/appbase/1.1.30)
 ![](https://img.shields.io/badge/minSdk-15-blue.svg)
@@ -44,12 +46,12 @@ public class ExampleV extends BaseAppCompatActivity(or BaseFragment) implements 
     protected int getLayoutId() {
         return R.layout.Example;
     }
-    
+
     @Override
     protected MvpPresenter getPresenter() {
         return null;
     }
-    
+
     ......
 }
 ```
@@ -58,14 +60,14 @@ public class ExampleV extends BaseAppCompatActivity(or BaseFragment) implements 
 
 ```java
 public class ExamplePresenter extends BasePresenter implements ExampleContract.Presenter {
-    
+
     @NonNull
     private ExampleContract.View view;
-    
+
     //你的数据管理仓库
     @NonNull
     private ExampleRepository repository;
-    
+
     public ExamplePresenter(@NonNull ExampleContract.View view) {
         this.view = checkNotNull(view, "view cannot be null!");
         this.repository = ExampleRepository.getInstance(RemoteExampleDataSource.getInstance(), LocalExampleDataSource.getInstance());
@@ -83,7 +85,7 @@ public interface ExampleContract {
     interface View extends MvpView{
         ......
     }
-    
+
     /**
      * Presenter接口层 处理业务
      */
@@ -106,24 +108,24 @@ public class ExampleRepository implements ExampleApi {
     private final ExampleApi localDataSource;
     @NonNull
     private final ExampleApi remoteDataSource;
-    
+
     public ExampleRepository(@NonNull ExampleApi localDataSource, @NonNull ExampleApi remoteDataSource) {
         this.localDataSource = checkNotNull(localDataSource);
         this.remoteDataSource = checkNotNull(remoteDataSource);
     }
-    
+
     public static ExampleRepository getINSTANCE(@NonNull ExampleApi localDataSource, @NonNull ExampleApi remoteDataSource) {
         if (INSTANCE == null) {
             INSTANCE = new ExampleRepository(localDataSource, remoteDataSource);
         }
         return INSTANCE;
     }
-    
+
     @Override
     public Observable<BaseResponseData<String>> register(@Body ExampleRegisterBean sendBean) {
         return remoteDataSource.register(sendBean);
     }
-    
+
     @Override
     public Observable<BaseResponseData<String>> unregister(@Body ExampleUnRegisterBean sendBean) {
         return localDataSource.unregister(sendBean);
@@ -133,7 +135,7 @@ public class ExampleRepository implements ExampleApi {
 
 ```java
 public interface ExampleApi {
- 
+
     /**
      * 注册
      * 使用retrofit请求
@@ -161,7 +163,7 @@ public class RemoteExampleDataSource implements ExampleApi {
         }
         return INSTANCE;
     }
-    
+
     @Override
     public Observable<BaseResponseData<String>> register(@Body RegisterBean sendBean) {
         /**
@@ -180,7 +182,7 @@ public class RemoteExampleDataSource implements ExampleApi {
         */
         return NetWork.getExampleApi().register(sendBean);
     }
-    
+
     @Override
     public Observable<BaseResponseData<String>> unregister(UnRegisterBean sendBean) {
         return null;
@@ -200,12 +202,12 @@ public class LocalExampleDataSource implements ExampleApi {
         }
         return INSTANCE;
     }
-    
+
     @Override
     public Observable<BaseResponseData<String>> register(@Body RegisterBean sendBean) {
         return null;
     }
-    
+
     @Override
     public Observable<BaseResponseData<String>> unregister(UnRegisterBean sendBean) {
         ......
@@ -216,25 +218,25 @@ public class LocalExampleDataSource implements ExampleApi {
 
 ## 列表页面基类
 
-``` 
+```
     <include layout="@layout/layout_recyclerview"/>
-    
+
     或者使用相同的ID：
-    
+
     	SwipeRefreshLayout使用@+id/swiperefresh，
     	RecyclerView使用@+id/recyclerView
 ```
 
 ``` java
 public class ExampleBaseRecyclerViewActivity extends BaseRecyclerViewActivity<List<String>> {
-     
+
     @Override
     public BaseRecyclerAdapter addListAdapter() {
-     
+
         // 默认一页页数为10，可使用setPageSize(int pageSize)修改
         return new RecyclerAdapter(this, recyclerView, null);
     }
-    
+
     // 请求成功时的回调方法;
     // onListSuccess返回的数据为完整的请求数据，需要自己拆解列表数据，添加到适配器里
     @Override
@@ -244,19 +246,19 @@ public class ExampleBaseRecyclerViewActivity extends BaseRecyclerViewActivity<Li
         //多页使用
         adapter.showList(strings, pageNo);
     }
-    
+
     // 获取网络数据接口，注意返回的是被观察者对象
     @Override
     public Observable<List<String>> onListGetData(int pageNo) {
         ......
     }
 }
-``` 
+```
 
 
 ## 无网络状态页面提示
  - 普通页面
- 
+
 代码里动态注册该广播监听、动态注册（为了兼容7.0）
 ``` java
  //动态启动网络监听广播
@@ -280,7 +282,7 @@ public class ExampleBaseRecyclerViewActivity extends BaseRecyclerViewActivity<Li
 </div>
 
  - 列表页面
- 
+
 1、列表Adapter需继承BaseRecyclerAdapter
 
 2、若页面继承于BaseRecyclerViewActivity或者BaseRecyclerViewFragment(使用方式：一个好用的列表页面基类),
@@ -298,7 +300,7 @@ onRefresh()为刷新页面方法
 ```
 2)在请求网络失败的地方调用
 ```
-adapter.showNetWorkErrorView(); 
+adapter.showNetWorkErrorView();
 ```
 
 <div align="center">
@@ -318,12 +320,11 @@ adapter.showNetWorkErrorView();
  - [lambda配置](https://github.com/lianghuiyong/AndroidBase/wiki/lambda-%E9%85%8D%E7%BD%AE)
 
 ## 致谢
- 
+
  - [![](https://img.shields.io/badge/OsChina%20App-2.8.0-brightgreen.svg)](http://git.oschina.net/oschina/android-app)
  - [![](https://img.shields.io/badge/RxJava-2.0-brightgreen.svg)](https://github.com/ReactiveX/RxJava)   
  - [![](https://img.shields.io/badge/butterknife-8.5.1-brightgreen.svg)](https://github.com/JakeWharton/butterknife)   
- - [![](https://img.shields.io/badge/todo-MVP-brightgreen.svg)](https://github.com/googlesamples/android-architecture/tree/todo-mvp/) 
- - [![](https://img.shields.io/badge/todo-DataBinding-brightgreen.svg)](https://github.com/googlesamples/android-architecture/tree/todo-databinding/) 
- - [![](https://img.shields.io/badge/BaseRecyclerViewAdapterHelper-2.9.0-brightgreen.svg)](https://github.com/CymChad/BaseRecyclerViewAdapterHelper) 
- - [![](https://img.shields.io/badge/AndroidUtilCode-1.3.5-brightgreen.svg)](https://github.com/Blankj/AndroidUtilCode) 
- 
+ - [![](https://img.shields.io/badge/todo-MVP-brightgreen.svg)](https://github.com/googlesamples/android-architecture/tree/todo-mvp/)
+ - [![](https://img.shields.io/badge/todo-DataBinding-brightgreen.svg)](https://github.com/googlesamples/android-architecture/tree/todo-databinding/)
+ - [![](https://img.shields.io/badge/BaseRecyclerViewAdapterHelper-2.9.0-brightgreen.svg)](https://github.com/CymChad/BaseRecyclerViewAdapterHelper)
+ - [![](https://img.shields.io/badge/AndroidUtilCode-1.3.5-brightgreen.svg)](https://github.com/Blankj/AndroidUtilCode)
